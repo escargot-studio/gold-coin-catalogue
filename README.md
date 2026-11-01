@@ -1,8 +1,10 @@
 # Gold Coin Catalogue
 
-**Beautiful gold coins of the world, chosen by design.** Modern bullion from the world's mints and ancient gold from 650 BC to AD 1204, with both sides of every coin.
+*Kingdoms rise and fall, palaces crumble to dust, yet their gold still turns up in a ploughed field, as bright as the day it was struck.* A wandering catalogue of the loveliest gold coins, from Lydia’s first electrum to the sovereigns of today, with both sides of every coin.
 
 **[Open the catalogue →](https://escargot-studio.github.io/gold-coin-catalogue/)**  ·  [Ancient gold](https://escargot-studio.github.io/gold-coin-catalogue/ancient.html)
+
+![Once upon a time, in gold: Pyrrhus’s Nike, the P. Clodius crescent moon, EID MAR and Leukon’s satyr](og-image.jpg)
 
 ## Modern gold
 
@@ -29,5 +31,8 @@ The catalogue sells nothing and isn't affiliated with any mint, museum, auction 
 Photos come from The Royal Mint, dealers and museum open-access collections (The Cleveland Museum of Art, The Metropolitan Museum of Art, Münzkabinett Berlin, Wikimedia Commons and others); each coin's record names its source and licence.
 
 ## Licence
+
+Share image coins: Pyrrhus’s stater, Bibliothèque nationale de France (CC BY 4.0); P. Clodius aureus, American Numismatic Society; EID MAR aureus, Roma Numismatics Auction XX (2020); Leukon I stater, Numismatica Ars Classica (2023).
+
 
 The page in this repo is under the MIT License (see LICENSE). Full-size coin photos are not stored here: they're linked from their owners' sites and remain their property. Small credited thumbnails (ancient-img/, history-map-img/) are kept for speed. The site icon is the EID MAR aureus reverse, from a Roma Numismatics Auction XX (2020) photo.
