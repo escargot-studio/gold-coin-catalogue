@@ -4,7 +4,7 @@
 
 **[Open the catalogue →](https://escargot-studio.github.io/gold-coin-catalogue/)**  ·  [Ancient gold](https://escargot-studio.github.io/gold-coin-catalogue/ancient.html)
 
-![Once upon a time, in gold: Pyrrhus’s Nike, the P. Clodius crescent moon, EID MAR and Leukon’s satyr](og-image.jpg)
+![Gold Coin Catalogue, once upon a time, in gold: Pyrrhus’s Nike, the P. Clodius crescent moon, EID MAR and Leukon’s satyr](og-image.jpg)
 
 ## Modern gold
 
