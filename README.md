@@ -34,7 +34,6 @@ Photos come from The Royal Mint, dealers and museum open-access collections (The
 
 Share image coins: Pyrrhus’s stater, Bibliothèque nationale de France (CC BY 4.0); P. Clodius aureus, American Numismatic Society; EID MAR aureus, Roma Numismatics Auction XX (2020); Leukon I stater, Numismatica Ars Classica (2023).
 
-
-The page in this repo is under the MIT License (see LICENSE). Full-size coin photos are not stored here: they're linked from their owners' sites and remain their property. Small credited thumbnails (ancient-img/, history-map-img/) are kept for speed. The site icon is the EID MAR aureus reverse, from a Roma Numismatics Auction XX (2020) photo.
+The page in this repo is under the MIT License (see LICENSE). Full-size coin photos are not stored here: they're linked from their owners' sites and remain their property. Small credited thumbnails (ancient-img/) are kept for speed. Tab icons: Elizabeth II on the 2021 gold Britannia (Chards photo, linked) for Modern, Athena from an Alexander stater (Münzkabinett Berlin, public domain) for Ancient, and the EID MAR aureus reverse (Roma Numismatics Auction XX, 2020) elsewhere.
 
 <p align="center"><img src="readme-img/snail.svg" width="72" alt="A little snail"><br><sub>made by Sên</sub></p>
