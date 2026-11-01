@@ -778,6 +778,16 @@ details.src ul { margin: 6px 0 0; padding-left: 18px; }
   .tsize button:not([aria-pressed="true"]) { display: none; }
   .tsize button[aria-pressed="true"] { background: var(--surface); color: var(--gold); border-color: var(--gold); }
 }
+/* both sides of a coin in a row (1 Nov) */
+.ph2 { display: flex; gap: 4px; flex: none; align-items: center; }
+.ph2 .ph { margin: 0; }
+.picker button { grid-template-columns: auto 1fr; }
+.panel.storymax .picker button { grid-template-columns: auto 1fr; }
+.evsplit { grid-template-columns: 1fr auto; }
+.evsplit .ph2 .ph { width: 84px; height: 84px; }
+.results .ph2 .ph { width: 34px; height: 34px; }
+.coinrow .ph2 .ph { width: 44px; height: 44px; }
+.strip .img.nocoin { background: var(--sunken); box-shadow: inset 0 0 0 1px var(--line); }
 </style>
 <script>/* text size: set before the page draws, so it doesn't jump */
 try { const s = localStorage.getItem("hm-text-size"); if (s === "1.15" || s === "1.3") document.documentElement.style.setProperty("--fs", s); } catch (e) {}
@@ -1723,7 +1733,10 @@ function trailSlide(st, i) {
     <p class="story">${esc(st.text)}</p>
     ${st.look || st.rarity ? `<div class="lookfor">${st.rarity ? `<span class="rar r-${st.rarity.toLowerCase().replace(/ /g, "-")}">${esc(st.rarity)}</span>` : ""}${st.look ? `<p><b>Look for:</b> ${esc(st.look)}</p>` : ""}</div>` : ""}${st.fact || st.sold ? `<div class="lookfor">${st.fact ? `<p><b>Did you know?</b> ${esc(st.fact)}</p>` : ""}${st.sold ? `<p><b>Sold:</b> ${esc(st.sold)}</p>` : ""}</div>` : ""}${st.note ? `<p class="sub approx">${esc(st.note)}</p>` : ""}${st.approx ? `<p class="sub approx">${esc(st.approx)}</p>` : ""}</div></div>`;
 }
-const coinRow = c => `<button class="coinrow" data-coin="${c.id}"><span class="ph">${coinImg(c)}</span>` +
+// Both sides of a coin, side by side, for list rows: first side, then the other when we have a photo of it.
+const hasTwo = c => !!(c && (c.obv && c.rev || c.both));
+const sides = c => `<span class="ph2"><span class="ph">${coinImg(c)}</span>${hasTwo(c) ? `<span class="ph">${coinImg(c, otherFace(c))}</span>` : ""}</span>`;
+const coinRow = c => `<button class="coinrow" data-coin="${c.id}">${sides(c)}` +
   `<span><span class="n">${esc(c.n)}</span><br><span class="d">${esc(c.den)} · ${esc(c.dt)}${c.mint ? " · " + esc(c.mint) : ""}</span></span></button>`;
 const srcList = (list, extra = []) => {
   const items = [...list.map(s => typeof s === "string" ? s : `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).map(s => typeof s === "string" && !s.startsWith("<a") ? esc(s) : s), ...extra];
@@ -1832,7 +1845,7 @@ const CARDS = {
     return {
       head: `<div class="type">● ${e.tier === 1 ? "Big event" : "Event"} · ${yearText(e.y)}</div><h2>${esc(e.t)}</h2><div class="sub">${e.place ? esc(e.place) + " · " : ""}${esc(e.who)}</div>`,
       body: `<div class="evsplit"><div><p>${esc(e.text)}</p></div>
-          <div>${c ? `<button data-coin="${c.id}"><span class="ph">${coinImg(c)}</span><div class="cap">The coin ›</div></button>` : `<span class="ph">${coinImg(null)}</span><div class="cap" style="color:var(--muted)">coin to choose</div>`}</div></div>
+          ${c ? `<div><button data-coin="${c.id}">${sides(c)}<div class="cap">The coin ›</div></button></div>` : ""}</div>
         ${e.why ? `<div class="why"><b>Why the coin</b>${esc(e.why)}</div>` : ""}
         ${e.note ? `<div class="dispute"><b>Historians disagree:</b> ${esc(e.note)}</div>` : ""}
         ${warsAt(e.y).length ? `<div class="chips">${warsAt(e.y).map(w => chip(`data-war="${w.id}"`, "⚔", "war", w.name, span(w.a, w.b))).join("")}</div>` : ""}
@@ -1939,7 +1952,7 @@ const CARDS = {
   trails() {
     return {
       head: `<div class="type"><span class="sw" style="background:var(--trail)"></span>Stories</div><h2>Follow a coin's journey</h2><div class="sub">In date order, from the first coins to Byzantium</div>`,
-      body: `<div class="picker">${DATA.trails.map(t => `<button data-trail="${t.id}"><span class="ph">${coinImg(COINS.get(t.coin))}</span><span><span class="t">${esc(t.title)}</span><br><span class="d">${t.stops.length} stops · ${span(t.stops[0].a, t.stops.at(-1).a)}</span></span></button>`).join("")}</div>`,
+      body: `<div class="picker">${DATA.trails.map(t => `<button data-trail="${t.id}">${COINS.get(t.coin) ? sides(COINS.get(t.coin)) : `<span class="ph">${coinImg(null)}</span>`}<span><span class="t">${esc(t.title)}</span><br><span class="d">${t.stops.length} stops · ${span(t.stops[0].a, t.stops.at(-1).a)}</span></span></button>`).join("")}</div>`,
     };
   },
   trail(s) {
@@ -1954,7 +1967,7 @@ const CARDS = {
         <div class="slidefoot"><div class="stepper slides"><button class="btn" data-stopstep="-1" ${s.stop === 0 ? "disabled" : ""}>‹ Back</button>
           <span class="count">${s.stop + 1} / ${t.stops.length}</span>
           <button class="btn primary" data-stopstep="1" ${s.stop >= t.stops.length - 1 ? "disabled" : ""}>Next ›</button></div>
-        <div class="strip" aria-label="All stops">${t.stops.map((x, i) => `<button data-stop="${i}" class="${i === s.stop ? "on" : ""}" title="${i + 1}. ${esc(x.place)}"><span class="ph">${x.coin ? coinImg(COINS.get(x.coin)) : x.image ? `<span class="img" style="background-image:url('${esc(x.image.rev_first ? x.image.url : x.image.obv || x.image.url)}')"></span>` : coinImg(null)}</span><span class="n">${i + 1}</span></button>`).join("")}</div></div>`,
+        <div class="strip" aria-label="All stops">${t.stops.map((x, i) => `<button data-stop="${i}" class="${i === s.stop ? "on" : ""}" title="${i + 1}. ${esc(x.place)}"><span class="ph">${x.coin ? coinImg(COINS.get(x.coin)) : x.image ? `<span class="img" style="background-image:url('${esc(x.image.rev_first ? x.image.url : x.image.obv || x.image.url)}')"></span>` : `<span class="img nocoin"></span>`}</span><span class="n">${i + 1}</span></button>`).join("")}</div></div>`,
     };
   },
   about() {
@@ -2165,7 +2178,7 @@ function runSearch() {
   let last = "", h = "";
   hits.forEach((x, i) => {
     if (x.g !== last) { h += `<div class="grp">${x.g}</div>`; last = x.g; }
-    h += `<button data-hit="${i}" class="${i === 0 ? "hl" : ""}">${x.img ? `<span class="ph" style="width:34px;height:34px;margin:0;flex:none">${coinImg(x.img)}</span>` : ""}<span><span class="t">${esc(x.t)}</span><br><span class="d">${esc(x.d)}</span></span></button>`;
+    h += `<button data-hit="${i}" class="${i === 0 ? "hl" : ""}">${x.img ? sides(x.img) : ""}<span><span class="t">${esc(x.t)}</span><br><span class="d">${esc(x.d)}</span></span></button>`;
   });
   r.innerHTML = h || `<div class="none">Nothing found. Try a ruler, a city, or a year like "44 BC".</div>`;
   r.hidden = false;
