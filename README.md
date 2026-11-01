@@ -6,14 +6,6 @@
 
 ![Gold Coin Catalogue, once upon a time, in gold: Pyrrhus’s Nike, the P. Clodius crescent moon, EID MAR and Leukon’s satyr](og-image.jpg)
 
-## Modern gold
-
-Gold bullion coins from The Royal Mint, The Perth Mint, the Royal Australian Mint, the US Mint, the Royal Canadian Mint and more: Britannias, sovereigns, Queen's Beasts, Tudor Beasts, Lunar series, Kangaroos, Eagles, Buffalos, Maple Leafs and others.
-
-- Filter by country, series, size (1 oz, 1/2, 1/4, 1/10 oz and more), stock, years and monarch.
-- Hover a coin to flip it.
-- Click a coin for both sides, specs per size, stock and, for British coins, UK Capital Gains Tax status (sterling legal tender is CGT-exempt).
-
 ## Ancient gold
 
 ![The Ancient gold page](readme-img/ancient.jpg)
@@ -23,6 +15,14 @@ Over 550 gold and electrum designs from the first coins of Lydia to the sack of 
 - One card per design, with museum photos and the story behind it.
 - Collections such as Popular coins, the Twelve Caesars, the Ides of March (EID MAR), Women on gold, Animals on gold and the most expensive ancient coins ever sold.
 - Estimated price ranges from recent public auction results.
+
+## Modern gold
+
+Gold bullion coins from The Royal Mint, The Perth Mint, the Royal Australian Mint, the US Mint, the Royal Canadian Mint and more: Britannias, sovereigns, Queen's Beasts, Tudor Beasts, Lunar series, Kangaroos, Eagles, Buffalos, Maple Leafs and others.
+
+- Filter by country, series, size (1 oz, 1/2, 1/4, 1/10 oz and more), stock, years and monarch.
+- Hover a coin to flip it.
+- Click a coin for both sides, specs per size, stock and, for British coins, UK Capital Gains Tax status (sterling legal tender is CGT-exempt).
 
 ## About
 
@@ -36,3 +36,5 @@ Share image coins: Pyrrhus’s stater, Bibliothèque nationale de France (CC BY 
 
 
 The page in this repo is under the MIT License (see LICENSE). Full-size coin photos are not stored here: they're linked from their owners' sites and remain their property. Small credited thumbnails (ancient-img/, history-map-img/) are kept for speed. The site icon is the EID MAR aureus reverse, from a Roma Numismatics Auction XX (2020) photo.
+
+<p align="center"><img src="readme-img/snail.svg" width="72" alt="A little snail"><br><sub>made by Sên</sub></p>
