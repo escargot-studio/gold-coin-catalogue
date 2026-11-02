@@ -2413,10 +2413,595 @@ function loadDetail() {
 .map-cta a, .map-link a { color: var(--gold); font-weight: 600; text-decoration: none; }
 .map-cta a:hover, .map-link a:hover { text-decoration: underline; }
 .map-link { margin-top: 6px; font-size: 14px; }
+.map-link a { display: block; }
+.map-nav { font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.map-nav:hover { color: var(--gold); }
 </style>
 <script>
 (() => {
   const MAP = "https://escargot-studio.github.io/history-through-coins/";
+  // Coins that appear in a Story on the map (written by the map build, research/ui/story_coins.json).
+  const STORIES = {
+ "miletus-electrum-stater-lion-lying": [
+  {
+   "t": "invention",
+   "title": "The invention of money",
+   "s": 0,
+   "y": -640
+  }
+ ],
+ "the-first-coins-electrum-stater-lion-head": [
+  {
+   "t": "invention",
+   "title": "The invention of money",
+   "s": 1,
+   "y": -630
+  }
+ ],
+ "phanes-electrum-stater-stag-grazing": [
+  {
+   "t": "invention",
+   "title": "The invention of money",
+   "s": 2,
+   "y": -625
+  }
+ ],
+ "corinth-electrum-stater-plain-surface": [
+  {
+   "t": "invention",
+   "title": "The invention of money",
+   "s": 3,
+   "y": -600
+  }
+ ],
+ "croesus-of-lydia-stater-forepart-of-lion": [
+  {
+   "t": "invention",
+   "title": "The invention of money",
+   "s": 4,
+   "y": -560
+  }
+ ],
+ "kyzikos-stater-bull-standing-on-a-tunny": [
+  {
+   "t": "invention",
+   "title": "The invention of money",
+   "s": 5,
+   "y": -550
+  }
+ ],
+ "lydia-the-first-coins-twelfth-stater-lion-head-roaring-with-multi-raye": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 0,
+   "y": -630
+  }
+ ],
+ "ptolemy-ii-and-arsinoe-ii-mnaieion-jugate-busts-of-ptolemy-ii-and-arsi": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 2,
+   "y": -305
+  }
+ ],
+ "lysimachus-stater-athena": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 3,
+   "y": -297
+  },
+  {
+   "t": "alexander-afterlife",
+   "title": "Alexander's gold after Alexander",
+   "s": 5,
+   "y": -305
+  }
+ ],
+ "gold-of-the-republic-stater-victory-standing": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 4,
+   "y": -196
+  }
+ ],
+ "gold-of-the-republic-aureus-laureate-head-of-caesar": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 5,
+   "y": -44
+  },
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 8,
+   "y": -43
+  }
+ ],
+ "justinian-ii-christ-solidus": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 6,
+   "y": 692
+  }
+ ],
+ "heraclius-three-solidus": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 7,
+   "y": 696
+  },
+  {
+   "t": "solidus",
+   "title": "The solidus, the dollar of the Middle Ages",
+   "s": 5,
+   "y": 691
+  }
+ ],
+ "leo-iii-solidus": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 8,
+   "y": 717
+  }
+ ],
+ "irene-solidus": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 9,
+   "y": 797
+  }
+ ],
+ "zoe-theodora-histamenon": [
+  {
+   "t": "who-on-money",
+   "title": "Who gets to be on the money",
+   "s": 10,
+   "y": 1042
+  }
+ ],
+ "athens-tetradrachm-owl-silver": [
+  {
+   "t": "owl-design",
+   "title": "How the owl of Athens changed",
+   "s": 4,
+   "y": -454
+  }
+ ],
+ "athens-drachm-or-half-stater-owl-and-twig": [
+  {
+   "t": "owl-design",
+   "title": "How the owl of Athens changed",
+   "s": 5,
+   "y": -407
+  },
+  {
+   "t": "owl",
+   "title": "The owl that everyone copied",
+   "s": 0,
+   "y": -454
+  },
+  {
+   "t": "army-gold",
+   "title": "Money follows the army",
+   "s": 0,
+   "y": -406
+  }
+ ],
+ "philippi-stater-tripod": [
+  {
+   "t": "army-gold",
+   "title": "Money follows the army",
+   "s": 1,
+   "y": -356
+  }
+ ],
+ "alexander-iii-stater-athena-and-nike-alexander-s-stater": [
+  {
+   "t": "army-gold",
+   "title": "Money follows the army",
+   "s": 2,
+   "y": -330
+  },
+  {
+   "t": "alexander-afterlife",
+   "title": "Alexander's gold after Alexander",
+   "s": 4,
+   "y": -328
+  }
+ ],
+ "gold-of-the-republic-60-asses-eagle-on-thunderbolt": [
+  {
+   "t": "army-gold",
+   "title": "Money follows the army",
+   "s": 3,
+   "y": -212
+  }
+ ],
+ "gold-of-the-republic-aureus-trophy-with-gallic-shield-and-carnyx": [
+  {
+   "t": "army-gold",
+   "title": "Money follows the army",
+   "s": 4,
+   "y": -58
+  },
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 3,
+   "y": -48
+  }
+ ],
+ "trajan-aureus-forum-of-trajan": [
+  {
+   "t": "army-gold",
+   "title": "Money follows the army",
+   "s": 5,
+   "y": 106
+  }
+ ],
+ "theodosius-ii-solidus-constantinopolis": [
+  {
+   "t": "army-gold",
+   "title": "Money follows the army",
+   "s": 6,
+   "y": 447
+  },
+  {
+   "t": "solidus",
+   "title": "The solidus, the dollar of the Middle Ages",
+   "s": 2,
+   "y": 400
+  }
+ ],
+ "justinian-solidus": [
+  {
+   "t": "army-gold",
+   "title": "Money follows the army",
+   "s": 7,
+   "y": 532
+  },
+  {
+   "t": "solidus",
+   "title": "The solidus, the dollar of the Middle Ages",
+   "s": 1,
+   "y": 330
+  },
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 1,
+   "y": 540
+  }
+ ],
+ "dionysios-i-of-syracuse-drachm-or-half-stater-herakles-kneeling": [
+  {
+   "t": "arethusa",
+   "title": "Syracuse's Arethusa goes abroad",
+   "s": 0,
+   "y": -405
+  }
+ ],
+ "carthage-electrum-stater-tanit-standing-horse": [
+  {
+   "t": "arethusa",
+   "title": "Syracuse's Arethusa goes abroad",
+   "s": 4,
+   "y": -320
+  }
+ ],
+ "philip-ii-stater-apollo-and-racing-chariot-philip-s-stater": [
+  {
+   "t": "philip-to-britain",
+   "title": "Philip's gold travels to Britain",
+   "s": 0,
+   "y": -345
+  }
+ ],
+ "claudius-aureus-triumphal-arch-surmounted-by-equestrian-statue": [
+  {
+   "t": "philip-to-britain",
+   "title": "Philip's gold travels to Britain",
+   "s": 6,
+   "y": 46
+  }
+ ],
+ "byzantion-stater-athena": [
+  {
+   "t": "alexander-afterlife",
+   "title": "Alexander's gold after Alexander",
+   "s": 6,
+   "y": -255
+  }
+ ],
+ "mesembria-stater-nike-standing": [
+  {
+   "t": "alexander-afterlife",
+   "title": "Alexander's gold after Alexander",
+   "s": 7,
+   "y": -250
+  }
+ ],
+ "kallatis-stater-nike-standing": [
+  {
+   "t": "alexander-afterlife",
+   "title": "Alexander's gold after Alexander",
+   "s": 8,
+   "y": -250
+  }
+ ],
+ "tomis-stater-helmeted-athena": [
+  {
+   "t": "alexander-afterlife",
+   "title": "Alexander's gold after Alexander",
+   "s": 9,
+   "y": -230
+  }
+ ],
+ "mithradates-vi-of-pontus-stater-stag-grazing": [
+  {
+   "t": "alexander-afterlife",
+   "title": "Alexander's gold after Alexander",
+   "s": 10,
+   "y": -88
+  }
+ ],
+ "gold-of-the-republic-stater-oath-taking-scene-two-soldiers-facing-each": [
+  {
+   "t": "republic-to-empire",
+   "title": "From Republic to Empire, in gold",
+   "s": 0,
+   "y": -216
+  }
+ ],
+ "gold-of-the-republic-aureus-two-trophies": [
+  {
+   "t": "republic-to-empire",
+   "title": "From Republic to Empire, in gold",
+   "s": 1,
+   "y": -86
+  },
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 0,
+   "y": -84
+  }
+ ],
+ "gold-of-the-republic-aureus-jug-and-lituus-laurel-wreath-as-border": [
+  {
+   "t": "republic-to-empire",
+   "title": "From Republic to Empire, in gold",
+   "s": 2,
+   "y": -46
+  }
+ ],
+ "brutus-aureus-eid-mar": [
+  {
+   "t": "republic-to-empire",
+   "title": "From Republic to Empire, in gold",
+   "s": 4,
+   "y": -42
+  },
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 10,
+   "y": -42
+  }
+ ],
+ "labienus-aureus-parthian-horse": [
+  {
+   "t": "republic-to-empire",
+   "title": "From Republic to Empire, in gold",
+   "s": 5,
+   "y": -40
+  },
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 14,
+   "y": -40
+  }
+ ],
+ "gold-of-the-republic-aureus-aquila-between-two-standards-border-of-dot": [
+  {
+   "t": "republic-to-empire",
+   "title": "From Republic to Empire, in gold",
+   "s": 6,
+   "y": -32
+  },
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 16,
+   "y": -31
+  }
+ ],
+ "augustus-aureus-capricorn": [
+  {
+   "t": "republic-to-empire",
+   "title": "From Republic to Empire, in gold",
+   "s": 7,
+   "y": -27
+  },
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 17,
+   "y": -27
+  }
+ ],
+ "augustus-aureus-augustus": [
+  {
+   "t": "republic-to-empire",
+   "title": "From Republic to Empire, in gold",
+   "s": 8,
+   "y": -15
+  }
+ ],
+ "gold-of-the-republic-aureus-pompey-in-triumphal-quadriga": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 1,
+   "y": -71
+  }
+ ],
+ "gold-of-the-republic-aureus-lituus": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 4,
+   "y": -46
+  }
+ ],
+ "gold-of-the-republic-aureus-jug-border-of-dots": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 5,
+   "y": -45
+  }
+ ],
+ "gold-of-the-republic-aureus-legend-within-laurel-wreath-border-of-dots": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 6,
+   "y": -44
+  }
+ ],
+ "brutus-aureus-casca-trophy": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 7,
+   "y": -44
+  }
+ ],
+ "gold-of-the-republic-aureus-tripod-with-cauldron": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 9,
+   "y": -43
+  }
+ ],
+ "gold-of-the-republic-aureus-hercules-seated-facing-on-rock": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 11,
+   "y": -42
+  }
+ ],
+ "gold-of-the-republic-aureus-heads-of-pompey-the-great-and-pompey-the-y": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 12,
+   "y": -42
+  }
+ ],
+ "ahenobarbus-aureus-temple-of-neptune": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 13,
+   "y": -41
+  }
+ ],
+ "gold-of-the-republic-aureus-tetrastyle-temple": [
+  {
+   "t": "caesar-gold",
+   "title": "Caesar's rise and fall, in gold",
+   "s": 15,
+   "y": -40
+  }
+ ],
+ "constantine-the-great-solidus-victory": [
+  {
+   "t": "solidus",
+   "title": "The solidus, the dollar of the Middle Ages",
+   "s": 0,
+   "y": 309
+  }
+ ],
+ "constantine-the-great-solidus-constantine-i": [
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 0,
+   "y": 330
+  }
+ ],
+ "phocas-solidus": [
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 2,
+   "y": 608
+  }
+ ],
+ "constans-ii-solidus": [
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 3,
+   "y": 663
+  }
+ ],
+ "basil-ii-histamenon": [
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 4,
+   "y": 976
+  }
+ ],
+ "michael-iv-histamenon": [
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 5,
+   "y": 1034
+  }
+ ],
+ "romanos-iv-histamenon": [
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 6,
+   "y": 1071
+  }
+ ],
+ "alexios-i-hyperpyron": [
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 7,
+   "y": 1092
+  }
+ ],
+ "alexios-iii-hyperpyron": [
+  {
+   "t": "byzantium",
+   "title": "Byzantium's rise and fall, read in its gold",
+   "s": 8,
+   "y": 1204
+  }
+ ]
+}
+;
   let years = null;
   function yearOf(id) {
     if (!years) {
@@ -2444,14 +3029,24 @@ function loadDetail() {
     if (!sheet || !m) return;
     const sub = sheet.querySelector(".sub");
     if (!sub || sub.parentNode.querySelector(".map-link")) return;
-    const id = decodeURIComponent(m[1]), y = yearOf(id);
-    if (y === null) return;
+    const id = decodeURIComponent(m[1]), stories = STORIES[id];
+    if (!stories) return;   // only coins that are part of a Story on the map
+    const esc = t => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
     const div = document.createElement("div");
     div.className = "map-link";
-    div.innerHTML = '<a href="' + MAP + "#map/" + y + "/coin/" + encodeURIComponent(id) + '">See it on the history map, ' + yearText(y) + " &rarr;</a>";
+    div.innerHTML = stories.map(st => '<a href="' + MAP + "#map/" + st.y + "/trail/" + st.t + "/" + st.s + '">In the history map story \u201c' + esc(st.title) + "\u201d &rarr;</a>").join("");
     sub.after(div);
   }
-  const run = () => { addIntro(); addCard(); };
+  function addNav() {  // quiet header link, in the gap after the Modern | Ancient switch
+    const worlds = document.querySelector(".brand-row .worlds");
+    if (!worlds || document.querySelector(".map-nav")) return;
+    const a = document.createElement("a");
+    a.className = "map-nav";
+    a.href = MAP;
+    a.innerHTML = "History map &#8599;";
+    worlds.after(a);
+  }
+  const run = () => { addNav(); addIntro(); addCard(); };
   new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
   addEventListener("hashchange", run);
   run();
