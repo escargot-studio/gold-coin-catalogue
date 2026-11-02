@@ -2414,8 +2414,9 @@ function loadDetail() {
 .map-cta a:hover, .map-link a:hover { text-decoration: underline; }
 .map-link { margin-top: 6px; font-size: 14px; }
 .map-link a { display: block; }
-.map-nav { font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; white-space: nowrap; }
-.map-nav:hover { color: var(--gold); }
+.map-nav { display: inline-block; padding: 4px 13px; border: 1px solid color-mix(in srgb, var(--gold) 55%, var(--line)); border-radius: 999px;
+  background: var(--bg); font-size: 13px; font-weight: 600; color: var(--gold); text-decoration: none; white-space: nowrap; }
+.map-nav:hover { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 10%, var(--bg)); }
 </style>
 <script>
 (() => {
