@@ -2,7 +2,7 @@
 
 *Kingdoms rise and fall, palaces crumble to dust, yet their gold still turns up in a ploughed field, as bright as the day it was struck.* A wandering catalogue of the loveliest gold coins, from Lydia’s first electrum to the sovereigns of today, with both sides of every coin.
 
-**[Open the catalogue →](https://escargot-studio.github.io/gold-coin-catalogue/)**  ·  [Ancient gold](https://escargot-studio.github.io/gold-coin-catalogue/ancient.html)
+**[Open the catalogue →](https://escargot-studio.github.io/gold-coin-catalogue/)**  ·  [Ancient gold](https://escargot-studio.github.io/gold-coin-catalogue/ancient.html)  ·  [History map](https://escargot-studio.github.io/history-through-coins/)
 
 ![Gold Coin Catalogue, once upon a time, in gold: Pyrrhus’s Nike, the P. Clodius crescent moon, EID MAR and Leukon’s satyr](og-image.jpg)
 
@@ -15,6 +15,7 @@ Over 550 gold and electrum designs from the first coins of Lydia to the sack of 
 - One card per design, with museum photos and the story behind it.
 - Collections such as Popular coins, the Twelve Caesars, the Ides of March (EID MAR), Women on gold, Animals on gold and the most expensive ancient coins ever sold.
 - Estimated price ranges from recent public auction results.
+- Every coin links to the [history map](https://escargot-studio.github.io/history-through-coins/), which shows where and when it was struck.
 
 ## Modern gold
 

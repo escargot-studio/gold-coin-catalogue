@@ -2407,5 +2407,56 @@ function loadDetail() {
 <!-- View counter: GoatCounter (cookieless, no personal data; stats are private) -->
 <script data-goatcounter="https://escargot-studio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
+<!-- map-links -->
+<style>
+.map-cta { margin: 10px 0 0; color: var(--muted); }
+.map-cta a, .map-link a { color: var(--gold); font-weight: 600; text-decoration: none; }
+.map-cta a:hover, .map-link a:hover { text-decoration: underline; }
+.map-link { margin-top: 6px; font-size: 14px; }
+</style>
+<script>
+(() => {
+  const MAP = "https://escargot-studio.github.io/history-through-coins/";
+  let years = null;
+  function yearOf(id) {
+    if (!years) {
+      years = {};
+      try {
+        const data = JSON.parse(document.getElementById("catalog-data").textContent);
+        for (const r of data.records || []) years[r.id] = +r.date_from;
+      } catch (e) {}
+    }
+    const y = years[id];
+    return Number.isFinite(y) ? Math.max(-650, Math.min(1204, y)) : null;
+  }
+  const yearText = y => (y < 0 ? -y + " BC" : "AD " + y);
+  function addIntro() {
+    const tally = document.getElementById("tally");
+    if (!tally || document.querySelector(".map-cta")) return;
+    const p = document.createElement("p");
+    p.className = "map-cta";
+    p.innerHTML = 'Where and when were they struck? <a href="' + MAP + '">Wander the history map &rarr;</a>';
+    tally.after(p);
+  }
+  function addCard() {
+    const sheet = document.getElementById("sheet");
+    const m = location.hash.match(/^#coin\/([^/?]+)/);
+    if (!sheet || !m) return;
+    const sub = sheet.querySelector(".sub");
+    if (!sub || sub.parentNode.querySelector(".map-link")) return;
+    const id = decodeURIComponent(m[1]), y = yearOf(id);
+    if (y === null) return;
+    const div = document.createElement("div");
+    div.className = "map-link";
+    div.innerHTML = '<a href="' + MAP + "#map/" + y + "/coin/" + encodeURIComponent(id) + '">See it on the history map, ' + yearText(y) + " &rarr;</a>";
+    sub.after(div);
+  }
+  const run = () => { addIntro(); addCard(); };
+  new MutationObserver(run).observe(document.body, { childList: true, subtree: true });
+  addEventListener("hashchange", run);
+  run();
+})();
+</script>
+<!-- /map-links -->
 </body>
 </html>
