@@ -4180,8 +4180,9 @@ html.lv-open { overflow: hidden; }
 
   // A coin card opened from a lesson gets "‹ Back to the lesson", until the card closes.
   if (sheet && scrim) {
-    new MutationObserver(() => {
-      if (scrim.hidden) { back = false; return; }
+    const obs = new MutationObserver(() => {
+      // Closing the coin card any way (×, scrim, Esc) goes back to the lesson it was opened from (6 Nov 22:17).
+      if (scrim.hidden) { if (back) { back = false; openLearn(at); } return; }
       if (!back || sheet.querySelector(".lv-backbtn")) return;
       const nav = sheet.querySelector(".sheet-nav");
       if (!nav) return;
@@ -4189,7 +4190,9 @@ html.lv-open { overflow: hidden; }
       b.type = "button"; b.className = "lv-backbtn"; b.textContent = "‹ Back to the lesson";
       b.addEventListener("click", () => { back = false; if (typeof closeSheet === "function") closeSheet(); openLearn(at); });
       nav.prepend(b);
-    }).observe(sheet, { childList: true });
+    });
+    obs.observe(sheet, { childList: true });
+    obs.observe(scrim, { attributes: true, attributeFilter: ["hidden"] });
   }
 
   // Header: "Learn" next to the History map link, the same quiet style.
