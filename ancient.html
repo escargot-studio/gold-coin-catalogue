@@ -4106,5 +4106,228 @@ function applyDetail(detail) {
 })();
 </script>
 <!-- /map-links -->
+<!-- learn-share -->
+<style>
+/* Learn on the Ancient page (6 Nov 2026: "keep the learn button in both sites").
+   The lessons are the history map's own (history-map-data/learn.js on the map's site, written by
+   /mnt/project-files/learn-share/export_learn.py at every map publish). They open inside the info card. */
+.lv-home { display: grid; gap: 14px; }
+.lv-home .kicker, .lv .kicker { font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+.lv-title { font-family: var(--font-display); font-weight: 400; font-size: 24px; margin: 2px 0 0; }
+.lv-group { display: grid; gap: 8px; }
+.lv-level { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+.lv-level h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 18px; }
+.lv-level span { font-size: 13px; color: var(--muted); }
+.lv-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 10px; }
+.lv-tile { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; text-align: left; padding: 10px 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: inherit; font: inherit; cursor: pointer; }
+.lv-tile:hover, .lv-tile:focus-visible { border-color: var(--gold); }
+.lv-covers { display: flex; }
+.lv-covers img { width: 46px; height: 46px; object-fit: contain; border-radius: 50%; }
+.lv-covers img + img { margin-left: -10px; }
+.lv-tile b { display: block; font-size: 15px; line-height: 1.25; }
+.lv-tile small { display: block; margin-top: 2px; font-size: 12.5px; line-height: 1.35; color: var(--muted); }
+.lv-tile .lv-ep { display: block; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+.lv { --fs: 1; --coast: #7fa3bd; --carth: #6e1048; }
+.lv .lv-part { list-style: none; margin: 8px 0 -4px; font-family: var(--font-display); font-weight: 400; font-size: 17px; color: var(--gold); }
+/* Photos as on the map: pre-cut copies (soft edge baked in) as they are; other coin photos get the round soft mask. */
+.lv .syr-pics .owl-pic.lv-cut, .lv .syr-pics .owl-pic.lv-coin { background: transparent; border-radius: 0; }
+.lv .syr-pics .owl-pic.lv-cut img { object-fit: contain; }
+.lv .syr-pics .owl-pic.lv-coin img { -webkit-mask: var(--coin-mask) center / 100% 100% no-repeat; mask: var(--coin-mask) center / 100% 100% no-repeat; mix-blend-mode: multiply; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .lv .owl-pic.lv-coin img { mix-blend-mode: normal; } }
+:root[data-theme="dark"] .lv .owl-pic.lv-coin img { mix-blend-mode: normal; }
+/* Contents: one folded list, not a wall of buttons. */
+.lv-toc summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--gold); }
+.lv-toc ol { margin: 8px 0 0; padding-left: 22px; columns: 2 260px; column-gap: 28px; font-size: 13.5px; line-height: 1.5; }
+.lv-toc li { break-inside: avoid; }
+.lv-toc a { color: inherit; text-decoration: none; }
+.lv-toc a:hover { color: var(--gold); text-decoration: underline; }
+.lv .lv-go { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; }
+.lv .lv-go a { color: var(--gold); }
+.lv .syr-svg { overflow-x: auto; }
+.lv .lv-dg svg { display: block; width: 100%; max-width: 520px; height: auto; margin: 0 auto; }
+.lv .lv-dg text { font: 11px var(--font-body); fill: var(--fg); }
+.lv .lv-dg text.b { font-weight: 700; }
+.lv .lv-dg text.m { fill: var(--muted); font-size: 10px; }
+.lv .lv-dg .ln { stroke: var(--muted); stroke-width: .8; fill: none; }
+.lv .lv-src summary { cursor: pointer; font-size: 12px; color: var(--muted); }
+.lv .lv-src ul { margin: 4px 0 0; padding-left: 18px; font-size: 12px; color: var(--muted); }
+.lv-end { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.lv-end button, .lv-backbtn { font: 600 13.5px var(--font-body); padding: 7px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: inherit; cursor: pointer; }
+.lv-end .lv-next { border-color: var(--gold); color: var(--gold); }
+.lv-backbtn { margin-right: auto; padding: 6px 12px; }
+.lv-msg { padding: 24px 4px; color: var(--muted); }
+.lv-msg a { color: var(--gold); }
+@media (max-width: 520px) { .lv-tiles { grid-template-columns: minmax(0, 1fr); } .lv-covers img { width: 40px; height: 40px; } }
+</style>
+<script>
+(() => {
+  const MAP = "https://escargot-studio.github.io/history-through-coins/";
+  const SRC = MAP + "history-map-data/learn.js";
+  const sheet = document.getElementById("sheet"), scrim = document.getElementById("scrim");
+  if (!sheet || !scrim) return;
+  let L = null, loading = null, at = null, back = null;   // back: where "Back" returns to, once a coin card is opened from Learn
+  const esc = (t) => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  const abs = (u) => { try { return new URL(u, MAP).href; } catch (e) { return u; } };
+  const hasCoin = (id) => typeof allCoins !== "undefined" && allCoins.some((c) => c.id === id);
+  const feature = (id) => (typeof FEATURES !== "undefined" ? FEATURES : []).find((f) => f.id === id);
+
+  function load() {
+    if (L) return Promise.resolve(L);
+    if (!loading) loading = new Promise((ok, fail) => {
+      const s = document.createElement("script");
+      s.src = SRC; s.async = true;
+      s.onload = () => (window.HISTORY_LEARN ? ok(L = prep(window.HISTORY_LEARN)) : fail());
+      s.onerror = () => { loading = null; s.remove(); fail(); };
+      document.head.appendChild(s);
+    });
+    return loading;
+  }
+  // The same order and sections as the map's Learn home (its LEARN_GROUPS, carried in learn.js).
+  function prep(d) {
+    const G = d.groups;
+    d.groupOf = (x) => G.find((g) => g.ids && g.ids.includes(x.id)) || G.find((g) => g.level === x.level) || G[1];
+    d.groupTitle = (g) => g.title || d.chapters.find((x) => x.level === g.level)?.series || "Featured story";
+    d.list = d.chapters.map((c, i) => [c, i]).sort((a, b) => G.indexOf(d.groupOf(a[0])) - G.indexOf(d.groupOf(b[0])) || a[1] - b[1]).map((a) => a[0]);
+    d.byId = new Map(d.list.map((c) => [c.id, c]));
+    return d;
+  }
+
+  function show(html, hash) {
+    currentSheetId = null;
+    const was = !scrim.hidden;
+    if (!was) savedScroll = window.scrollY;
+    sheet.innerHTML = `<div class="sheet-nav"><span class="pos"></span><button type="button" class="close" data-action="close">Close</button></div>${html}`;
+    scrim.hidden = false;
+    document.body.style.overflow = "hidden";
+    sheet.scrollTop = 0;
+    if (!was) sheet.querySelector(".close").focus();
+    try { history.replaceState(null, "", hash); } catch (e) { /* preview frames refuse this */ }
+  }
+
+  function tile(c) {
+    const pics = (c.cover && c.cover.length ? c.cover : c.cards.flatMap((k) => k.pics.filter((p) => p.url))).slice(0, 3);
+    return `<button type="button" class="lv-tile" data-lv="${esc(c.id)}"><span class="lv-covers">${pics.map((p) => `<img loading="lazy" src="${esc(abs(p.url))}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">`).join("")}</span>
+      <span>${c.episode ? `<span class="lv-ep">Episode ${c.episode}</span>` : ""}<b>${esc(c.title)}</b><small>${esc(L.tileLine[c.id] || c.teaser)}</small></span></button>`;
+  }
+  function home() {
+    at = null;
+    const sec = (g) => {
+      const xs = L.list.filter((x) => L.groupOf(x) === g);
+      return xs.length ? `<section class="lv-group"><div class="lv-level"><h3>${esc(L.groupTitle(g))}</h3><span>${esc(g.line)}</span></div><div class="lv-tiles">${xs.map(tile).join("")}</div></section>` : "";
+    };
+    show(`<section class="lv-home"><div><span class="kicker">Learn</span><h2 class="lv-title" id="sheet-title">Gold coins, explained</h2>
+      <p class="note">${L.list.length} lessons in pictures. Each one stands alone, so start anywhere.</p></div>${L.groups.map(sec).join("")}</section>`, "#learn");
+  }
+
+  function pic(p) {
+    if (p.html) return `<div class="syr-svg">${p.html}</div>`;
+    if (p.diagram) return L.diagrams[p.diagram] ? `<div class="syr-svg lv-dg">${L.diagrams[p.diagram]()}</div>` : "";
+    if (!p.url) return "";
+    const url = abs(p.url), credit = `<a href="${esc(p.page)}" target="_blank" rel="noopener">${esc(p.credit)}</a> · ${esc(p.licence)}`;
+    return `<figure><button type="button" class="owl-pic${p.coin ? "" : " wide"}${p.cut ? " lv-cut" : p.coin ? " lv-coin" : ""}" data-spec="${esc(url)}" aria-label="Enlarge${p.label ? ": " + esc(p.label) : ""}">
+      <img loading="lazy" src="${esc(url)}" alt="${esc(p.label || "")}" referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></button>
+      <figcaption>${p.label ? esc(p.label) + "<br>" : ""}${credit}</figcaption></figure>`;
+  }
+  function row(c, k, j) {
+    const coins = (k.coins || []).filter(hasCoin), trail = k.trail && L.trails[k.trail];
+    const wide = k.pics.some((p) => p.html || p.diagram);
+    const cited = (k.cite || []).map((x) => String(x.t).split(/[ ,]/)[0]);
+    const src = (k.src || []).filter((s) => !cited.includes(String(s).split(/[ ,]/)[0]));
+    const go = [...coins.map((id) => `<a href="#coin/${esc(id)}" data-lvcoin>${esc((k.coin_labels || {})[id] || (allCoins.find((x) => x.id === id) || {}).popular_name || (allCoins.find((x) => x.id === id) || {}).name)} ›</a>`),
+      k.map ? `<a href="${esc(MAP + k.map)}" target="_blank" rel="noopener">On the history map ↗</a>` : "",
+      trail ? `<a href="${esc(`${MAP}#map/${trail.y}/trail/${k.trail}/0`)}" target="_blank" rel="noopener">Story: ${esc(trail.t)} ↗</a>` : ""].filter(Boolean);
+    const part = k.part && k.part !== (c.cards[j - 1] || {}).part ? `<li class="lv-part">${esc(k.part)}</li>` : "";
+    return `${part}<li class="owl-row syr-row${wide ? " syr-wide" : ""}" id="lvs-${j}">
+      <div class="owl-text">
+        <div class="owl-head"><span class="owl-n">${j + 1}</span><h4>${esc(k.title)}</h4><span class="owl-dates">${esc(k.dates || "")}</span></div>
+        <p class="syr-say">${esc(k.say)}</p>
+        <p class="story">${esc(k.more)}</p>
+        ${k.note ? `<p class="syr-note"><b>Historians disagree:</b> ${esc(k.note)}</p>` : ""}
+        ${go.length ? `<div class="lv-go">${go.join("")}</div>` : ""}
+        ${(k.cite || []).map((x) => `<p class="syr-src syr-cite">Source: ${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.t)} ↗</a>` : esc(x.t)}</p>`).join("")}
+        ${src.length ? `<details class="lv-src"><summary>Sources</summary><ul>${src.map((s) => `<li>${esc(s)}</li>`).join("")}</ul></details>` : ""}
+      </div>
+      <div class="owl-photos"><div class="syr-pics">${k.pics.map(pic).join("")}</div>${k.caption ? `<p class="syr-cap">${esc(k.caption)}</p>` : ""}</div>
+    </li>`;
+  }
+  function lesson(c) {
+    at = c.id;
+    const i = L.list.indexOf(c), next = L.list[i + 1];
+    const kick = c.series ? `${c.series} · Episode ${c.episode} of ${c.episodes}` : (c.kicker || L.groupTitle(L.groupOf(c)));
+    const hero = (c.hero_coins || []).length ? `<div class="hero-coins">${c.hero_coins.map((h) => `<figure>
+        <button type="button" class="hcoin" onclick="matchMedia('(hover: hover)').matches || this.classList.toggle('flip')" aria-label="Turn the coin over: ${esc(h.label)}">
+          <span class="hin"><img class="hf" src="${esc(abs(h.front.url))}" alt="${esc(h.label)}" referrerpolicy="no-referrer"><img class="hb" src="${esc(abs(h.back.url))}" alt="" referrerpolicy="no-referrer"></span></button>
+        <figcaption>${esc(h.label)}<small><a href="${esc(h.front.page)}" target="_blank" rel="noopener">${esc(h.front.credit)}</a> · ${esc(h.front.licence)}</small></figcaption></figure>`).join("")}</div>` : "";
+    show(`<section class="owl-story lv" id="lv-${esc(c.id)}">
+      <span class="kicker">${esc(kick)} · ${c.cards.length} short chapters</span>
+      <h3 class="owl-title" id="sheet-title">${esc(c.title)}</h3>
+      <p class="note">${esc(c.teaser)}</p>
+      ${hero}
+      <details class="lv-toc"><summary>Contents: ${c.cards.length} chapters</summary><ol>${c.cards.map((k, j) => `<li><a href="#lvs-${j}" data-lvstep="${j}">${esc(k.title)}</a></li>`).join("")}</ol></details>
+      <ol class="owl-list">${c.cards.map((k, j) => row(c, k, j)).join("")}</ol>
+      <div class="lv-end">${next ? `<button type="button" class="lv-next" data-lv="${esc(next.id)}">Next: ${esc(next.title)} ›</button>` : ""}<button type="button" data-lvhome>All lessons</button></div>
+    </section>`, "#learn/" + c.id);
+  }
+  // The two "Why coins are art" episodes already live on this page as guides (#syracuse-story): open those.
+  function openChapter(id) {
+    const c = L.byId.get(id);
+    if (!c) return home();
+    const f = feature(id);
+    if (f && typeof openFeature === "function") { back = { chap: null, top: 0 }; openFeature(f); return; }
+    lesson(c);
+  }
+  function openLearn(id) {
+    show(`<p class="lv-msg">Loading the lessons…</p>`, id ? "#learn/" + id : "#learn");
+    load().then(() => (id ? openChapter(id) : home()), () => {
+      sheet.querySelector(".lv-msg").innerHTML = `The lessons didn't load. <a href="${MAP}#learn">Read them on the history map ↗</a>`;
+    });
+  }
+
+  sheet.addEventListener("click", (e) => {
+    const t = e.target.closest("[data-lv], [data-lvhome], [data-lvstep], [data-lvcoin], [data-lvback]");
+    if (!t) return;
+    if (t.matches("[data-lvstep]")) { e.preventDefault(); document.getElementById("lvs-" + t.dataset.lvstep)?.scrollIntoView({ behavior: "smooth", block: "start" }); return; }
+    if (t.matches("[data-lvcoin]")) { back = { chap: at, top: sheet.scrollTop }; return; }   // the link opens the coin card
+    if (t.matches("[data-lvback]")) {
+      const b = back; back = null;
+      if (b.chap) { lesson(L.byId.get(b.chap)); sheet.scrollTop = b.top; } else home();
+      return;
+    }
+    if (t.matches("[data-lvhome]")) return home();
+    openChapter(t.dataset.lv);
+  });
+  // A coin card (or a guide) opened from a lesson gets a Back button to the lesson, until the card closes.
+  new MutationObserver(() => {
+    if (scrim.hidden) { back = null; return; }
+    if (!back || sheet.querySelector(".lv, .lv-home, .lv-backbtn")) return;
+    const nav = sheet.querySelector(".sheet-nav");
+    if (!nav) return;
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "lv-backbtn"; b.dataset.lvback = "";
+    b.textContent = back.chap ? "‹ Back to the lesson" : "‹ All lessons";
+    nav.prepend(b);
+  }).observe(sheet, { childList: true });
+  new MutationObserver(() => { if (scrim.hidden) back = null; }).observe(scrim, { attributes: true, attributeFilter: ["hidden"] });
+
+  // Header: "Learn" next to the History map link, the same quiet style.
+  function addNav() {
+    const worlds = document.querySelector(".brand-row .worlds");
+    if (!worlds || document.querySelector(".lv-nav")) return;
+    const a = document.createElement("a");
+    a.className = "map-nav lv-nav"; a.href = "#learn"; a.textContent = "Learn";
+    a.addEventListener("click", (e) => { e.preventDefault(); openLearn(); });
+    worlds.after(a);
+  }
+  const route = () => {
+    const m = location.hash.match(/^#learn(?:\/([a-z0-9-]+))?$/);
+    const showing = !scrim.hidden && sheet.querySelector(".lv, .lv-home") ? (at || "") : null;
+    if (m && showing !== (m[1] || "")) openLearn(m[1]);
+  };
+  addNav();
+  addEventListener("hashchange", route);
+  route();
+})();
+</script>
+<!-- /learn-share -->
 </body>
 </html>
