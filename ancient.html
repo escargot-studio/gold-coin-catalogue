@@ -4141,7 +4141,12 @@ html.lv-open { overflow: hidden; }
     const theme = document.documentElement.dataset.theme;
     frame = document.createElement("iframe");
     frame.title = "Gold coins, explained";
-    frame.src = `${MAP}?embed=learn${theme ? "&theme=" + theme : ""}#learn${id ? "/" + id : ""}`;
+    // 8 Nov: ask the map which build is live and put it in the address, so the frame never shows a cached old copy.
+    const src = (v) => `${MAP}?embed=learn${theme ? "&theme=" + theme : ""}${v ? "&v=" + v : ""}#learn${id ? "/" + id : ""}`;
+    let set = false; const go = (v) => { if (!set) { set = true; frame.src = src(v); } };
+    fetch(`${MAP}version.json?t=${Date.now()}`, { cache: "no-store" }).then(r => r.ok ? r.json() : null)
+      .then(j => go(j && j.v)).catch(() => go(""));
+    setTimeout(() => go(""), 1500);
     const msg = document.createElement("p");
     msg.className = "lv-msg"; msg.textContent = "Loading the lessons…";
     frame.addEventListener("load", () => { ready = true; msg.remove(); });
