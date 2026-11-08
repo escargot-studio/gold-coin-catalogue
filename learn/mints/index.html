@@ -11,151 +11,1037 @@
 <meta property="og:title" content="Ancient mints through the ages · Gold Coin Catalogue">
 <meta property="og:description" content="What the buildings that made coins looked like, from a Greek city&#x27;s workroom to Rome&#x27;s mint and the late Roman mints, and how much of that we really know.">
 <meta property="og:url" content="https://escargot-studio.github.io/gold-coin-catalogue/learn/mints/">
+<meta property="og:image" content="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-athens-mint-site.webp">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="https://escargot-studio.github.io/gold-coin-catalogue/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="https://escargot-studio.github.io/gold-coin-catalogue/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&amp;family=Cinzel:wght@700&amp;family=Cormorant+Garamond:ital,wght@0,600;1,500;1,600&amp;family=Figtree:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
-:root { --bg: #f6f3ee; --surface: #fffdf9; --fg: #1f1b16; --muted: #6b6257; --line: #e4ddd2; --gold: #94670f; --on-gold: #fff;
-        --gold-hi: #e6c46a; --gold-lo: #7a5410; --carth: #6e1048; --coast: #3f6a8a; --fs: 1;
-        --font-body: Figtree, system-ui, sans-serif; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --bg: #16130f; --surface: #1e1a15; --fg: #eee7dc; --muted: #a99d8e; --line: #3a332a; --gold: #d6a84a; --on-gold: #16130f;
-                                    --gold-hi: #f0d488; --gold-lo: #b8892c; --carth: #b04480; --coast: #7fa3bd; }
+:root {
+  --fs: 1; --fsl: calc(1 + (var(--fs) - 1) / 2);   /* text size: page text, and names on the map (half as much) */
+  --bg: #f6f3ee; --surface: #fffdfa; --sunken: #ede8df; --fg: #1f1b16; --muted: #6b6358; --line: #e2dbcf;
+  --gold: #94670f; --gold-hi: #e6c46a; --gold-lo: #7a5410; --accent-ink: #fffdfa;
+  --coin-blank: radial-gradient(circle at 35% 30%, var(--gold-hi), var(--gold) 60%, var(--gold-lo));
+  --coin-drawn: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47.5' fill='%23f3ead6' stroke='%23a77a22' stroke-width='3'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23b98d36' stroke-width='3.2' stroke-linecap='round' stroke-dasharray='0 6.28'/%3E%3C/svg%3E");   /* a drawn coin outline: shown when a photo is missing or fails to load, never a plain disc (5 Nov) */
+  --sea: #a9cce3; --land: #d8d5ce; --land-main: #f8f2e4; --fade: #bcbab5; --vignette: transparent; --coast: #7fa3bd;
+  --rome: #a3171b; --ptol: #c9781a; --persia: #13836f; --mac: #c99a10; --greek: #5d7c1c; --carth: #6e1048; --byz: #c79500;
+  --hellenistic: #5b2d8e; --sel: #36438f; --lydia: #a8933a; --islam: #2b7d32; --latin: #36438f; --steppe: #9c8a66; --other: #988d7c;
+  --side-a: #c0392b; --side-b: #6a3fa0; --trail: #0f7c74;
+  --greek-era: #3f6f8f; --hell-era: #6b5a9a; --rep-era: #a2492f; --emp-era: #8a2f3c; --byz-era: #8a6a1a;
+  --warn-bg: #fbf1dc; --warn-line: #d9b46a; --warn-fg: #6b4a0e;
+  --shadow: 0 10px 40px rgba(40, 25, 0, .22);
+  --font-display: "Marcellus", Georgia, serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
-:root[data-theme="dark"] { --bg: #16130f; --surface: #1e1a15; --fg: #eee7dc; --muted: #a99d8e; --line: #3a332a; --gold: #d6a84a; --on-gold: #16130f;
-                           --gold-hi: #f0d488; --gold-lo: #b8892c; --carth: #b04480; --coast: #7fa3bd; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --coin-drawn: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47.5' fill='%232b251c' stroke='%23c9a24e' stroke-width='3'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23a8853c' stroke-width='3.2' stroke-linecap='round' stroke-dasharray='0 6.28'/%3E%3C/svg%3E");
+    --bg: #14120f; --surface: #1d1a16; --sunken: #0f0d0b; --fg: #ece6dc; --muted: #a59c8f; --line: #342e27;
+    --gold: #d4a94e; --gold-hi: #f0d488; --gold-lo: #b8892c; --accent-ink: #14120f;
+    --sea: #10263a; --land: #232220; --land-main: #2e281f; --fade: #4a4844; --vignette: transparent; --coast: #3f6a8a;
+    --rome: #d63a3a; --ptol: #e08a2a; --persia: #1fae94; --mac: #e0b020; --greek: #8aac2e; --carth: #b04480; --byz: #e6b422;
+    --hellenistic: #9466d8; --sel: #6f7ee0; --lydia: #c8b050; --islam: #3fb04c; --latin: #6f7ee0; --steppe: #a8946a; --other: #9a8f7e;
+    --side-a: #f0705e; --side-b: #b08ae8; --trail: #3fc0b4;
+    --greek-era: #4f7f9f; --hell-era: #7d6db0; --rep-era: #b95f45; --emp-era: #a24a57; --byz-era: #a8862f;
+    --warn-bg: #2b2414; --warn-line: #7a6128; --warn-fg: #e8cf93;
+    --shadow: 0 10px 40px rgba(0, 0, 0, .5);
+  }
+}
+:root[data-theme="dark"] {
+  --coin-drawn: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47.5' fill='%232b251c' stroke='%23c9a24e' stroke-width='3'/%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%23a8853c' stroke-width='3.2' stroke-linecap='round' stroke-dasharray='0 6.28'/%3E%3C/svg%3E");
+  --bg: #14120f; --surface: #1d1a16; --sunken: #0f0d0b; --fg: #ece6dc; --muted: #a59c8f; --line: #342e27;
+  --gold: #d4a94e; --gold-hi: #f0d488; --gold-lo: #b8892c; --accent-ink: #14120f;
+  --sea: #10263a; --land: #232220; --land-main: #2e281f; --fade: #4a4844; --vignette: transparent; --coast: #3f6a8a;
+  --rome: #d63a3a; --ptol: #e08a2a; --persia: #1fae94; --mac: #e0b020; --greek: #8aac2e; --carth: #b04480; --byz: #e6b422;
+  --hellenistic: #9466d8; --sel: #6f7ee0; --lydia: #c8b050; --islam: #3fb04c; --latin: #6f7ee0; --steppe: #a8946a; --other: #9a8f7e;
+  --side-a: #f0705e; --side-b: #b08ae8; --trail: #3fc0b4;
+  --greek-era: #4f7f9f; --hell-era: #7d6db0; --rep-era: #b95f45; --emp-era: #a24a57; --byz-era: #a8862f;
+  --warn-bg: #2b2414; --warn-line: #7a6128; --warn-fg: #e8cf93;
+  --shadow: 0 10px 40px rgba(0, 0, 0, .5);
+}
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 Figtree, system-ui, sans-serif; }
-a { color: var(--gold); }
-.wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
-.sitebar { background: var(--surface); border-bottom: 1px solid var(--line); }
-.sitebar .wrap { max-width: 1100px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding-block: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; font-family: Marcellus, Georgia, serif; font-size: 22px; }
-.brand img { width: 40px; height: 40px; border-radius: 50%; }
-.worlds { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--bg); }
-.worlds a { padding: 5px 14px; font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; }
-.worlds a:hover { color: var(--fg); }
-.worlds a[aria-current="page"] { background: var(--gold); color: var(--on-gold); }
-.navlink { font-size: 13px; font-weight: 600; color: var(--muted); text-decoration: none; }
-.navlink:hover, .navlink[aria-current="page"] { color: var(--gold); }
-.crumbs { font-size: 14px; color: var(--muted); margin-top: 22px; }
-.crumbs a { color: var(--muted); text-decoration: none; }
-.crumbs a:hover { color: var(--gold); }
-h1, h2, h3 { font-family: Marcellus, Georgia, serif; font-weight: 400; line-height: 1.25; }
-h1 { font-size: clamp(30px, 6vw, 42px); margin: 12px 0 10px; }
-.kicker { color: var(--muted); font-size: 14px; letter-spacing: .06em; text-transform: uppercase; margin-top: 26px; }
-.kicker + h1 { margin-top: 4px; }
-.teaser { font-size: 19px; color: var(--muted); margin: 0 0 22px; }
-.covers { display: flex; gap: 14px; margin: 22px 0 6px; flex-wrap: wrap; }
-.covers img { width: 104px; height: 104px; object-fit: contain; }
-article.card { border-top: 1px solid var(--line); padding: 26px 0 8px; }
-.part { color: var(--muted); font-size: 14px; }
-article.card h2 { font-size: 26px; margin: 4px 0 12px; }
-.say { font-weight: 600; }
-.pics { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
-.pics figure { margin: 0; flex: 1 1 140px; max-width: 220px; }
-.pics figure.dg { flex-basis: 100%; max-width: 560px; background: var(--surface); border-radius: 12px; padding: 10px 8px; }
-/* the map's diagram styles (history map index.html, .dg rules), so drawn charts look the same here */
-.dg svg { display: block; width: 100%; max-width: 520px; height: auto; margin: 0 auto; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: calc(15px * var(--fs))/1.5 var(--font-body); overflow: hidden; }
+.app { height: 100vh; height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; }
+a:not(.lnk) { color: var(--gold); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; }
+:is(button, a.lnk) { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ---------- header ---------- */
+header.top { padding: 8px 16px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--line); background: var(--surface); position: relative; z-index: 30; }
+header.top h1 { font-size: 22px; margin: 0; white-space: nowrap; }
+header.top h1.brandh { display: flex; align-items: center; gap: 9px; }
+header.top .emark { width: 32px; height: 32px; flex: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,.25)); }
+/* Snail easter egg: it hides behind the EID MAR emblem; hovering the title brings it fully out in one of seven
+   ways at random (never the same twice running), then it glides back. Sizes follow the emblem (--em); the snail
+   is drawn a little smaller than on the catalogue pages so it fits fully inside the top bar. */
+header.top .peek { --em: 32px; --sw: 15px; --sh: 7.9px; --d: calc(var(--em) / 2 + var(--sh) / 2 - .3px);
+  position: relative; display: inline-block; width: var(--em); height: var(--em); flex: none; }
+header.top .peek .emark { position: relative; z-index: 1; display: block; }
+.peek-snail { position: absolute; left: calc((var(--em) - var(--sw)) / 2); top: calc((var(--em) - var(--sh)) / 2); width: var(--sw);
+  z-index: 0; pointer-events: none; transform-origin: calc(var(--sw) / 2) calc(var(--sh) / 2); transition: transform .9s ease-in-out; }
+.peek-snail .snail-mark { width: var(--sw); height: auto; display: block; color: var(--gold); }
+.peek-snail .zz { position: absolute; left: calc(var(--sw) + 1px); top: -3px; font: 8px/1 var(--font-title, Georgia, serif); color: var(--gold); opacity: 0; }
+.peek[data-peek] .peek-snail { transition: none; }
+.peek[data-peek="rim"] .peek-snail { animation: peek-rim 1.4s ease-out forwards; }
+.peek[data-peek="turn"] .peek-snail { animation: peek-turn 2.2s ease-in-out forwards; }
+.peek[data-peek="under"] .peek-snail { animation: peek-under 1.4s ease-out forwards; }
+.peek[data-peek="stroll"] .peek-snail { animation: peek-stroll 4s ease-in-out forwards; }
+.peek[data-peek="sleep"] .peek-snail { animation: peek-rim 1.4s ease-out forwards; }
+.peek[data-peek="sleep"] .zz { animation: peek-zz 2.4s ease-in-out 1.4s infinite; }
+.peek[data-peek="wave"] .peek-snail { animation: peek-wave 2.4s ease-in-out forwards; }
+.peek[data-peek="lap"] .peek-snail { animation: peek-lap 6s ease-in-out forwards; }
+@keyframes peek-rim { to { transform: translateY(calc(-1 * var(--d))); } }
+@keyframes peek-turn { 0% { transform: none; } 50% { transform: translateY(calc(-1 * var(--d))); } 65% { transform: translateY(calc(-1 * var(--d))) scaleX(1); } 80%, 100% { transform: translateY(calc(-1 * var(--d))) scaleX(-1); } }
+@keyframes peek-under { to { transform: translateY(var(--d)) scaleY(-1); } }
+@keyframes peek-stroll { 0% { transform: none; } 25% { transform: translate(-6px, calc(-1 * var(--d))); } 100% { transform: translate(8px, calc(-1 * var(--d))); } }
+@keyframes peek-lap { 0% { transform: none; } 18% { transform: rotate(0deg) translateY(calc(-1 * var(--d))); } 90%, 100% { transform: rotate(-360deg) translateY(calc(-1 * var(--d))); } }
+@keyframes peek-zz { 0% { opacity: 0; transform: translate(0, 3px); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(4px, -3px); } }
+@keyframes peek-wave { 0% { transform: none; } 40% { transform: translateY(calc(-1 * var(--d))); } 55% { transform: translateY(calc(-1 * var(--d))) rotate(-10deg); }
+  70% { transform: translateY(calc(-1 * var(--d))) rotate(8deg); } 85% { transform: translateY(calc(-1 * var(--d))) rotate(-6deg); } 100% { transform: translateY(calc(-1 * var(--d))); } }
+@media (prefers-reduced-motion: reduce) { .peek-snail { display: none; } }
+
+.nav { display: flex; gap: 4px; background: var(--sunken); border-radius: 99px; padding: 3px; }
+.nav a { font: 600 13px var(--font-body); color: var(--muted); text-decoration: none; padding: 5px 12px; border-radius: 99px; white-space: nowrap; }
+.nav a[aria-current] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.search { position: relative; margin-left: auto; flex: 0 1 340px; min-width: 140px; }
+.search input { width: 100%; font: calc(14px * var(--fs)) var(--font-body); color: var(--fg); background: var(--sunken); border: 1px solid transparent; border-radius: 99px; padding: 7px 14px 7px 34px; }
+.search input:focus { outline: none; border-color: var(--gold); background: var(--surface); }
+.search .mag { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; font-size: calc(14px * var(--fs)); }
+.results { position: absolute; right: 0; top: calc(100% + 6px); width: min(420px, 92vw); max-height: 70vh; overflow: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); padding: 6px; }
+.results[hidden] { display: none; }
+.results .grp { font: 700 calc(10.5px * var(--fs)) var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); padding: 8px 8px 2px; }
+.results :is(button, a.lnk) { display: flex; width: 100%; gap: 10px; align-items: center; background: none; border: 0; border-radius: 9px; padding: 5px 8px; text-align: left; cursor: pointer; }
+.results :is(button, a.lnk):hover, .results :is(button, a.lnk).hl { background: var(--sunken); }
+.results .t { font-weight: 600; font-size: calc(13.5px * var(--fs)); line-height: 1.25; }
+.results .d { font-size: calc(12px * var(--fs)); color: var(--muted); }
+.results .none { padding: 10px; color: var(--muted); font-size: calc(13px * var(--fs)); }
+.iconbtn { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: 15px; display: grid; place-items: center; flex: none; }
+.searchbtn { display: none; }
+
+/* ---------- map ---------- */
+.stage { position: relative; min-height: 0; }
+.map { position: absolute; inset: 0; background: var(--sea); overflow: hidden; touch-action: none; cursor: grab; }
+.map svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.land { fill: var(--land); stroke: var(--coast); stroke-width: .8; }
+.terr-under { fill-rule: evenodd; fill: var(--land-main); stroke: none; pointer-events: none; }
+.terr.faded { fill: var(--fade) !important; stroke: var(--fade) !important; fill-opacity: .5; stroke-opacity: .5; stroke-width: .7; }
+.vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 72% 68% at 46% 50%, transparent 52%, var(--vignette) 100%); }
+.pol-lab.faded { color: var(--muted) !important; opacity: .55; }
+.terr { fill-rule: evenodd; fill-opacity: .7; stroke-width: 1.2; stroke-opacity: .95; cursor: pointer; transition: fill-opacity .15s, opacity .2s; }
+.terr:hover, .terr.sel { fill-opacity: .85; }
+#terrs { filter: drop-shadow(0 1px 1.5px rgba(40, 30, 10, .28)); }
+.terr.sel { stroke-width: 2.6; }
+.terr.dep { stroke-dasharray: 3 2.5; }
+.terr.fade { opacity: .35; }
+.battle.mini { transform: scale(.7); opacity: .8; } .battle.mini.feat { opacity: 1; transform: scale(.85); }
+.facts { margin: 4px 0 10px; padding-left: 18px; font-size: calc(14px * var(--fs)); } .facts li { margin: 2px 0; }
+.terr.war-a { fill: var(--side-a) !important; stroke: var(--side-a) !important; fill-opacity: .3; opacity: 1; }
+.terr.war-b { fill: var(--side-b) !important; stroke: var(--side-b) !important; fill-opacity: .3; opacity: 1; }
+.modern-line { fill: none; stroke: var(--fg); stroke-opacity: .45; stroke-width: .7; stroke-dasharray: 3 2.5; vector-effect: non-scaling-stroke; pointer-events: none; }
+.pol-lab { position: absolute; transform: translate(-50%, -50%); font: 700 calc(11px * var(--fsl)) var(--font-body); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; pointer-events: none; text-shadow: 0 0 3px var(--land-main), 0 0 3px var(--land-main), 0 0 5px var(--land-main); }
+.pol-lab.pl-big { font-size: calc(12.5px * var(--fsl)); letter-spacing: .12em; }
+.terr-lab { font: 600 calc(13px * var(--fsl)) var(--font-body); letter-spacing: .08em; text-transform: uppercase; pointer-events: none; paint-order: stroke; stroke: var(--land); stroke-width: 4px; stroke-linejoin: round; }
+#relief { display: none; mix-blend-mode: multiply; opacity: .5; pointer-events: none; }
+.map[data-style="relief"] #relief { display: inline; }
+.map[data-style="relief"] .terr { fill-opacity: .1; }
+.map[data-style="ink"] { --sea: #d6e8f3; --land: #eeece8; --land-main: #fffdf9; }
+.map[data-style="relief"] .terr-under { fill-opacity: .55; }
+.map[data-style="ink"] .terr { fill-opacity: 0; stroke-width: 1.8; stroke-opacity: .9; }
+.map[data-style="ink"] .terr:hover, .map[data-style="ink"] .terr.sel { fill-opacity: .12; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #relief { mix-blend-mode: screen; filter: invert(1); opacity: .28; }
+  :root:not([data-theme="light"]) .map[data-style="ink"] { --sea: #0c1e2e; --land: #1e1d1b; --land-main: #26221c; }
+}
+:root[data-theme="dark"] #relief { mix-blend-mode: screen; filter: invert(1); opacity: .28; }
+:root[data-theme="dark"] .map[data-style="ink"] { --sea: #0c1e2e; --land: #1e1d1b; --land-main: #26221c; }
+.modern-lab-h { position: absolute; transform: translate(-50%, -50%); font: italic 500 calc(11px * var(--fsl)) var(--font-body); color: var(--muted); letter-spacing: .04em; white-space: nowrap; pointer-events: none; text-shadow: 0 0 3px var(--land), 0 0 3px var(--land); }
+.modern-lab { font: italic 500 calc(11px * var(--fsl)) var(--font-body); fill: var(--muted); letter-spacing: .04em; pointer-events: none; paint-order: stroke; stroke: var(--land); stroke-width: 3px; }
+/* Trail routes: a pale halo under a deep dashed line, so the route reads over any country colour. */
+:root { --route-ink: #0b4a45; --route-halo: rgba(255,253,248,.92); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --route-ink: #8ff0e4; --route-halo: rgba(10,14,20,.85); } }
+:root[data-theme="dark"] { --route-ink: #8ff0e4; --route-halo: rgba(10,14,20,.85); }
+/* "Inside the mint" legends: our guesses in pink italic */
+:root { --guess: #b8336f; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --guess: #f39ac6; } }
+:root[data-theme="dark"] { --guess: #f39ac6; }
+#mines .mine path { fill: var(--gold); stroke: var(--surface); stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+#mines .mine path.riv { fill: none; stroke: var(--gold); stroke-width: 2.4; stroke-linecap: round; }
+#mines .mine.ap path:not(.riv) { fill: var(--surface); stroke: var(--gold); }
+#mines .mine.ap path.riv { stroke-dasharray: 3 3; }
+#finds .find path { fill: none; stroke: var(--gold); stroke-opacity: .45; stroke-width: 1; vector-effect: non-scaling-stroke; pointer-events: none; }
+#finds .find circle { fill: var(--gold); fill-opacity: .8; stroke: var(--surface); stroke-width: 1; vector-effect: non-scaling-stroke; }
+#finds .find circle.ap { fill: none; stroke: var(--gold); stroke-width: 1.2; }
+#finds .find.unsure path { stroke-opacity: .2; stroke-dasharray: 2 3; }
+#finds .find.unsure circle { fill-opacity: .4; }
+#finds .find.focus path { stroke-opacity: .7; stroke-width: 1.3; }
+.route-halo { fill: none; stroke: var(--route-halo); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.route-halo.ahead { stroke-width: 4.5; opacity: .8; }
+.route { fill: none; stroke: var(--route-ink); stroke-width: 2.4; stroke-dasharray: 6 5; stroke-linecap: round; stroke-linejoin: round; }
+.route.ahead { stroke-width: 1.8; stroke-dasharray: 2 5; stroke-opacity: .75; }
+
+/* pins (HTML on top of the SVG so they keep their size when zooming) */
+#pins { position: absolute; inset: 0; pointer-events: none; }
+#pins > * { pointer-events: auto; }
+.coin { position: absolute; width: 42px; height: 42px; margin: -21px 0 0 -21px; border-radius: 50%; padding: 0; border: 2px solid var(--gold); background: #fff; cursor: pointer; box-shadow: 0 4px 12px rgba(40, 25, 0, .35); transition: transform .15s; }
+.coin:hover { transform: scale(1.2); z-index: 5; }
+.coin.sel { box-shadow: 0 0 0 4px var(--gold-hi), 0 4px 12px rgba(40, 25, 0, .35); z-index: 4; }
+.coin.dim { opacity: .35; }
+/* Neighbours' gold (map only, not in the catalogue) is drawn like catalogue coins; its card says it isn't in the catalogue. */
+/* Hover card (a quiet speech bubble): mostly the coin, then its name, mint and date. */
+.hov { position: absolute; z-index: 30; width: 216px; padding: 12px 12px 10px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; box-shadow: var(--shadow); pointer-events: none; text-align: center; transform: translate(-50%, calc(-100% - 30px)); }
+.hov::after { content: ""; position: absolute; left: calc(50% - 9px); bottom: -9px; width: 18px; height: 18px; background: var(--surface);
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(45deg); border-bottom-right-radius: 4px; }
+.hov.below { transform: translate(-50%, 30px); }
+.hov.below::after { top: -9px; bottom: auto; transform: rotate(225deg); }
+.hov .pic { width: 176px; height: 176px; margin: 0 auto 8px; border-radius: 50%; box-shadow: 0 3px 10px rgba(40, 25, 0, .25); }
+.hov .t { font: 600 calc(15px * var(--fs))/1.25 var(--font-display, var(--font-body)); color: var(--fg); }
+.hov .d { font-size: calc(12.5px * var(--fs)); color: var(--muted); margin-top: 3px; line-height: 1.35; }
+.hov .more { font-size: calc(11.5px * var(--fs)); color: var(--gold); margin-top: 4px; }
+/* Shown until the data has loaded and the map has drawn (the page is ~4 MB, so a slow line takes a while). */
+.loading { position: absolute; inset: 0; z-index: 40; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  background: var(--sea); color: var(--fg); font: 600 calc(16px * var(--fs))/1.3 var(--font-body); transition: opacity .35s; }
+.loading small { font-weight: 400; font-size: calc(12.5px * var(--fs)); color: var(--muted); }
+.loading .spin { width: 46px; height: 46px; border-radius: 50%; background: var(--coin-blank); box-shadow: 0 4px 12px rgba(40, 25, 0, .3); animation: coinspin 1.4s ease-in-out infinite; }
+@keyframes coinspin { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(.08); } }
+.loading.done { opacity: 0; pointer-events: none; }
+.nbpics { display: flex; gap: 10px; justify-content: center; margin: 4px 0 6px; }
+.nbpics span { width: 120px; height: 120px; border-radius: 50%; background-size: cover; background-position: center; background-color: var(--surface-2, #eee); }
+.nbtag { display: inline-block; font-size: calc(12px * var(--fs)); padding: 2px 8px; border-radius: 99px; border: 1px dashed var(--gold); color: var(--muted); margin-bottom: 8px; }
+.coin .n { position: absolute; right: -9px; top: -7px; background: var(--fg); color: var(--surface); font: 700 calc(10.5px * var(--fs))/1.5 var(--font-body); border-radius: 99px; padding: 0 6px; }
+.img { display: block; width: 100%; height: 100%; border-radius: 50%; background: #f3efe6 center/cover no-repeat; }
+.img.split-a { background-size: 200% 100%, 100% 100%; background-position: 0 50%, center; }
+.img.split-b { background-size: 200% 100%, 100% 100%; background-position: 100% 50%, center; }
+/* No photo exists: a drawn coin outline stamped AV, the old mark for gold (5 Nov: no plain gold discs). */
+.img.blank { background: var(--coin-drawn) center/100% 100% no-repeat; position: relative; container-type: size; }
+.img.blank::after { content: "AV"; position: absolute; inset: 0; display: grid; place-items: center; font: 600 30cqw/1 var(--font-display, Georgia, serif);
+  letter-spacing: .04em; color: color-mix(in srgb, var(--gold-lo) 80%, transparent); text-shadow: 0 1px 0 color-mix(in srgb, var(--gold-hi) 70%, transparent); }
+.mint { position: absolute; width: 13px; height: 13px; margin: -6.5px 0 0 -6.5px; background: var(--gold); border: 2px solid var(--surface); transform: rotate(45deg); cursor: pointer; box-shadow: 0 1px 4px rgba(0,0,0,.3); padding: 0; }
+.mint.idle { background: var(--surface); border-color: var(--gold); }
+.mint.sel { box-shadow: 0 0 0 4px var(--gold-hi); }
+.city { position: absolute; width: 5px; height: 5px; margin: -2.5px 0 0 -2.5px; border-radius: 50%; background: var(--fg); opacity: .75; pointer-events: none; }
+.city.r1 { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; }
+.city-lab { position: absolute; transform: translate(6px, -50%); font: 500 calc(11px * var(--fsl)) var(--font-body); color: var(--fg); opacity: .85; white-space: nowrap; pointer-events: none; text-shadow: 0 0 3px var(--land), 0 0 3px var(--land), 0 0 3px var(--land); }
+.city-lab.r1 { font: 600 calc(12.5px * var(--fsl)) var(--font-display); letter-spacing: .02em; opacity: 1; }
+.city-lab.r3 { font-size: calc(10.5px * var(--fsl)); color: var(--muted); }
+.city-lab small { color: var(--muted); font-style: italic; }
+.mint-lab { position: absolute; transform: translate(10px, -50%); font: 600 calc(11px * var(--fsl)) var(--font-body); color: var(--gold-lo); white-space: nowrap; pointer-events: none; text-shadow: 0 0 3px var(--land), 0 0 3px var(--land); }
+.battle { position: absolute; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--side-a); font-size: calc(12px * var(--fs)); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+.battle.sel { background: var(--side-a); color: #fff; }
+.battle-lab, .stop-lab { position: absolute; transform: translate(-50%, 14px); font: 600 calc(11.5px * var(--fsl)) var(--font-body); white-space: nowrap; pointer-events: none; text-shadow: 0 0 3px var(--land), 0 0 3px var(--land), 0 0 3px var(--land); }
+.stop { position: absolute; width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--trail); color: var(--trail); font: 700 calc(12px * var(--fsl)) var(--font-body); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.stop.on { background: var(--trail); color: #fff; transform: scale(1.15); }
+.pulse { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--fg); border: 3px solid var(--surface); pointer-events: none !important; }
+.pulse::after { content: ""; position: absolute; inset: -12px; border-radius: 50%; border: 2px solid var(--fg); animation: ring 1.6s infinite; }
+@keyframes ring { from { transform: scale(.4); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .pulse::after { animation: none; } }
+
+/* key card (top left): year, layers, legend */
+.keycard { position: absolute; left: 12px; top: 52px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 8px 12px 10px; box-shadow: 0 2px 10px rgba(0,0,0,.08); width: 212px; z-index: 8; }
+.keycard { max-height: calc(100% - 162px); overflow-y: auto; overscroll-behavior: contain; }   /* never covers the zoom buttons on short screens */
+.keycard .y { font: calc(24px * var(--fs)) var(--font-display); line-height: 1.1; }
+.keycard .s { font-size: calc(11.5px * var(--fs)); color: var(--muted); margin-bottom: 6px; }
+.keycard h4 { margin: 8px 0 3px; font: 700 calc(10px * var(--fs)) var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.key { display: grid; gap: 1px; }
+.key :is(button, a.lnk) { display: flex; align-items: center; gap: 7px; background: none; border: 0; padding: 1px 0; font: calc(12px * var(--fs))/1.35 var(--font-body); cursor: pointer; text-align: left; }
+.key .sw { width: 9px; height: 9px; border-radius: 2px; flex: none; }
+.key :is(button, a.lnk):hover span:last-child { text-decoration: underline; }
+.layers { display: grid; gap: 2px; }
+.dsel { display: flex; align-items: center; gap: 8px; margin: 6px 0 2px; font: calc(12.5px * var(--fs)) var(--font-body); }
+.dsel span { flex: none; }
+.dchip { margin-top: 5px; font: 600 calc(11.5px * var(--fs)) var(--font-body); color: var(--fg); background: color-mix(in srgb, var(--gold) 16%, var(--surface)); border: 1px solid var(--gold); border-radius: 99px; padding: 2px 9px; cursor: pointer; }
+.dsel select { flex: 1; min-width: 0; font: calc(12.5px * var(--fs)) var(--font-body); color: var(--fg); background: var(--sunken); border: 1px solid var(--line); border-radius: 8px; padding: 3px 6px; }
+.dsel.on select { border-color: var(--gold); background: color-mix(in srgb, var(--gold) 14%, var(--surface)); }
+.tog { display: flex; align-items: center; gap: 8px; background: none; border: 0; padding: 2px 0; font: calc(12.5px * var(--fs)) var(--font-body); cursor: pointer; text-align: left; width: 100%; }
+.tog .ic { width: 18px; text-align: center; flex: none; }
+.tog .sw2 { margin-left: auto; width: 26px; height: 15px; border-radius: 99px; background: var(--line); position: relative; flex: none; transition: background .15s; }
+.tog .sw2::after { content: ""; position: absolute; left: 2px; top: 2px; width: 11px; height: 11px; border-radius: 50%; background: var(--surface); transition: left .15s; }
+.tog[aria-pressed="true"] .sw2 { background: var(--gold); }
+.tog[aria-pressed="true"] .sw2::after { left: 13px; }
+.coinlink { margin-top: 8px; padding: 6px 0 0; border: 0; border-top: 1px solid var(--line); width: 100%; background: none; font: 600 calc(12px * var(--fs)) var(--font-body); color: var(--gold); text-align: left; cursor: pointer; }
+.keycard.folded .body { display: none; }
+.fold { position: absolute; right: 6px; top: 6px; background: none; border: 0; color: var(--muted); cursor: pointer; font-size: calc(12px * var(--fs)); padding: 4px; }
+.styles { position: absolute; left: 12px; top: 12px; display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 3px; box-shadow: 0 2px 10px rgba(0,0,0,.08); z-index: 8; }
+.styles :is(button, a.lnk) { font: 600 calc(12px * var(--fs)) var(--font-body); border: 0; background: none; color: var(--muted); padding: 4px 10px; border-radius: 99px; cursor: pointer; }
+.styles :is(button, a.lnk)[aria-pressed="true"] { background: var(--gold); color: var(--accent-ink); }
+.mapbtns { position: absolute; left: 12px; bottom: 30px; display: flex; flex-direction: column; gap: 6px; z-index: 8; }
+.credits { position: absolute; right: 0; bottom: 0; z-index: 8; font-size: calc(11px * var(--fs)); color: var(--muted); background: color-mix(in srgb, var(--surface) 85%, transparent); padding: 3px 10px; border-top-left-radius: 8px; }
+.credits :is(button, a.lnk) { background: none; border: 0; padding: 0; color: var(--gold); font: 600 calc(11px * var(--fs)) var(--font-body); cursor: pointer; }
+.credits a { color: inherit; }
+/* Maker's mark: a small gold snail at the right end of the credits strip. */
+.credits .maker { display: inline-block; vertical-align: middle; line-height: 0; color: var(--gold); }
+.credits .maker .snail-mark { position: static; inset: auto; width: 26px; height: auto; display: block; margin-top: -2px; }
+.btn { font: 600 calc(13px * var(--fs)) var(--font-body); border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 99px; padding: 6px 12px; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-block; text-align: center; }
+.btn.round { width: 34px; height: 34px; padding: 0; font-size: calc(17px * var(--fs)); line-height: 1; }
+.btn.primary { background: var(--gold); border-color: var(--gold); color: var(--accent-ink); }
+.btn[disabled] { opacity: .4; cursor: default; }
+.toast { position: absolute; left: 50%; top: 14px; transform: translateX(-50%); background: var(--fg); color: var(--surface); font-size: calc(13px * var(--fs)); padding: 6px 14px; border-radius: 99px; z-index: 40; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.on { opacity: 1; }
+
+/* ---------- slider ---------- */
+.slider { padding: 8px 18px 6px; border-top: 1px solid var(--line); background: var(--surface); position: relative; z-index: 9; }
+.slider-head { display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+.slider-head .now { font: 600 calc(13px * var(--fs)) var(--font-body); }
+.slider-head .now small { color: var(--muted); font-weight: 500; }
+.slider-head .lbl { margin-left: auto; font-size: calc(11.5px * var(--fs)); color: var(--muted); }
+.track-wrap { position: relative; height: 92px; margin: 0 40px; user-select: none; touch-action: none; }
+.wars-on .track-wrap { height: 108px; }
+.ticks { position: absolute; left: 0; right: 0; top: 0; height: 14px; font-size: calc(10.5px * var(--fs)); color: var(--muted); }
+.ticks span { position: absolute; transform: translateX(-50%); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.eras { position: absolute; left: 0; right: 0; top: 24px; height: 8px; display: flex; border-radius: 99px; overflow: hidden; cursor: pointer; }
+.eras div { height: 100%; }
+/* The open card's own years, marked on the timeline. */
+.cardspan { position: absolute; min-width: 6px; border-radius: 99px; pointer-events: none;
+  border: 2px solid var(--gold); background: color-mix(in srgb, var(--gold-hi) 35%, transparent); box-shadow: 0 0 0 2px var(--surface); }
+/* A card whose time the slider has left folds to a slim bar with a way back. */
+.away-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: calc(13px * var(--fs)); color: var(--muted); margin: 8px 0 0; }
+.away-bar :is(button, a.lnk) { font: 600 calc(13px * var(--fs))/1 var(--font-body); color: var(--accent-ink); background: var(--gold); border: 0; border-radius: 99px; padding: 6px 12px; cursor: pointer; }
+.panel.away .head h2 { opacity: .75; }
+.eras div:hover { filter: brightness(1.15); }
+.warlane { position: absolute; left: 0; right: 0; top: 36px; height: 10px; display: none; }
+.wars-on .warlane { display: block; }
+.warbar { position: absolute; height: 6px; top: 2px; border-radius: 99px; background: var(--side-a); opacity: .55; cursor: pointer; border: 0; padding: 0; min-width: 5px; }
+.warbar:nth-child(2n) { top: 6px; }
+.warbar:hover, .warbar.sel { opacity: 1; }
+.thumb { position: absolute; top: 12px; width: 34px; height: 34px; margin-left: -17px; border-radius: 50%; cursor: grab; border: 3px solid var(--gold); background: var(--surface); box-shadow: 0 2px 8px rgba(0,0,0,.35); z-index: 4; padding: 0; }
+.thumb .img { pointer-events: none; }
+.evs { position: absolute; left: 0; right: 0; top: 34px; }
+.wars-on .evs { top: 48px; }
+.ev { position: absolute; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; background: none; border: 0; padding: 0; cursor: pointer; pointer-events: none; }
+.ev > * { pointer-events: auto; }
+.ev .stem { width: 1px; height: 4px; background: var(--muted); opacity: .6; }
+.ev .dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--fg); background: var(--surface); }
+.ev .name { font-size: calc(11.5px * var(--fs)); font-weight: 600; white-space: nowrap; background: var(--surface); padding: 0 3px; position: relative; z-index: 1; border-radius: 4px; }
+.ev:hover .name { color: var(--gold); z-index: 2; }
+.ev.row1 .stem { height: 20px; }
+.ev.row2 .stem { height: 36px; }
+.ev.noname .name { display: none; }
+.ev.t2 .stem { display: none; }
+.ev.t2 { margin-top: 3px; }
+.ev.t2 .dot { width: 8px; height: 8px; border-width: 1.5px; background: var(--muted); border-color: var(--muted); }
+.ev:hover .dot, .ev.sel .dot { background: var(--gold); border-color: var(--gold); }
+.ev.sel .stem { background: var(--gold); opacity: 1; width: 2px; }
+.pop { position: absolute; z-index: 50; width: 280px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); padding: 10px 14px 12px; font-size: calc(13.5px * var(--fs)); }
+.pop[hidden] { display: none; }
+.pop .k { font: 700 calc(10.5px * var(--fs)) var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--gold); }
+.pop h4 { font: calc(20px * var(--fs)) var(--font-display); margin: 2px 0 4px; font-weight: 400; }
+.pop p { margin: 0 0 8px; }
+.pop p.dec { margin: 0; padding-top: 7px; border-top: 1px solid var(--line); font-size: calc(12px * var(--fs)); color: var(--muted); }
+.pop p.dec b { color: var(--gold); }
+
+/* ---------- info panel (drawer / bottom sheet) ---------- */
+.panel { position: absolute; top: 12px; right: 12px; bottom: 24px; width: 440px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: auto; box-shadow: var(--shadow); z-index: 20; overscroll-behavior: contain; }
+.panel[hidden] { display: none !important; }   /* beats the Stories flex layout */
+.grab { display: none; }
+.panel .close { position: absolute; right: 10px; top: 10px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); font-size: calc(16px * var(--fs)); cursor: pointer; z-index: 2; }
+.panel .size { position: absolute; top: 10px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); font-size: calc(13px * var(--fs)); cursor: pointer; z-index: 2; line-height: 1; }
+.panel .size[data-size="max"] { right: 82px; }
+.panel .size[data-size="min"] { right: 118px; }
+.panel.max { left: 12px; width: auto; }
+.panel.tall { position: fixed; top: var(--tall-top, 100px); bottom: 12px; }   /* story trails: over the timeline, to the window's foot */
+.panel .size[data-tall] { right: 154px; font-size: calc(15px * var(--fs)); }
+.panel.max .body { max-width: 900px; }
+.panel.min { bottom: auto; overflow: hidden; }
+.panel.min .body, .panel.min .crumb, .panel.min .sub { display: none; }
+.panel.min .head { border-bottom: 0; cursor: pointer; }
+.panel.min h2 { font-size: calc(21px * var(--fs)); }
+.panel .share { position: absolute; right: 46px; top: 10px; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); font-size: calc(13px * var(--fs)); cursor: pointer; z-index: 2; }
+.crumb { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; margin-bottom: 4px; }
+.crumb :is(button, a.lnk) { background: none; border: 0; padding: 0; font: 600 calc(12.5px * var(--fs)) var(--font-body); color: var(--gold); cursor: pointer; }
+.crumb span { color: var(--muted); font-size: calc(12px * var(--fs)); }
+.panel .head { padding: 14px 18px 12px; border-bottom: 1px solid var(--line); }
+.type { font-size: calc(11.5px * var(--fs)); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; color: var(--gold); display: flex; align-items: center; gap: 8px; padding-right: 140px; }
+.type .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; }
+.panel h2 { font-size: calc(29px * var(--fs)); margin: 4px 0 2px; line-height: 1.12; padding-right: 10px; }
+.panel .sub { color: var(--muted); font-size: calc(13.5px * var(--fs)); }
+.panel .body { padding: 14px 18px 18px; }
+.panel p { margin: 0 0 12px; }
+.panel h3 { margin: 16px 0 8px; font: 700 calc(11.5px * var(--fs)) var(--font-body); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.panel h3 .more { margin-left: auto; text-transform: none; letter-spacing: 0; font: 600 calc(12.5px * var(--fs)) var(--font-body); color: var(--gold); background: none; border: 0; padding: 0; cursor: pointer; }
+.ph-tag { display: inline-block; font-size: calc(10px * var(--fs)); font-weight: 700; color: var(--muted); border: 1px dashed var(--coast); border-radius: 99px; padding: 0 7px; text-transform: uppercase; letter-spacing: .06em; vertical-align: 2px; white-space: nowrap; }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 12px; }
+.tile { background: var(--sunken); border-radius: 10px; padding: 7px 9px 8px; min-width: 0; border: 0; text-align: left; }
+:is(button, a.lnk).tile { cursor: pointer; }
+:is(button, a.lnk).tile:hover .v { color: var(--gold); }
+.tile .k { font-size: calc(10.5px * var(--fs)); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.tile .v { font-size: calc(13.5px * var(--fs)); font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; }
+.tile .v small { display: block; font-weight: 400; color: var(--muted); font-size: calc(12px * var(--fs)); }
+.life { margin: 2px 0 14px; }
+.life .bar { display: flex; height: 10px; border-radius: 99px; overflow: hidden; gap: 2px; }
+.life .bar :is(button, a.lnk) { border: 0; padding: 0; cursor: pointer; background: color-mix(in srgb, var(--sw) 35%, transparent); }
+.life .bar :is(button, a.lnk).on { background: var(--sw); }
+.life .marks { display: flex; justify-content: space-between; font-size: calc(10.5px * var(--fs)); color: var(--muted); margin-top: 3px; }
+.life .cap { font-size: calc(12.5px * var(--fs)); color: var(--muted); }
+.life .cap b { color: var(--fg); font-weight: 600; }
+.strip { display: flex; gap: 12px; overflow-x: auto; padding: 2px 2px 6px; margin: 0 -2px; scrollbar-width: thin; }
+.strip :is(button, a.lnk) { flex: none; width: 78px; background: none; border: 0; padding: 0; cursor: pointer; text-align: center; }
+.ph { display: block; width: 72px; height: 72px; margin: 0 auto 4px; border-radius: 50%; overflow: hidden; background: #fff; box-shadow: 0 0 0 1px var(--line), 0 3px 8px rgba(60, 40, 10, .15); transition: transform .15s; }
+.strip :is(button, a.lnk):hover .ph { transform: scale(1.06); }
+.strip .n { display: block; font-size: calc(11.5px * var(--fs)); line-height: 1.25; font-weight: 600; }
+.strip .d { display: block; font-size: calc(11px * var(--fs)); color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; font: 600 calc(12.5px * var(--fs)) var(--font-body); background: var(--surface); border: 1px solid var(--line); border-radius: 99px; padding: 4px 10px 4px 8px; cursor: pointer; }
+.chip:hover { border-color: var(--gold); }
+.chip small { color: var(--muted); font-weight: 500; }
+.chip .ic { width: 16px; height: 16px; border-radius: 50%; display: grid; place-items: center; font-size: calc(9px * var(--fs)); color: #fff; background: var(--fg); flex: none; }
+.chip .ic.war { background: var(--side-a); }
+.chip .ic.mint { background: var(--gold); border-radius: 3px; transform: rotate(45deg) scale(.75); }
+.chip .ic.trail { background: var(--trail); }
+.chip .ic.ruler { background: var(--mac); }
+.dispute { border-left: 3px solid var(--warn-line); background: var(--warn-bg); color: var(--warn-fg); border-radius: 0 8px 8px 0; padding: 7px 10px; font-size: calc(13px * var(--fs)); margin: 0 0 12px; }
+.dispute b { font-weight: 700; }
+details.src { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 8px; font-size: calc(12.5px * var(--fs)); color: var(--muted); }
+details.src summary { cursor: pointer; font-weight: 600; list-style: none; }
+details.src summary::-webkit-details-marker { display: none; }
+details.src summary::before { content: "▸ "; }
+details.src[open] summary::before { content: "▾ "; }
+details.src ul { margin: 6px 0 0; padding-left: 18px; }
+.hero { display: grid; place-items: center; gap: 6px; margin: 2px 0 10px; }
+.big { width: 220px; height: 220px; border-radius: 50%; cursor: pointer; border: 0; padding: 0; background: none; perspective: 900px; }
+/* The big coin turns over like the catalogue's cards: hover (mouse) or tap (touch) shows the other side. */
+.big .flipper { display: block; position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.3,.7,.3,1); }
+.big .side { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; box-shadow: 0 0 0 1px var(--line), 0 10px 26px rgba(60, 40, 10, .2); }
+.big .side-obv { transform: rotateY(180deg); }
+.big.flipped .flipper { transform: rotateY(180deg); }
+@media (hover: hover) { .big.can-flip:hover .flipper { transform: rotateY(180deg); } .big.can-flip.flipped:hover .flipper { transform: none; } }
+.flip-hint { font-size: calc(11.5px * var(--fs)); color: var(--muted); }
+.flip-hint .t { display: none; }
+@media (hover: none) { .flip-hint .m { display: none; } .flip-hint .t { display: inline; } }
+@media (prefers-reduced-motion: reduce) { .big .flipper { transition: none; } }
+.seg { display: flex; gap: 2px; background: var(--sunken); border-radius: 99px; padding: 3px; }
+.seg :is(button, a.lnk) { font: 600 calc(12px * var(--fs)) var(--font-body); border: 0; background: none; color: var(--muted); padding: 3px 12px; border-radius: 99px; cursor: pointer; }
+.seg :is(button, a.lnk)[aria-pressed="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.credit { font-size: calc(11px * var(--fs)); color: var(--muted); text-align: center; }
+.portrait { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center; margin-bottom: 12px; }
+.portrait .ph { width: 96px; height: 96px; margin: 0; }
+.portrait .q { font: calc(17px * var(--fs))/1.35 var(--font-display); }
+.evsplit { display: grid; grid-template-columns: 1fr 112px; gap: 14px; align-items: start; }
+.evsplit :is(button, a.lnk) { background: none; border: 0; padding: 0; cursor: pointer; }
+.evsplit .ph { width: 112px; height: 112px; margin: 0; }
+.evsplit .cap { font-size: calc(11.5px * var(--fs)); color: var(--gold); text-align: center; margin-top: 4px; font-weight: 600; }
+.why { background: var(--sunken); border-radius: 10px; padding: 8px 12px; font-size: calc(13.5px * var(--fs)); margin: 0 0 12px; }
+.why b { color: var(--gold); font-weight: 700; font-size: calc(11px * var(--fs)); text-transform: uppercase; letter-spacing: .08em; display: block; }
+.stepper { display: flex; gap: 8px; margin-top: 12px; }
+.stepper .btn { flex: 1; }
+.sides { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; margin: 0 0 10px; }
+.sides .s { border-radius: 10px; padding: 8px 10px; border: 2px solid var(--c); background: color-mix(in srgb, var(--c) 10%, transparent); font: calc(16px * var(--fs))/1.2 var(--font-display); }
+.sides .vs { font: calc(13px * var(--fs)) var(--font-display); color: var(--muted); }
+.span { margin: 8px 0 12px; }
+.span .track { height: 6px; background: color-mix(in srgb, var(--side-a) 30%, var(--sunken)); border-radius: 99px; position: relative; }
+.span .b { position: absolute; top: -5px; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; border: 2px solid var(--surface); background: var(--side-a); cursor: pointer; padding: 0; }
+.span .yrs { display: flex; justify-content: space-between; font-size: calc(11px * var(--fs)); color: var(--muted); margin-top: 6px; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li > :is(button, a.lnk) { display: grid; grid-template-columns: 64px 1fr; gap: 8px; align-items: baseline; width: 100%; padding: 6px 0; border: 0; border-top: 1px solid var(--line); background: none; text-align: left; cursor: pointer; font-size: calc(13.5px * var(--fs)); }
+.list li:first-child > :is(button, a.lnk) { border-top: 0; }
+.list li > :is(button, a.lnk):hover .bn { color: var(--gold); }
+.list .y { color: var(--muted); font-size: calc(12.5px * var(--fs)); font-variant-numeric: tabular-nums; }
+.list .bn { font-weight: 600; }
+.list .bt { display: block; font-size: calc(12.5px * var(--fs)); color: var(--muted); }
+.list.stops li > :is(button, a.lnk) { grid-template-columns: 44px 1fr; align-items: start; }
+.list.stops .ph { width: 40px; height: 40px; margin: 2px 0 0; }
+.list li.on > :is(button, a.lnk) { background: color-mix(in srgb, var(--trail) 10%, transparent); border-radius: 8px; }
+.coinrow { display: flex; gap: 12px; align-items: center; padding: 6px 8px; margin: 0 -8px; border-radius: 10px; cursor: pointer; width: calc(100% + 16px); background: none; border: 0; text-align: left; }
+.coinrow:hover { background: var(--sunken); }
+.coinrow .ph { flex: none; width: 48px; height: 48px; margin: 0; }
+.coinrow .n { font-weight: 600; font-size: calc(14px * var(--fs)); line-height: 1.25; }
+.coinrow .d { font-size: calc(12.5px * var(--fs)); color: var(--muted); }
+.bars { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 10px; align-items: center; font-size: calc(13px * var(--fs)); }
+.bars i { display: block; height: 10px; border-radius: 4px; background: var(--gold); }
+.bars span:first-child { color: var(--muted); }
+.marks { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: calc(13px * var(--fs)); align-items: baseline; }
+.marks code { font: 600 calc(12.5px * var(--fs)) ui-monospace, "SF Mono", Menlo, monospace; background: var(--sunken); padding: 1px 6px; border-radius: 5px; }
+.names { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: calc(13.5px * var(--fs)); margin: 0 0 12px; }
+.names .nm { background: var(--sunken); border-radius: 8px; padding: 3px 8px; }
+.names .nm small, .names .ar { color: var(--muted); }
+.honest { font-size: calc(12px * var(--fs)); color: var(--muted); margin: 6px 0 12px; }
+/* Story trail slide show */
+.lookfor { margin: 10px 0 4px; padding: 9px 11px; border-radius: 10px; background: color-mix(in srgb, var(--trail) 7%, transparent); border: 1px solid color-mix(in srgb, var(--trail) 22%, transparent); }
+.lookfor p { margin: 4px 0 0; font-size: calc(14px * var(--fs)); line-height: 1.45; }
+.lookfor b { color: var(--trail); }
+.rar { display: inline-block; font: 700 calc(10.5px * var(--fs))/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px; border-radius: 99px; border: 1px solid currentColor; }
+.rar.r-common { color: var(--muted); }
+.rar.r-scarce { color: var(--gold-lo); }
+.rar.r-rare, .rar.r-very-rare { color: #fff; background: #a3322a; border-color: #a3322a; }
+.rar.r-rare { background: #c0702a; border-color: #c0702a; }
+.slide .approx { font-size: calc(12.5px * var(--fs)); margin: 6px 0 0; }
+.lead { font-size: calc(15px * var(--fs)); }
+.about { margin: 0 0 10px; font-size: calc(13.5px * var(--fs)); color: var(--muted); }
+.about summary { cursor: pointer; color: var(--trail); font-weight: 600; }
+.slide .spics { display: flex; gap: 10px; justify-content: center; margin: 4px 0 6px; }
+.slide .big { flex: 0 1 46%; aspect-ratio: 1; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 50%; box-shadow: 0 6px 18px rgba(0,0,0,.18); transition: transform .2s; }
+.slide .big:hover { transform: scale(1.03); }
+.slide .big { height: auto; }   /* a square box at any card width, never an oval */
+.panel.storymax .body { max-width: none; }
+.panel.storymax .picker { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 12px; }
+.panel.storymax .picker :is(button, a.lnk) { grid-template-columns: 64px 1fr; padding: 12px 14px; }
+.panel.storymax .picker .ph { width: 64px; height: 64px; }
+.panel.storymax .slide { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 36px; align-items: start; margin-top: 8px; }
+.panel.storymax .slide.nopics { grid-template-columns: minmax(0, 760px); }
+.panel.storymax .slide .spics { margin-top: 0; }
+.panel.storymax .slide .big { flex-basis: 48%; max-width: 340px; }
+.panel.storymax .slide .big.wide { max-width: none; }
+.panel.storymax .slide .st h3 { margin-top: 0; }
+.panel.storymax .slide .story { font-size: calc(17px * var(--fs)); line-height: 1.6; }
+.slide .big.wide { flex-basis: 100%; aspect-ratio: 16 / 10; border-radius: 12px; display: block; }
+.slide .big.wide .img { border-radius: 12px; background-size: contain; background-color: var(--sunken); }
+.slide .cname { display: block; margin: 4px auto 0; background: none; border: 0; padding: 0; color: var(--gold); font: 600 calc(13px * var(--fs)) var(--font-body); cursor: pointer; text-align: center; }
+.slide .credit { text-align: center; margin: 2px 0 10px; }
+.slide h3 { margin: 6px 0 4px; font: 400 calc(22px * var(--fs)) var(--font-display); text-transform: none; letter-spacing: 0; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.slide h3 .no { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--trail); color: #fff; font: 700 calc(12px * var(--fs)) var(--font-body); align-self: center; }
+.slide h3 .y { font: 500 calc(14px * var(--fs)) var(--font-body); color: var(--muted); }
+.slide .story { font-size: calc(15.5px * var(--fs)); line-height: 1.55; margin: 0 0 4px; }
+.stepper.slides { align-items: center; margin-top: 0; }
+.panel:has(.slidefoot) { display: flex; flex-direction: column; }
+.panel:has(.slidefoot) > .body { flex: 1 0 auto; display: flex; flex-direction: column; padding-bottom: 0; }
+.slidefoot { margin: auto -18px 0; position: sticky; bottom: 0; z-index: 2; background: var(--surface); padding: 10px 18px 8px; border-top: 1px solid var(--line); box-shadow: 0 -8px 12px -10px rgba(0,0,0,.25); }
+.slidefoot .strip { margin-top: 2px; padding-bottom: 2px; }
+.stepper.slides .count { flex: none; font: 600 calc(13px * var(--fs)) var(--font-body); color: var(--muted); min-width: 52px; text-align: center; }
+.strip { display: flex; gap: 6px; overflow-x: auto; padding: 10px 2px 6px; margin-top: 6px; scrollbar-width: thin; }
+.strip :is(button, a.lnk) { flex: none; position: relative; width: 40px; height: 40px; padding: 0; border: 2px solid transparent; border-radius: 50%; background: none; cursor: pointer; opacity: .65; transition: opacity .15s; }
+.strip :is(button, a.lnk):hover, .strip :is(button, a.lnk).on { opacity: 1; }
+.strip :is(button, a.lnk).on { border-color: var(--trail); }
+.strip .ph { display: block; width: 100%; height: 100%; }
+.strip .n { position: absolute; right: -4px; bottom: -4px; min-width: 16px; height: 16px; border-radius: 99px; background: var(--trail); color: #fff; font: 700 calc(10px * var(--fs))/16px var(--font-body); text-align: center; }
+.progress { display: flex; gap: 4px; margin: 2px 0 12px; }
+.progress i { flex: 1; height: 4px; border-radius: 99px; background: var(--sunken); }
+.progress i.on { background: var(--trail); }
+.lic { display: grid; gap: 10px; }
+.lic div { background: var(--sunken); border-radius: 10px; padding: 8px 12px; font-size: calc(13px * var(--fs)); }
+.lic b { display: block; font-weight: 600; font-size: calc(14px * var(--fs)); }
+.picker { display: grid; gap: 8px; }
+.picker :is(button, a.lnk) { display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: center; text-align: left; background: var(--sunken); border: 0; border-radius: 12px; padding: 8px 10px; cursor: pointer; }
+.picker :is(button, a.lnk):hover { outline: 1px solid var(--gold); }
+.picker .ph { width: 48px; height: 48px; margin: 0; }
+.picker .t { font-weight: 600; }
+.picker .d { font-size: calc(12.5px * var(--fs)); color: var(--muted); }
+
+/* ---------- learn (explainer overlay) ---------- */
+.learnbtn { font: 600 13px var(--font-body); border: 1px solid var(--gold); color: var(--gold); background: var(--surface); border-radius: 99px; padding: 6px 12px 6px 10px; cursor: pointer; white-space: nowrap; display: inline-flex; gap: 6px; align-items: center; flex: none; }
+.learnbtn:hover { background: var(--gold); color: var(--accent-ink); }
+.trailsbtn { border-color: var(--trail); color: var(--trail); margin-left: -6px; }
+.trailsbtn:hover, .trailsbtn[aria-pressed="true"] { background: var(--trail); color: #fff; }
+.trailsbtn .tric { width: 20px; height: 14px; display: block; }
+/* Featured stories (5 Nov, revamped): just the coins, the story's name on hover (and as the accessible label). */
+.feats { display: flex; gap: 8px; flex: none; align-items: center; padding-left: 12px; margin-left: -2px; border-left: 1px solid var(--line); }
+.feats :is(button, a.lnk) { position: relative; width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50%; background: none; cursor: pointer; flex: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,.28); transition: transform .15s, box-shadow .15s; }
+.feats :is(button, a.lnk) .img { width: 100%; height: 100%; border-radius: 50%; background-size: cover; background-position: center; display: block; }
+.feats :is(button, a.lnk):hover, .feats :is(button, a.lnk):focus-visible { transform: translateY(-1px) scale(1.1); box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--trail), 0 3px 8px rgba(0,0,0,.3); outline: none; }
+.feats :is(button, a.lnk)[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--trail); }
+.feats :is(button, a.lnk)::after { content: attr(data-tip); position: absolute; top: calc(100% + 9px); left: 50%; transform: translate(-50%, -3px); opacity: 0; pointer-events: none;
+  white-space: nowrap; font: 600 12px var(--font-body); color: #fff; background: var(--trail); padding: 5px 10px; border-radius: 99px; box-shadow: 0 4px 12px rgba(0,0,0,.2);
+  transition: opacity .15s, transform .15s; z-index: 40; }
+.feats :is(button, a.lnk):hover::after, .feats :is(button, a.lnk):focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .feats :is(button, a.lnk), .feats :is(button, a.lnk)::after { transition: none; } }
+@media (max-width: 560px) { .feats { display: none; } }
+.learn { position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--fg) 45%, transparent); display: grid; place-items: center; padding: 20px; }
+.learn[hidden] { display: none; }
+.lbox { width: min(1120px, 100%); height: 100%; background: var(--bg); border-radius: 18px; box-shadow: var(--shadow); overflow: auto; overscroll-behavior: contain; position: relative; }
+.lhead { position: sticky; top: 0; z-index: 3; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 22px; display: flex; align-items: center; gap: 12px; }
+.lhead .home { background: none; border: 0; padding: 0; cursor: pointer; font: calc(22px * var(--fs)) var(--font-display); color: var(--fg); }
+.lhead .crumbs { font: 600 calc(13px * var(--fs)) var(--font-body); color: var(--muted); }
+.lhead .back { background: none; border: 0; padding: 4px 0; cursor: pointer; font: 600 calc(17px * var(--fs)) var(--font-body); color: var(--gold); display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.lhead .back span { font-size: 1.5em; line-height: 0.8; margin-top: -2px; }
+.lhead .back:hover { text-decoration: underline; text-underline-offset: 4px; }
+.lhead .crumbs { border-left: 1px solid var(--line); padding-left: 12px; }
+.lhead .x { margin-left: auto; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: calc(17px * var(--fs)); }
+.lbody { padding: 18px 22px 40px; }
+.lintro { color: var(--muted); max-width: 64ch; margin: 0 0 18px; }
+.lcoins { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: 820px; margin: 0 0 24px; }
+.lcoins figure { margin: 0; display: grid; gap: 8px; justify-items: center; text-align: center; }
+.hcoin { position: relative; width: 100%; max-width: 230px; aspect-ratio: 1; padding: 0; border: 0; background: none; cursor: pointer; perspective: 900px; }
+.hcoin .hin { position: absolute; inset: 0; transition: transform .6s; transform-style: preserve-3d; }
+.hcoin img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; backface-visibility: hidden; }
+.hcoin img.hb { transform: rotateY(180deg); }
+.hcoin.flip .hin, .hcoin:focus-visible .hin { transform: rotateY(180deg); }
+@media (hover: hover) { .hcoin:hover .hin { transform: rotateY(180deg); } }
+@media (hover: none) { .hcoin::after { content: "↻"; position: absolute; right: 2px; bottom: 2px; font-size: 16px; color: var(--gold); } }
+@media (prefers-reduced-motion: reduce) { .hcoin .hin { transition: none; } }
+.lcoins figcaption { font-size: calc(13px * var(--fs)); line-height: 1.35; }
+.lcoins figcaption small { display: block; font-size: calc(11px * var(--fs)); color: var(--muted); margin-top: 2px; }
+.lcoins figcaption a { color: inherit; }
+@media (max-width: 560px) { .lcoins { gap: 8px; } .lcoins figcaption { font-size: calc(11.5px * var(--fs)); } }
+.level { display: flex; align-items: baseline; gap: 10px; margin: 6px 0 10px; }
+.level h3 { font: calc(22px * var(--fs)) var(--font-display); margin: 0; }
+.level span { color: var(--muted); font-size: calc(13.5px * var(--fs)); }
+.chaps { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.chaps.deep { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.chap { display: grid; grid-template-rows: auto 1fr; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; cursor: pointer; padding: 0; text-align: left; transition: transform .15s, box-shadow .15s; }
+.chap:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.chap .covers { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; height: 150px; gap: 2px; background: var(--line); }
+.chaps.deep .chap .covers { height: 110px; }
+.chap .covers span { background: #f3efe6 center/cover no-repeat; }
+.chap .covers span.contain { background-size: auto calc(var(--cov-h) * .92); background-color: transparent; }
+/* Coin photos without their white boxes (5 Nov): a round mask with a soft edge, sized to the coin, so the photo's white
+   corners disappear on light and dark pages alike. Light pages also multiply away any white left inside the circle. */
+:root { --coin-mask: radial-gradient(closest-side, #000 88%, rgba(0,0,0,.5) 93%, transparent 97%); }
+.chap .covers { --cov-h: 150px; background: transparent; }
+.chaps.deep .chap .covers { --cov-h: 110px; }
+.chap .covers span.contain, .pics a.pcoin { -webkit-mask: var(--coin-mask) center / var(--coin-s) var(--coin-s) no-repeat; mask: var(--coin-mask) center / var(--coin-s) var(--coin-s) no-repeat; }
+.chap .covers { container-type: inline-size; }
+.chap .covers span.contain { --coin-s: min(calc(var(--cov-h) * .92), calc((100cqw - 4px) / 3)); }
+.pics a.pcoin { --pic-h: 220px; --coin-s: calc(var(--pic-h) * .9); background-size: auto var(--coin-s) !important; background-color: transparent !important; }
+.lfigs figure.lf-coin img, .hcoin img { -webkit-mask: var(--coin-mask); mask: var(--coin-mask); }
+.chap .covers span.contain, .pics a.pcoin, .lfigs figure.lf-coin img, .hcoin { mix-blend-mode: multiply; }
+/* tile coins fit whole (5 Nov 2026: coins looked cut off): each coin box is a square the size of the
+   round mask, and the photo is fitted inside it (contain), so wide or tall photos shrink instead of losing their rim. */
+.chap .covers span.contain { width: var(--coin-s); height: var(--coin-s); justify-self: center; align-self: center;
+  background-size: contain; background-origin: content-box; padding: 3px; box-sizing: border-box; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .chap .covers span.contain, :root:not([data-theme="light"]) .pics a.pcoin, :root:not([data-theme="light"]) .lfigs figure.lf-coin img, :root:not([data-theme="light"]) .hcoin { mix-blend-mode: normal; } }
+:root[data-theme="dark"] .chap .covers span.contain, :root[data-theme="dark"] .pics a.pcoin, :root[data-theme="dark"] .lfigs figure.lf-coin img, :root[data-theme="dark"] .hcoin { mix-blend-mode: normal; }
+.chap .t { padding: 12px 14px 14px; }
+/* Learn sections (5 Nov): a little air between sections. */
+.lgroup + .lgroup { margin-top: 22px; }
+.lgroup .level { flex-wrap: wrap; row-gap: 2px; } .lgroup .level h3 { white-space: nowrap; }
+
+.chap .t b { display: block; font: calc(21px * var(--fs)) var(--font-display); font-weight: 400; line-height: 1.15; margin-bottom: 4px; }
+.chap .t small { display: block; color: var(--muted); font-size: calc(13.5px * var(--fs)); }
+.chap .t i { display: block; font-style: normal; font-weight: 600; font-size: calc(12.5px * var(--fs)); color: var(--gold); margin-top: 8px; }
+.deepnote { margin: 28px 0 10px; padding-top: 18px; border-top: 1px dashed var(--coast); }
+/* featured story: a lesson that reads top to bottom */
+.lesson { display: grid; grid-template-columns: 230px minmax(0, 760px); gap: 4px 34px; justify-content: center; }
+.lesson .lhead2 { grid-column: 1 / -1; max-width: 1024px; justify-self: center; width: 100%; }
+.lkick { font: 700 calc(11px * var(--fs)) var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-lo, var(--gold)); }
+.ltoc { position: sticky; top: 0; align-self: start; display: grid; gap: 2px; padding-top: 6px; max-height: calc(100vh - 140px); overflow: auto; }
+.ltoc :is(button, a.lnk) { all: unset; cursor: pointer; display: grid; grid-template-columns: 24px 1fr; gap: 6px; padding: 5px 8px; border-radius: 8px; font-size: calc(13px * var(--fs)); line-height: 1.3; }
+.ltoc :is(button, a.lnk) b { color: var(--gold-lo, var(--gold)); font-variant-numeric: tabular-nums; }
+.ltoc :is(button, a.lnk):hover, .ltoc :is(button, a.lnk):focus-visible { background: var(--surface-2, rgba(0,0,0,.05)); }
+.lsteps { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); }   /* 6 Nov 2026: a wide card no longer pushes past the screen edge on phones */
+.lstep { min-width: 0; }
+.lstep { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 0 14px; padding: 20px 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; scroll-margin-top: 10px; }
+.lnum { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font: 600 calc(15px * var(--fs)) var(--font-body); color: var(--gold-lo, var(--gold)); border: 1.5px solid currentColor; }
+.lmain { display: grid; gap: 10px; min-width: 0; }
+.ldates { font: 700 calc(11px * var(--fs)) var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-lo, var(--gold)); }
+.lstep h3 { margin: -4px 0 0; font-family: var(--font-display); font-weight: 400; font-size: calc(24px * var(--fs)); line-height: 1.2; }
+.llead { margin: 0; font-size: calc(16.5px * var(--fs)); font-weight: 500; line-height: 1.5; }
+.ltext { margin: 0; font-size: calc(15px * var(--fs)); line-height: 1.65; }
+.lhtml-box { padding: 12px 14px; border-radius: 10px; background: var(--surface-2, rgba(0,0,0,.04)); }
+.lfigs { display: flex; flex-wrap: wrap; gap: 12px; }
+.lfigs figure { margin: 0; display: grid; gap: 4px; align-content: start; }
+.lfigs figure.lf-coin { width: 150px; }
+.lfigs figure.lf-wide { width: 280px; }
+.lfigs figure.lf-coin img { width: 150px; height: 150px; object-fit: contain; background: transparent; display: block; }
+.lfigs figure.lf-wide img { width: 280px; height: 190px; object-fit: cover; border-radius: 10px; display: block; }
+.lfigs figure.lf-wide.lf-big { width: min(360px, 100%); }
+.lfigs figure.lf-wide.lf-big img { width: 100%; height: auto; }
+.lfigs figcaption { font-size: calc(11.5px * var(--fs)); line-height: 1.35; color: var(--muted); }
+.lfigs figcaption span { opacity: .8; }
+.lsrc summary { cursor: pointer; font-size: calc(12.5px * var(--fs)); color: var(--muted); }
+/* made-lesson patch */
+.lpart { margin: 22px 0 -4px; font: 700 calc(12px * var(--fs)) var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.lpart:first-child { margin-top: 0; }
+.pcards .pgpart { grid-column: 1 / -1; margin: 14px 0 -6px; }
+.pcards .pgpart:first-child { margin-top: 0; }
+.ltoc .ltpart { display: block; margin: 12px 8px 2px; font: 700 calc(10.5px * var(--fs)) var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ltoc .ltpart:first-child { margin-top: 0; }
+.lhtml-box.dg svg { display: block; width: 100%; max-width: 520px; height: auto; margin: 0 auto; }
+.lfigs figure.cut img { -webkit-mask: none; mask: none; mix-blend-mode: normal; object-fit: contain; border-radius: 0; }
+@media (max-width: 900px) { .ltoc .ltpart { display: none; } }
+.lsrc .srcs { margin: 6px 0 0; }
+@media (max-width: 900px) {
+  .lesson { grid-template-columns: minmax(0, 1fr); }
+  .ltoc { display: flex; gap: 6px; overflow-x: auto; max-height: none; top: -14px; padding: 8px 0; background: var(--bg, var(--surface)); z-index: 2; }
+  .ltoc :is(button, a.lnk) { grid-template-columns: auto; padding: 6px 11px; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); }
+  .ltoc :is(button, a.lnk) span { display: none; }
+  .lstep { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+  .lnum { width: 28px; height: 28px; font-size: calc(13px * var(--fs)); }
+  .lfigs figure.lf-coin, .lfigs figure.lf-coin img { width: 120px; height: auto; }
+  .lfigs figure.lf-coin img { height: 120px; }
+  .lfigs figure.lf-wide, .lfigs figure.lf-wide img { width: 100%; }
+}
+.lgo { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 4px; }
+.lgo .btn { font-size: calc(12.5px * var(--fs)); padding: 4px 10px; }
+.pics .dg.lhtml { display: block; flex: 1 0 100%; padding: 6px 10px; }
+.chaps.feature { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+/* four or more pictures wrap into rows of three instead of thin strips */
+.pics:has(> a:nth-child(4)) a { flex: 1 1 45%; height: 140px; }   /* 4 pictures = two front/back pairs, one pair per row */
+.tag-deep { font: 700 calc(10px * var(--fs)) var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--mac); border: 1px solid currentColor; border-radius: 99px; padding: 1px 7px; vertical-align: 3px; }
+.chtitle { font: calc(34px * var(--fs)) var(--font-display); margin: 0 0 4px; line-height: 1.1; }
+.chnav { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0 18px; }
+.chnav :is(button, a.lnk) { font: 600 calc(12.5px * var(--fs)) var(--font-body); border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 5px 11px; cursor: pointer; }
+.chnav :is(button, a.lnk)[aria-current] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chnav :is(button, a.lnk).deep { color: var(--mac); }
+.chnav :is(button, a.lnk).deep[aria-current] { background: var(--mac); color: var(--surface); border-color: var(--mac); }
+.pcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; align-items: start; }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.pics { display: flex; flex-wrap: wrap; gap: 2px; background: var(--line); }
+.pics a { flex: 1 1 0; min-width: 0; }
+.pics a { display: block; height: 220px; background: #f3efe6 center/cover no-repeat; position: relative; }
+.pics a.contain { background-size: contain; background-color: #fff; }
+.pics a.pcoin { background-size: 86%; background-color: #fff; }
+.pics a.pcut { box-sizing: border-box; padding: 5%; background-size: contain; background-origin: content-box; background-clip: content-box; background-color: transparent; }
+.pics:has(a.pcut) { gap: 0; }
+.pics .dg { flex: 1 0 100%; background: var(--surface); display: grid; place-items: center; padding: 10px 8px; }
+.pics .dg svg { width: 100%; height: auto; display: block; }
+.pcard .tx { padding: 12px 16px 14px; }
+.pcard .num { font: 700 calc(11px * var(--fs)) var(--font-body); color: var(--gold); letter-spacing: .1em; text-transform: uppercase; }
+.pcard h4 { font: calc(21px * var(--fs)) var(--font-display); font-weight: 400; margin: 2px 0 6px; line-height: 1.15; }
+.pcard p { margin: 0 0 8px; }
+.pcard .pcred { font-size: calc(11px * var(--fs)); color: var(--muted); margin: 0 0 8px; }
+.pcard .pcred a { color: inherit; }
+.pcard details summary { cursor: pointer; font: 600 calc(13px * var(--fs)) var(--font-body); color: var(--gold); list-style: none; display: inline-flex; gap: 6px; align-items: center; }
+.pcard details summary::-webkit-details-marker { display: none; }
+.pcard details summary::after { content: "▾"; font-size: calc(11px * var(--fs)); transition: transform .15s; }
+.pcard details[open] summary::after { transform: rotate(180deg); }
+.pcard details[open] summary { margin-bottom: 8px; }
+.pcard .cap { font-size: calc(13px * var(--fs)); color: var(--muted); font-style: italic; }
+.pcard .srcs { font-size: calc(12px * var(--fs)); color: var(--muted); margin: 6px 0 0; padding-left: 16px; }
+.chend { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+/* Learn, full screen (1 Nov): the box fills the window; a topic reads as a rail + one column of even rows */
+.learn { padding: 0; background: var(--bg); }
+html.embed body > :not(#learn):not(script) { display: none !important; }
+.lbox { width: 100%; height: 100%; border-radius: 0; box-shadow: none; }
+.lhead { padding: 12px max(22px, calc((100% - 1400px) / 2)); }
+.lbody { max-width: 1400px; margin: 0 auto; }
+.lwrap { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 0 36px; align-items: start; }
+.lrail { position: sticky; top: 64px; max-height: calc(100vh - 84px); overflow: auto; display: grid; gap: 2px; padding: 4px 0 12px; }
+.lrail h5 { margin: 14px 8px 4px; font: 700 calc(10.5px * var(--fs)) var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.lrail h5:first-child { margin-top: 0; }
+.lrail :is(button, a.lnk) { all: unset; box-sizing: border-box; cursor: pointer; padding: 6px 10px; border-radius: 8px; font-size: calc(13.5px * var(--fs)); line-height: 1.3; }
+.lrail :is(button, a.lnk):hover, .lrail :is(button, a.lnk):focus-visible { background: var(--sunken); }
+.lrail :is(button, a.lnk)[aria-current] { background: var(--surface); box-shadow: inset 3px 0 0 var(--gold); font-weight: 600; }
+.lrail .lrcur { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px; }
+.lrail .lrfold { width: 22px; height: 22px; padding: 0; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; font-size: calc(14px * var(--fs)); line-height: 1; color: var(--muted); margin-right: 4px; }
+.lrail .lrfold:hover { color: var(--fg); border-color: var(--muted); }
+.lrail .lcards[hidden] { display: none; }
+.lrail .lcards { display: grid; gap: 1px; margin: 2px 0 6px 12px; padding-left: 8px; border-left: 1px solid var(--line); }
+.lrail .lcards :is(button, a.lnk) { display: grid; grid-template-columns: 20px 1fr; gap: 4px; padding: 4px 8px; font-size: calc(12.5px * var(--fs)); color: var(--muted); }
+.lrail .lcards b { color: var(--gold); font-variant-numeric: tabular-nums; }
+.lwrap .chnav { display: none; }
+.lrail .lcards .ltpart { display: block; margin: 10px 8px 2px; font: 700 calc(10px * var(--fs)) var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.lrail .lcards .ltpart:first-child { margin-top: 2px; }
+@media (min-width: 901px) { .lwrap .lesson { display: block; } .lwrap .lesson .ltoc { display: none; } .lwrap .lesson .lhead2 { max-width: none; } }
+.lwrap .pcards { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+.lwrap .pcard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); scroll-margin-top: 70px; }
+.lwrap .pcard .pics { min-height: 300px; align-content: stretch; }
+.lwrap .pcard .pics a { height: auto; min-height: 300px; }
+.lwrap .pcard .pics a.pcoin { --pic-h: 300px; }
+/* Coin rows with 2-4 coins (5 Nov): each coin is sized to its own slot, so none is cropped. */
+.pics { container-type: inline-size; }
+.pics:has(> a:nth-of-type(2)) { --n: 2; }
+.pics:has(> a:nth-of-type(3)) { --n: 3; }
+.pics:has(> a:nth-of-type(4)) { --n: 2; }
+.pics a.pcoin { --coin-s: min(calc(var(--pic-h) * .9), calc((100cqw - 2px * (var(--n, 1) - 1)) / var(--n, 1) * .94)); }
+.lwrap .pcard .pics.solo-dg { background: var(--surface); border-right: 1px solid var(--line); }
+.lwrap .pcard .tx { padding: 24px 28px; align-self: start; position: sticky; top: 60px; }   /* tall diagrams: the text stays in view */
+.lwrap .pcard h4 { font-size: calc(26px * var(--fs)); }
+.lwrap .pcard p { font-size: calc(16px * var(--fs)); line-height: 1.6; }
+@media (max-width: 900px) {
+  .lhead { padding: 10px 16px; }
+  .lwrap { grid-template-columns: minmax(0, 1fr); }
+  .lrail { display: none; }
+  .lwrap .chnav { display: flex; }
+  .lwrap .pcard { grid-template-columns: minmax(0, 1fr); }
+  .lwrap .pcard .pics, .lwrap .pcard .pics a { min-height: 200px; }
+  .lwrap .pcard .pics.solo-dg { border-right: 0; }
+  .lwrap .pcard .tx { padding: 14px 16px; position: static; }
+  .lwrap .pcard h4 { font-size: calc(22px * var(--fs)); }
+  .lwrap .pcard p { font-size: calc(15px * var(--fs)); }
+}
+.hook { display: flex; gap: 10px; align-items: center; width: 100%; text-align: left; background: var(--sunken); border: 0; border-radius: 10px; padding: 8px 12px; margin: 0 0 12px; cursor: pointer; font-size: calc(13.5px * var(--fs)); }
+.hook .lt { font: 700 calc(10px * var(--fs)) var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--accent-ink); background: var(--gold); border-radius: 99px; padding: 2px 7px; flex: none; }
+.hook .go { margin-left: auto; color: var(--gold); font-weight: 600; white-space: nowrap; font-size: calc(12.5px * var(--fs)); }
+.hook:hover .go { text-decoration: underline; }
 .dg text { font: calc(11px * var(--fs)) var(--font-body); fill: var(--fg); }
 .dg text.b { font-weight: 700; }
 .dg text.m { fill: var(--muted); font-size: calc(10px * var(--fs)); }
 .dg .ln { stroke: var(--muted); stroke-width: .8; fill: none; }
-.pics img { width: 100%; max-height: 220px; object-fit: contain; display: block; }
-figcaption, .src { font-size: 13px; color: var(--muted); }
-figcaption a { color: var(--muted); }
-.src ul { margin: 6px 0 0; padding-left: 18px; }
-.go { font-size: 15px; font-weight: 600; text-decoration: none; }
-.go:hover { text-decoration: underline; }
-nav.more { border-top: 1px solid var(--line); margin-top: 30px; padding: 20px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.groups section { margin: 30px 0; }
-.groups h2 { font-size: 28px; margin: 0; display: inline; }
-.groups .line { color: var(--muted); margin: 0 0 0 10px; display: inline; font-size: 16px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; margin-top: 16px; }
-.tile { display: flex; flex-direction: column; padding: 18px 20px 18px; border: 1px solid var(--line); border-radius: 16px;
-        background: var(--surface); color: var(--fg); text-decoration: none; }
-.tile:hover { border-color: var(--gold); }
-.tile .coins { display: flex; gap: 6%; justify-content: center; margin: 4px 0 22px; }
-.tile .coins img { width: 30%; aspect-ratio: 1; object-fit: contain; }
-.tile b { font-family: Marcellus, Georgia, serif; font-weight: 400; font-size: 24px; display: block; line-height: 1.25; }
-.tile span { color: var(--muted); font-size: 15px; margin-top: 6px; }
-.tile i { font-style: normal; color: var(--gold); font-weight: 600; font-size: 14px; margin-top: auto; padding-top: 12px; }
-footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 22px 0 40px; color: var(--muted); font-size: 13px; text-align: center; }
-footer svg { width: 44px; }
+
+/* ---------- phone ---------- */
+@media (max-width: 900px) {
+  header.top { gap: 8px; padding: 8px 12px; }
+  header.top h1 { font-size: 17px; }
+  header.top .emark { width: 26px; height: 26px; }
+  header.top .peek { --em: 26px; }
+  .nav a { padding: 4px 8px; font-size: 12px; }
+  .search { display: none; position: absolute; left: 8px; right: 8px; top: 8px; width: auto; margin: 0; z-index: 40; }
+  .search.open { display: block; }
+  .search input { background: var(--surface); border-color: var(--gold); padding-top: 9px; padding-bottom: 9px; }
+  .searchbtn { display: grid; margin-left: auto; }
+  .keycard { width: auto; max-width: 200px; padding: 6px 10px; }
+  .keycard .y { font-size: calc(19px * var(--fs)); }
+  .keycard { top: 12px; max-height: none; overflow: visible; }
+  .styles { top: auto; bottom: 30px; left: auto; right: 10px; }
+  .styles :is(button, a.lnk) { padding: 4px 7px; }
+  .mapbtns { display: none; }
+  .credits { left: 0; right: 0; border-radius: 0; text-align: center; font-size: calc(10px * var(--fs)); }
+  .track-wrap { margin: 0 20px; height: 84px; }
+  .wars-on .track-wrap { height: 96px; }
+  .ticks span:nth-child(even) { display: none; }
+  .slider-head .lbl { display: none; }
+  .ev .name { font-size: calc(10.5px * var(--fs)); }
+  .ev:not(.t1) { display: none; }
+  .ev.row1 .stem { height: 18px; }
+  .coin { width: 34px; height: 34px; margin: -17px 0 0 -17px; }
+  .panel { top: auto; left: 0; right: 0; bottom: 0; width: auto; border-radius: 18px 18px 0 0; border-bottom: 0; height: 44%; transition: height .2s; }
+  .panel[data-snap="peek"] { height: 30%; }
+  .panel[data-snap="full"] { height: calc(100% - 8px); }
+  .panel.dragging { transition: none; }
+  .grab { display: block; position: sticky; top: 0; z-index: 3; height: 22px; background: var(--surface); cursor: grab; touch-action: none; }
+  .grab::after { content: ""; position: absolute; left: 50%; top: 8px; width: 40px; height: 5px; margin-left: -20px; border-radius: 99px; background: var(--line); }
+  .panel .close, .panel .share, .panel .size { top: 14px; }
+  .panel.min { height: auto; }
+  .panel.max { height: calc(100% - 8px); }
+  .panel .head { padding-top: 0; }
+  /* phone: the kicker shares the :is(button, a.lnk) row, the title starts below it (long titles ran under the buttons) */
+  .panel .head .type { min-height: 44px; display: flex; align-items: center; gap: 6px; padding-right: 160px; box-sizing: border-box; }
+  .panel .head .type + h2 { margin-top: 0; }
+  .panel h2 { font-size: calc(24px * var(--fs)); }
+  .big { width: 180px; height: 180px; }
+  .pop { width: min(280px, 90vw); }
+}
+@media (max-width: 900px) {
+  .learn { padding: 0; }
+  .lbox { border-radius: 0; }
+  .lhead { padding: 10px 16px; }
+  .lhead .home { font-size: calc(18px * var(--fs)); white-space: nowrap; }
+  .lhead .crumbs { display: none; }
+  .lbody { padding: 14px 16px 32px; }
+  .chtitle { font-size: calc(27px * var(--fs)); }
+  .pcards { grid-template-columns: 1fr; }
+  .chaps, .chaps.deep { grid-template-columns: 1fr; }
+  .chap .covers { height: 120px; --cov-h: 120px; }
+  .pics a { height: 190px; }
+  .pics a.pcoin, .lwrap .pcard .pics a.pcoin { --pic-h: 190px; }
+  .learnbtn .w { display: none; }
+  .learnbtn { padding: 6px 9px; }
+}
+@media (max-width: 420px) { .tiles { grid-template-columns: 1fr 1fr; } .nav { display: none; } }
+/* ---------- story timeline (straight): symbols on pale tinted discs, Cinzel eras, Cormorant years ---------- */
+:root { --font-era: "Cinzel", Georgia, serif; --font-story: "Cormorant Garamond", Georgia, serif;
+  --dock-a: #e9eff4; --dock-b: #f8fafb; --disc: #ffffff;
+  --k-murder: #a8323f; --k-treasure: #1d7a5b; --k-copycat: #6a50b0; --k-plunder: #a8621a; --k-war: #3a64a0; --k-fall: #6d6458; --k-crown: #9a7212; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --dock-a: #0f1d2b; --dock-b: #15130f; --disc: #1d2330;
+  --k-murder: #d0606c; --k-treasure: #4fb08f; --k-copycat: #9a84d4; --k-plunder: #d49a4e; --k-war: #7f9dc5; --k-fall: #9a9183; --k-crown: #e3b955; } }
+:root[data-theme="dark"] { --dock-a: #0f1d2b; --dock-b: #15130f; --disc: #1d2330;
+  --k-murder: #d0606c; --k-treasure: #4fb08f; --k-copycat: #9a84d4; --k-plunder: #d49a4e; --k-war: #7f9dc5; --k-fall: #9a9183; --k-crown: #e3b955; }
+.slider { background: linear-gradient(180deg, var(--dock-a), var(--dock-b)); }
+.slider-head .now { font: 600 calc(15px * var(--fs)) var(--font-story); letter-spacing: .01em; }
+.slider-head .now small { font: italic 500 calc(15px * var(--fs)) var(--font-story); }
+.track-wrap { height: 164px; }
+.wars-on .track-wrap { height: 176px; }
+.ticks, .eras, .evs { display: none; }
+#thread { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; }
+#thread .road { fill: none; stroke-linecap: round; }
+#thread .decades { fill: var(--gold); fill-opacity: .26; pointer-events: none; }
+#thread .decades.now { fill-opacity: .75; }
+#thread .hit { stroke: transparent; stroke-width: 26; cursor: pointer; }
+.erase { font: 700 calc(9.5px * var(--fs)) var(--font-era); letter-spacing: .2em; fill: var(--fg); opacity: .62; }
+.cent { font: italic 600 calc(13px * var(--fs)) var(--font-story); fill: var(--muted); }
+.stone { fill: var(--dock-b); stroke: var(--gold); stroke-width: 1; }
+.seal { cursor: pointer; }
+.seal .stick { fill: none; stroke: var(--kc); stroke-opacity: .6; stroke-width: 1.3; stroke-dasharray: 2.5 3; stroke-linecap: round; }
+.seal:hover .stick, .seal.near .stick, .seal.sel .stick { stroke-opacity: 1; stroke-dasharray: none; }
+#thread .root { fill: var(--dock-b); stroke: var(--gold); stroke-width: 1.4; }
+/* Light discs: a pale wash of the kind's colour, its ring, and the symbol drawn in the same deep colour. */
+.seal .ring { fill: color-mix(in srgb, var(--kc) 13%, var(--disc)); stroke: var(--kc); stroke-width: 1.6; }
+.seal .ico { fill: none; stroke: var(--kc); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.seal .disc { transition: transform .18s; transform-box: fill-box; transform-origin: center; filter: drop-shadow(0 1px 2px rgba(20,40,60,.22)); }
+.seal:hover .disc, .seal.near .disc, .seal.sel .disc { transform: scale(1.22); }
+/* The moment you're on fills with its colour and the symbol turns white. */
+.seal.near .ring, .seal.sel .ring { fill: var(--kc); }
+.seal.near .ico, .seal.sel .ico { stroke: #fff; }
+/* The current moment's name: a small pill tied to its symbol by a thin line. */
+.slabel { pointer-events: none; }
+.slabel rect { fill: color-mix(in srgb, var(--kc) 9%, var(--surface)); stroke: var(--kc); stroke-width: 1.2; filter: drop-shadow(0 2px 4px rgba(20,40,60,.14)); }
+.slabel .tie { stroke: var(--kc); stroke-width: 1.2; }
+.slabel .t { font: italic 600 calc(15.5px * var(--fs)) var(--font-story); fill: var(--kc); }
+.slabel .y { font: 600 calc(10.5px * var(--fs)) var(--font-body); letter-spacing: .08em; fill: var(--kc); }
+.warlane { top: 128px; }
+.thumb { top: 94px; width: 42px; height: 42px; margin-left: -21px; border: 2px solid var(--gold); box-shadow: 0 0 0 3px var(--dock-b), 0 0 12px color-mix(in srgb, var(--gold-hi) 60%, transparent), 0 4px 10px rgba(0,0,0,.3); }
+.kinds { margin-left: auto; display: flex; gap: 11px; font-size: calc(11.5px * var(--fs)); color: var(--muted); }
+.kinds span { display: inline-flex; align-items: center; gap: 4px; }
+.kinds i { display: inline-grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; background: color-mix(in srgb, var(--c) 13%, var(--disc)); box-shadow: inset 0 0 0 1.3px var(--c); }
+.kinds svg { width: 11px; height: 11px; fill: none; stroke: var(--c); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.slider-head .lbl { display: none; }
+@media (max-width: 1150px) { .kinds em { display: none; } .kinds { gap: 6px; } }
+@media (max-width: 900px) {
+  .track-wrap { height: 124px; } .wars-on .track-wrap { height: 138px; }
+  .thumb { top: 74px; width: 32px; height: 32px; margin-left: -16px; }
+  .warlane { top: 100px; }
+  .slider-head { margin-bottom: 0; } .erase { font-size: calc(8.5px * var(--fs)); } .cent { font-size: calc(12px * var(--fs)); }
+  .slabel .t { font-size: calc(14px * var(--fs)); } .slabel .y { font-size: calc(9.5px * var(--fs)); }
+  .kinds { display: none; }
+}
+.tsize { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 99px; background: var(--surface); padding: 2px; flex: none; }
+.tsize :is(button, a.lnk) { border: 0; background: none; color: var(--muted); font-family: var(--font-body); font-weight: 600; line-height: 1; width: 28px; height: 28px; border-radius: 99px; cursor: pointer; padding: 0; display: grid; place-items: center; }
+.tsize :is(button, a.lnk):nth-child(1) { font-size: 12px; } .tsize :is(button, a.lnk):nth-child(2) { font-size: 15px; } .tsize :is(button, a.lnk):nth-child(3) { font-size: 18.5px; }
+.tsize :is(button, a.lnk)[aria-pressed="true"] { background: var(--gold); color: var(--accent-ink); }
+.tsize :is(button, a.lnk):focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+@media (max-width: 600px) {   /* phones: one :is(button, a.lnk) showing the current size; a tap moves to the next */
+  .tsize { padding: 0; border: 0; background: none; }
+  .tsize :is(button, a.lnk) { width: 34px; height: 34px; border: 1px solid var(--line); }
+  .tsize :is(button, a.lnk):not([aria-pressed="true"]) { display: none; }
+  .tsize :is(button, a.lnk)[aria-pressed="true"] { background: var(--surface); color: var(--gold); border-color: var(--gold); }
+}
+/* both sides of a coin in a row (1 Nov) */
+.ph2 { display: flex; gap: 4px; flex: none; align-items: center; }
+.ph2 .ph { margin: 0; }
+.picker :is(button, a.lnk) { grid-template-columns: auto 1fr; }
+.panel.storymax .picker :is(button, a.lnk) { grid-template-columns: auto 1fr; }
+.evsplit { grid-template-columns: 1fr auto; }
+.evsplit .ph2 .ph { width: 84px; height: 84px; }
+.results .ph2 .ph { width: 34px; height: 34px; }
+.coinrow .ph2 .ph { width: 44px; height: 44px; }
+.strip .img.nocoin { background: var(--sunken); box-shadow: inset 0 0 0 1px var(--line); }
+.sub.cite { font-size: 12px; opacity: .85; margin-top: 4px; }
+.sub.cite a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+
+.mock-note{display:none!important}
+/* catalogue page around the map's Learn view */
+:where(a.lnk) { color: inherit; text-decoration: none; display: inline-block; }
+.lhead a.x { display: grid; place-items: center; }
+html, body { height: auto; overflow: visible; }
+body { overflow-x: hidden; }
+.learn { position: static; display: block; padding: 0; background: var(--bg); z-index: auto; }
+.lbox { height: auto; overflow: visible; }
+.lhead { top: 0; }
+.lhead h1.home { margin: 0; font-weight: 400; }
+h1.chtitle { margin-top: 0; }
+.lrail { top: 70px; }
+.sitebar { background: var(--surface); border-bottom: 1px solid var(--line); }
+.sitebar .sbwrap { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding: 12px 16px; }
+.sitebar .brand { display: flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; font: 22px Marcellus, Georgia, serif; }
+.sitebar .brand img { width: 40px; height: 40px; border-radius: 50%; }
+.sitebar .worlds { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; background: var(--bg); }
+.sitebar .worlds a { padding: 5px 14px; font: 600 13px var(--font-body); color: var(--muted); text-decoration: none; }
+.sitebar .worlds a[aria-current="page"] { background: var(--gold); color: var(--on-gold, #fff); }
+.sitebar .navlink { font: 600 13px var(--font-body); color: var(--muted); text-decoration: none; }
+.sitebar .navlink:hover, .sitebar .navlink[aria-current="page"] { color: var(--gold); }
+.sitefoot { border-top: 1px solid var(--line); padding: 22px 16px 40px; color: var(--muted); font-size: 13px; text-align: center; }
+.sitefoot svg { width: 44px; }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ancient mints through the ages", "description": "What the buildings that made coins looked like, from a Greek city's workroom to Rome's mint and the late Roman mints, and how much of that we really know.", "url": "https://escargot-studio.github.io/gold-coin-catalogue/learn/mints/", "inLanguage": "en-GB", "isPartOf": {"@type": "WebSite", "name": "Gold Coin Catalogue", "url": "https://escargot-studio.github.io/gold-coin-catalogue/"}, "author": {"@type": "Organization", "name": "escargot-studio"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Ancient mints through the ages", "description": "What the buildings that made coins looked like, from a Greek city's workroom to Rome's mint and the late Roman mints, and how much of that we really know.", "url": "https://escargot-studio.github.io/gold-coin-catalogue/learn/mints/", "inLanguage": "en-GB", "isPartOf": {"@type": "WebSite", "name": "Gold Coin Catalogue", "url": "https://escargot-studio.github.io/gold-coin-catalogue/"}, "author": {"@type": "Organization", "name": "escargot-studio"}, "image": "https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-athens-mint-site.webp"}</script>
 <script data-goatcounter="https://escargot-studio.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-<header class="sitebar"><div class="wrap">
+<header class="sitebar"><div class="sbwrap">
   <a class="brand" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/athena-96.png" alt="">Gold Coin Catalogue</a>
   <nav class="worlds" aria-label="Modern or ancient coins"><a href="https://escargot-studio.github.io/gold-coin-catalogue/">Modern</a><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html" aria-current="page">Ancient</a></nav>
   <a class="navlink" href="https://escargot-studio.github.io/history-through-coins/">History map ↗</a>
   <a class="navlink" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/" aria-current="page">Learn</a>
 </div></header>
-<main class="wrap">
-<div class="crumbs"><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html">Ancient gold</a> › <a href="https://escargot-studio.github.io/gold-coin-catalogue/learn/">Learn</a></div>
-
-<div class="kicker">For collectors · short lesson</div>
-<h1>Ancient mints through the ages</h1>
-<p class="teaser">What the buildings that made coins looked like, from a Greek city&#x27;s workroom to Rome&#x27;s mint and the late Roman mints, and how much of that we really know.</p>
-<article class="card" id="what-survives">
-<div class="part">What is left · c. 600 BC – AD 700</div>
-<h2>No mint survives whole</h2>
-<p class="say">No ancient mint is still standing, and only a handful have been dug up. What survives is pits, moulds, scraps of metal, blanks that were never struck, and inscriptions naming the staff.</p>
-<p>Every Greek mint found so far made bronze small change. The buildings where gold and silver were struck have never been found, so every picture of an ancient mint, including the three here, is a reconstruction. Under each one, plain text marks what the digs show and pink marks our guesses. Mint buildings changed enough over a thousand years that one picture would mislead.</p>
-<div class="src">Sources<ul><li><a href="https://www.ascsa.edu.gr/uploads/media/hesperia/2668480.pdf" rel="nofollow">Camp and Kroll, The Agora Mint and Athenian Bronze Coinage (Hesperia, free)</a></li><li><a href="https://www.ifao.egnet.net/bifao/111/9/" rel="nofollow">Faucher et al., A mint workshop at Karnak (BIFAO, free)</a></li></ul></div>
-</article>
-<article class="card" id="greek-mint">
-<div class="part">Greek cities · c. 400 – 30 BC</div>
-<h2>A Greek city mint</h2>
-<p class="say">At Athens the mint was a plain public building by the market square, about 27 by 29 metres. Its big workroom had pits, water basins and a drain, and bronze blanks still lay on the floor.</p>
-<div class="pics"><figure class="dg lhtml"><figure style="margin:0;width:100%"><div style="position:relative"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/mint-greek.webp" alt="A large workroom of a Greek city mint: stone footings and mudbrick walls, a timber roof on two posts. Left, a man warms bronze blanks in a clay basin of charcoal set in a floor pit. Back, one man chops slices off a bronze rod with a chisel while another hammers a slice flat. Front, a man weighs one blank on a hand balance. Right, a two-man team strikes a coin on a stone block, and a plaster-lined water basin is cut into the floor. Numbered markers on the picture match the numbered list below it." style="display:block;width:100%;height:auto;border-radius:10px;background:#f6f3ee" loading="lazy"><span aria-hidden="true" style="position:absolute;left:9%;top:22%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">1</span><span aria-hidden="true" style="position:absolute;left:50%;top:32%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">2</span><span aria-hidden="true" style="position:absolute;left:59%;top:88%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">3</span><span aria-hidden="true" style="position:absolute;left:29%;top:73%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">4</span><span aria-hidden="true" style="position:absolute;left:74%;top:88%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">5</span><span aria-hidden="true" style="position:absolute;left:92%;top:48%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">6</span></div><p class="sub" style="margin:8px 0 4px;font-size:.9em">Plain text: shown by digs, inscriptions or coins. <span style="color:var(--guess,#b8336f);font-style:italic">Pink: our guess.</span></p><ol style="margin:4px 0 0;padding-left:20px;line-height:1.4"><li style="margin:0 0 6px"><b>The room</b><br>Stone footings of a 27 × 29 m building. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Mudbrick walls, posts and roof: the usual Greek way, not found here.</span></li><li style="margin:0 0 6px"><b>Making the blanks</b><br>Slices chopped off a forged bronze rod with a chisel, then hammered flat.</li><li style="margin:0 0 6px"><b>Checking the weight</b><br><span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Weighing each blank on a hand balance.</span></li><li style="margin:0 0 6px"><b>Warming the blanks</b><br>Clay basins scorched by fire, set in pits in the floor. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Heating blanks in them is our guess.</span></li><li style="margin:0 0 6px"><b>Striking</b><br>Blank on the lower die; one man holds the upper die and hits it with a hammer. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>A second man with tongs.</span></li><li style="margin:0 0 6px"><b>Water</b><br>Basins cut into the floor and lined with plaster. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>What the water was for isn&#x27;t known.</span></li></ol><figcaption class="sub" style="margin-top:6px">A Greek city mint, after the Athens dig. Illustration made for this lesson.</figcaption></figure></figure><figure><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-athens-mint-site.webp" alt="Athens today: the church of the Holy Apostles, about AD 1000, stands on one corner of the mint&#x27;s footings." loading="lazy"><figcaption>Athens today: the church of the Holy Apostles, about AD 1000, stands on one corner of the mint&#x27;s footings.<br><a href="https://commons.wikimedia.org/wiki/File:The_Ancient_Agora_of_Athens_from_Polygnotou_Street_in_Plaka_on_May_31,_2020.jpg" rel="nofollow">George E. Koronaios, via Wikimedia Commons · CC BY-SA 4.0</a></figcaption></figure><figure><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-halieis.webp" alt="Halieis today, seen from its acropolis." loading="lazy"><figcaption>Halieis today, seen from its acropolis.<br><a href="https://commons.wikimedia.org/wiki/File:Halieis_Akropolis.jpg" rel="nofollow">Heinz Schmitz, via Wikimedia Commons · CC BY-SA 4.0</a></figcaption></figure></div>
-<p>The blanks were made by forging a bronze rod, scoring it with a chisel, chopping off a slice and hammering it flat. The same chopped blanks turn up at Halieis and Olynthos in the 4th century BC. The first diggers took the pits for furnaces, but a lab test in 1997 found no trace of melting: the metal arrived ready. At Halieis the mint stood against the city wall, and its excavators thought coins were struck there &#x27;only as required&#x27;. A Greek mint was a part-time workshop, not a factory.</p>
-<p>The pits held clay basins scorched by fire. What was heated in them is not known.</p>
-<div class="src">Sources<ul><li><a href="https://www.ascsa.edu.gr/uploads/media/hesperia/2668480.pdf" rel="nofollow">Camp and Kroll, The Agora Mint and Athenian Bronze Coinage (Hesperia, free)</a></li><li><a href="https://www.ascsa.edu.gr/uploads/media/hesperia/147808.pdf" rel="nofollow">Boyd and Rudolph, The Lower Town of Halieis (Hesperia, free), p. 339</a></li></ul></div>
-</article>
-<article class="card" id="silver-mint">
-<div class="part">Greek cities · c. 407 – 375 BC</div>
-<h2>Where was the silver struck?</h2>
-<p class="say">Not in that building: tests there found &#x27;only the slightest traces of silver&#x27;. Ancient writers name a separate silver mint at Athens, the argyrokopeion. It has never been found.</p>
-<div class="pics"><figure><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/athens-stater-athena-and-owl" title="Open this coin in the catalogue"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/8f4c1ecb1435-cut.webp" alt="Athens, gold stater, 407–404 BC: the owl, struck from melted statues of Victory." loading="lazy"></a><figcaption>Athens, gold stater, 407–404 BC: the owl, struck from melted statues of Victory.<br><a href="https://gallica.bnf.fr/ark:/12148/btv1b11317170q" rel="nofollow">Bibliothèque nationale de France, via Wikimedia Commons · Public domain</a></figcaption></figure><figure><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/athens-stater-athena-and-owl" title="Open this coin in the catalogue"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/983ae66c62ea-cut.webp" alt="Its front: Athena." loading="lazy"></a><figcaption>Its front: Athena.<br><a href="https://gallica.bnf.fr/ark:/12148/btv1b11317170q" rel="nofollow">Bibliothèque nationale de France, via Wikimedia Commons · Public domain</a></figcaption></figure></div>
-<p>When Athens ran short of silver near the end of its war with Sparta, it melted gold statues of Victory on the Acropolis and struck gold coins, and afterwards the dies were dedicated to the goddess there. A law of 375 BC set a public slave, the tester, among the bankers&#x27; tables in the market to check coins: fakes were cut through and given to the Mother of the Gods.</p>
-<p><a class="go" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/athens-stater-athena-and-owl">See this coin in the catalogue →</a></p>
-<div class="src">Sources<ul><li><a href="https://www.ascsa.edu.gr/uploads/media/hesperia/2668480.pdf" rel="nofollow">Camp and Kroll, The Agora Mint and Athenian Bronze Coinage (Hesperia, free)</a></li></ul></div>
-</article>
-<article class="card" id="rome-mint">
-<div class="part">Rome · c. AD 80 – 270</div>
-<h2>Rome&#x27;s mint</h2>
-<p class="say">After a fire in AD 80, Rome&#x27;s mint moved near the Colosseum, probably into a plain block of small vaulted rooms around a courtyard, now under the church of San Clemente. In AD 115 its staff set up statues naming about ninety of themselves.</p>
-<div class="pics"><figure class="dg lhtml"><figure style="margin:0;width:100%"><div style="position:relative"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/mint-roman.webp" alt="A plain stone building around a courtyard. Along the back, four identical barrel-vaulted rooms with herringbone brick floors, each with the same two-man striking team at a stone block. In the courtyard an older foreman watches a large balance weighing a heap of coins against bronze weights while a clerk writes on a wax tablet; a worker sorts baskets of gold, silver and plain blanks on a table. Numbered markers on the picture match the numbered list below it." style="display:block;width:100%;height:auto;border-radius:10px;background:#f6f3ee" loading="lazy"><span aria-hidden="true" style="position:absolute;left:50%;top:9%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">1</span><span aria-hidden="true" style="position:absolute;left:83%;top:23%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">2</span><span aria-hidden="true" style="position:absolute;left:4%;top:72%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">3</span><span aria-hidden="true" style="position:absolute;left:49%;top:72%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">4</span></div><p class="sub" style="margin:8px 0 4px;font-size:.9em">Plain text: shown by digs, inscriptions or coins. <span style="color:var(--guess,#b8336f);font-style:italic">Pink: our guess.</span></p><ol style="margin:4px 0 0;padding-left:20px;line-height:1.4"><li style="margin:0 0 6px"><b>Workshops</b><br>Small vaulted rooms round a courtyard, under the church of San Clemente. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Whether this building was Rome&#x27;s mint is disputed. One striking team per room is our guess.</span></li><li style="margin:0 0 6px"><b>The striking team</b><br>Suppostores set the blanks, malliatores swung the hammers (staff list of AD 115).</li><li style="margin:0 0 6px"><b>Foreman and clerk</b><br>The foreman Felix, a freedman of the emperor, checked the gold, silver and bronze. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>The clerk, and weighing coins in bulk on a balance.</span></li><li style="margin:0 0 6px"><b>Sorting the coins</b><br>Coins were struck so many to the pound. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Sorting gold, silver and blanks on a table.</span></li></ol><figcaption class="sub" style="margin-top:6px">Rome&#x27;s mint, after the building under San Clemente and the staff list of AD 115. Illustration made for this lesson.</figcaption></figure></figure><figure><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-san-clemente-room.webp" alt="A room of the building under San Clemente: some read it as the mint, others as a warehouse." loading="lazy"><figcaption>A room of the building under San Clemente: some read it as the mint, others as a warehouse.<br><a href="https://commons.wikimedia.org/wiki/File:San_Clemente_Roma_Foto_cella_horreum.jpg" rel="nofollow">Valerio b. cosentino, via Wikimedia Commons · Public domain</a></figcaption></figure><figure><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/made/carisius-moneta.webp" alt="Denarius of T. Carisius, 46 BC: Juno Moneta, beside whose temple the Republic&#x27;s mint stood." loading="lazy"><figcaption>Denarius of T. Carisius, 46 BC: Juno Moneta, beside whose temple the Republic&#x27;s mint stood.<br><a href="https://ikmk.smb.museum/object?id=18202022" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · Public Domain Mark 1.0</a></figcaption></figure><figure><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/trajan-aureus-forum-of-trajan" title="Open this coin in the catalogue"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/0683bc63b9bb-cut.webp" alt="Trajan, aureus, AD 112–117: struck by the staff of AD 115." loading="lazy"></a><figcaption>Trajan, aureus, AD 112–117: struck by the staff of AD 115.<br><a href="https://ikmk.smb.museum/object?id=18273036" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure><figure><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/trajan-aureus-forum-of-trajan" title="Open this coin in the catalogue"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/d0c344176bf9-cut.webp" alt="Its back: Trajan&#x27;s Forum." loading="lazy"></a><figcaption>Its back: Trajan&#x27;s Forum.<br><a href="https://ikmk.smb.museum/object?id=18273036" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure></div>
-<p>Before that the mint stood beside the temple of Juno Moneta on the Capitol, &#x27;where the temple and mint of Moneta now stand&#x27;, wrote the Roman historian Livy. The AD 115 list names Felix, a freedman of the emperor, who checked the gold, silver and bronze; 16 workshop heads; and a striking crew of 17 signatores, 11 suppostores who set the blanks and 32 malliatores who swung the hammers. Half were slaves. Coins were counted so many to the pound. In AD 271 the mint workers rose against the emperor Aurelian.</p>
-<p>Whether the building under San Clemente was the mint is disputed. What a signator did is too.</p>
-<p><a class="go" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/trajan-aureus-forum-of-trajan">See this coin in the catalogue →</a></p>
-<div class="src">Sources<ul><li><a href="http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=6:chapter=20" rel="nofollow">Livy, History of Rome 6.20 (the Roman historian)</a></li><li><a href="https://bnumis.com/wp-content/uploads/2023/07/SYSTEM-AND-PRODUCT-IN-ROMAN-MINTS-FROM-RBN-2012.pdf" rel="nofollow">Woytek, System and product in Roman mints (free PDF)</a></li><li><a href="https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Historia_Augusta/Aurelian/3*.html#38" rel="nofollow">Historia Augusta, Life of Aurelian 38 (the mint workers&#x27; revolt)</a></li></ul></div>
-</article>
-<article class="card" id="late-mint">
-<div class="part">Late Rome · c. AD 300 – 450</div>
-<h2>Blanks by the hundred</h2>
-<p class="say">Late Roman mints cast their bronze blanks in throwaway clay moulds, up to 192 at a pour. At Thessaloniki the mint sat in rooms at the end of the city forum, with four kilns.</p>
-<div class="pics"><figure class="dg lhtml"><figure style="margin:0;width:100%"><div style="position:relative"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/mint-late-roman.webp" alt="Two rooms at the end of a city forum, its colonnade behind. Left, by a small domed kiln on a rubble base, a man breaks open thin clay mould panels with rows of round hollows; short strings of bronze blanks lie by the bench, and a second man chisels the blanks apart into a clay bowl. Right, through a doorway, two striking teams work at stone blocks and an official weighs coins on a balance. Numbered markers on the picture match the numbered list below it." style="display:block;width:100%;height:auto;border-radius:10px;background:#f6f3ee" loading="lazy"><span aria-hidden="true" style="position:absolute;left:5%;top:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">1</span><span aria-hidden="true" style="position:absolute;left:24%;top:46%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">2</span><span aria-hidden="true" style="position:absolute;left:55%;top:83%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">3</span><span aria-hidden="true" style="position:absolute;left:70%;top:28%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">4</span><span aria-hidden="true" style="position:absolute;left:96%;top:46%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">5</span></div><p class="sub" style="margin:8px 0 4px;font-size:.9em">Plain text: shown by digs, inscriptions or coins. <span style="color:var(--guess,#b8336f);font-style:italic">Pink: our guess.</span></p><ol style="margin:4px 0 0;padding-left:20px;line-height:1.4"><li style="margin:0 0 6px"><b>The kiln</b><br>Four metalworking kilns in Thessaloniki&#x27;s forum. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Its dome: only the bases survive.</span></li><li style="margin:0 0 6px"><b>Breaking the moulds</b><br>Clay moulds cast up to 192 blanks at once, joined in short strings.</li><li style="margin:0 0 6px"><b>Cutting apart</b><br>Blanks keep a stub where they left the string. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>The chisel.</span></li><li style="margin:0 0 6px"><b>Two striking teams</b><br>Each team put its own number on the coins, so bad work could be traced.</li><li style="margin:0 0 6px"><b>The official</b><br><span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Weighing and bagging the coins.</span></li></ol><figcaption class="sub" style="margin-top:6px">A late Roman city mint, after the Thessaloniki dig. Illustration made for this lesson.</figcaption></figure></figure><figure><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-thessaloniki-forum.webp" alt="Thessaloniki&#x27;s Roman forum today. The mint&#x27;s rooms were at the north end of its east wing." loading="lazy"><figcaption>Thessaloniki&#x27;s Roman forum today. The mint&#x27;s rooms were at the north end of its east wing.<br><a href="https://commons.wikimedia.org/wiki/File:Thessaloniki_Roman_Forum.jpg" rel="nofollow">Evilemperorzorg, via Wikimedia Commons · CC BY-SA 3.0</a></figcaption></figure></div>
-<p>Each mould was six thin clay panels with two rows of eight hollows on each face, wrapped in raw clay and fired. Bronze poured in through a narrow channel filled every hollow, and the mould was broken to get the blanks out. One broken piece still holds four blanks. From about AD 294 some fifteen imperial mints each ran several teams, and each team put its own number on the coins, so bad work could be traced.</p>
-<div class="src">Sources<ul><li><a href="https://www.amth.gr/en/exhibitions/exhibit-of-the-month/1904" rel="nofollow">Archaeological Museum of Thessaloniki: a clay mould for bronze blanks</a></li></ul></div>
-</article>
-<article class="card" id="gold-court">
-<div class="part">Late Rome · AD 367 – 450</div>
-<h2>Gold followed the emperor</h2>
-<p class="say">Gold was different. From about AD 367 tax gold was melted into bars and sent to the emperor&#x27;s treasury, and gold coins were struck where the court was.</p>
-<div class="pics"><figure><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-sirmium-gold-bars.webp" alt="Gold bars of about AD 375 from the hoard found in 1887, now in the Bank of England Museum, London." loading="lazy"><figcaption>Gold bars of about AD 375 from the hoard found in 1887, now in the Bank of England Museum, London.<br><a href="https://commons.wikimedia.org/wiki/File:Roman_Gold_Bars,_375_AD_-_Bank_of_England_Museum_-_Joy_of_Museums.jpg" rel="nofollow">Joyofmuseums, via Wikimedia Commons · CC BY-SA 4.0</a></figcaption></figure><figure><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/gratian-solidus-two-emperors-seated-facing" title="Open this coin in the catalogue"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/bf0c3c47b7b2-cut.webp" alt="Gratian, solidus, Trier, AD 375–383." loading="lazy"></a><figcaption>Gratian, solidus, Trier, AD 375–383.<br><a href="https://ikmk.smb.museum/object?id=18202346" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure><figure><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/gratian-solidus-two-emperors-seated-facing" title="Open this coin in the catalogue"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/00e2a325ecb4-cut.webp" alt="Its back: two emperors enthroned. Trier was then the western court&#x27;s home." loading="lazy"></a><figcaption>Its back: two emperors enthroned. Trier was then the western court&#x27;s home.<br><a href="https://ikmk.smb.museum/object?id=18202346" rel="nofollow">Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</a></figcaption></figure></div>
-<p>A hoard of fifteen such bars was found in a Carpathian mountain pass. They were stamped at Sirmium about AD 379–380, signed by the assayers Lucianus and Flavius Flavianus, and are now in London and Vienna. Solidi marked COMOB under the design are usually read as &#x27;refined gold of the court&#x27;. The court&#x27;s own gold workshop has never been found.</p>
-<p>How literally the gold mint travelled with the emperor is debated.</p>
-<p><a class="go" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/gratian-solidus-two-emperors-seated-facing">See this coin in the catalogue →</a></p>
-<div class="src">Sources<ul><li><a href="https://www.britishmuseum.org/collection/object/C_1894-1207-2" rel="nofollow">British Museum: gold bar stamped by the assayer Lucianus</a></li><li><a href="https://www.khm.at/en/artworks/goldbarren-sirmium-1035928-1" rel="nofollow">Kunsthistorisches Museum Vienna: gold bar from Sirmium</a></li></ul></div>
-</article>
-<nav class="more"><a href="https://escargot-studio.github.io/gold-coin-catalogue/learn/made/">‹ How coins were made</a><a href="https://escargot-studio.github.io/gold-coin-catalogue/learn/is-it-real/">Is it real? ›</a></nav>
+<main>
+<div class="learn" id="learn" aria-label="Gold coins, explained"><div class="lbox" id="lbox"><div class="lhead"><a class="back lnk" data-chap="" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/"><span aria-hidden="true">‹</span> All lessons</a>
+    <span class="crumbs">For collectors › Ancient mints through the ages</span>
+    <a class="x lnk" data-lclose="" aria-label="Back to the catalogue" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html">×</a></div><div class="lbody"><div class="lwrap"><nav class="lrail" aria-label="Topics"><h5>Start here</h5><a data-chap="names" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/names/">Coin names and sizes</a><a data-chap="read" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/read/">Reading a coin</a><a data-chap="gods" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/gods/">Gods on coins</a><h5>Gold in history</h5><a data-chap="buy" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/buy/">What one gold coin bought</a><a data-chap="power" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/power/">Coins as propaganda</a><a data-chap="know" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/know/">How we date ancient coins</a><h5>Why coins are art</h5><a data-chap="syracuse" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/syracuse/">Syracuse: why its coins are art</a><a data-chap="pantikapaion" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/pantikapaion/">Pantikapaion: the satyr at the edge of the world</a><h5>For collectors</h5><a data-chap="made" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/made/">How coins were made</a><div class="lrcur"><a data-chap="mints" aria-current="true" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/mints/">Ancient mints through the ages</a><button class="lrfold" data-lrfold="" aria-expanded="true" aria-label="Hide this lesson's chapters">−</button></div><div class="lcards"><span class="ltpart">What is left</span><a data-lstep="what-survives" class="lnk" href="#lstep-what-survives"><b>1</b><span>No mint survives whole</span></a><span class="ltpart">Greek cities</span><a data-lstep="greek-mint" class="lnk" href="#lstep-greek-mint"><b>2</b><span>A Greek city mint</span></a><a data-lstep="silver-mint" class="lnk" href="#lstep-silver-mint"><b>3</b><span>Where was the silver struck?</span></a><span class="ltpart">Rome</span><a data-lstep="rome-mint" class="lnk" href="#lstep-rome-mint"><b>4</b><span>Rome's mint</span></a><span class="ltpart">Late Rome</span><a data-lstep="late-mint" class="lnk" href="#lstep-late-mint"><b>5</b><span>Blanks by the hundred</span></a><a data-lstep="gold-court" class="lnk" href="#lstep-gold-court"><b>6</b><span>Gold followed the emperor</span></a></div><a data-chap="is-it-real" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/is-it-real/">Is it real?</a><a data-chap="pedigree" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/pedigree/">Pedigree and provenance</a></nav><div class="lcol"><div class="lesson">
+    <header class="lhead2"><span class="lkick">For collectors · short lesson · 6 short chapters, read in order</span>
+      <h1 class="chtitle">Ancient mints through the ages</h1><p class="lintro">What the buildings that made coins looked like, from a Greek city's workroom to Rome's mint and the late Roman mints, and how much of that we really know.</p>
+      </header>
+    <nav class="ltoc" aria-label="Chapters"><span class="ltpart">What is left</span><a data-lstep="what-survives" class="lnk" href="#lstep-what-survives"><b>1</b><span>No mint survives whole</span></a><span class="ltpart">Greek cities</span><a data-lstep="greek-mint" class="lnk" href="#lstep-greek-mint"><b>2</b><span>A Greek city mint</span></a><a data-lstep="silver-mint" class="lnk" href="#lstep-silver-mint"><b>3</b><span>Where was the silver struck?</span></a><span class="ltpart">Rome</span><a data-lstep="rome-mint" class="lnk" href="#lstep-rome-mint"><b>4</b><span>Rome's mint</span></a><span class="ltpart">Late Rome</span><a data-lstep="late-mint" class="lnk" href="#lstep-late-mint"><b>5</b><span>Blanks by the hundred</span></a><a data-lstep="gold-court" class="lnk" href="#lstep-gold-court"><b>6</b><span>Gold followed the emperor</span></a></nav>
+    <div class="lsteps"><h3 class="lpart">What is left</h3><section class="lstep" id="lstep-what-survives">
+      <div class="lnum">1</div>
+      <div class="lmain">
+        <div class="ldates">c. 600 BC – AD 700</div>
+        <h3>No mint survives whole</h3>
+        <p class="llead">No ancient mint is still standing, and only a handful have been dug up. What survives is pits, moulds, scraps of metal, blanks that were never struck, and inscriptions naming the staff.</p>
+        
+        <p class="ltext">Every Greek mint found so far made bronze small change. The buildings where gold and silver were struck have never been found, so every picture of an ancient mint, including the three here, is a reconstruction. Under each one, plain text marks what the digs show and pink marks our guesses. Mint buildings changed enough over a thousand years that one picture would mislead.</p>
+        
+        
+        <p class="sub cite">Source: <a href="https://www.ascsa.edu.gr/uploads/media/hesperia/2668480.pdf" rel="noopener">Camp and Kroll, The Agora Mint and Athenian Bronze Coinage (Hesperia, free) ↗</a> · <a href="https://www.ifao.egnet.net/bifao/111/9/" rel="noopener">Faucher et al., A mint workshop at Karnak (BIFAO, free) ↗</a></p>
+        
+        
+        <details class="lsrc"><summary>Sources</summary><ul class="srcs"><li>Camp and Kroll, 'The Agora Mint and Athenian Bronze Coinage', Hesperia 70 (2001)</li><li>Faucher, Coulon, Frangin and Giorgi, 'Un atelier monétaire à Karnak au IIe s. av. J.-C.', BIFAO 111 (2011)</li></ul></details>
+      </div></section><h3 class="lpart">Greek cities</h3><section class="lstep" id="lstep-greek-mint">
+      <div class="lnum">2</div>
+      <div class="lmain">
+        <div class="ldates">c. 400 – 30 BC</div>
+        <h3>A Greek city mint</h3>
+        <p class="llead">At Athens the mint was a plain public building by the market square, about 27 by 29 metres. Its big workroom had pits, water basins and a drain, and bronze blanks still lay on the floor.</p>
+        <div class="lhtml-box dg"><figure style="margin:0;width:100%"><div style="position:relative"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/mint-greek.webp" alt="A large workroom of a Greek city mint: stone footings and mudbrick walls, a timber roof on two posts. Left, a man warms bronze blanks in a clay basin of charcoal set in a floor pit. Back, one man chops slices off a bronze rod with a chisel while another hammers a slice flat. Front, a man weighs one blank on a hand balance. Right, a two-man team strikes a coin on a stone block, and a plaster-lined water basin is cut into the floor. Numbered markers on the picture match the numbered list below it." style="display:block;width:100%;height:auto;border-radius:10px;background:#f6f3ee" loading="lazy"><span aria-hidden="true" style="position:absolute;left:9%;top:22%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">1</span><span aria-hidden="true" style="position:absolute;left:50%;top:32%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">2</span><span aria-hidden="true" style="position:absolute;left:59%;top:88%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">3</span><span aria-hidden="true" style="position:absolute;left:29%;top:73%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">4</span><span aria-hidden="true" style="position:absolute;left:74%;top:88%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">5</span><span aria-hidden="true" style="position:absolute;left:92%;top:48%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">6</span></div><p class="sub" style="margin:8px 0 4px;font-size:.9em">Plain text: shown by digs, inscriptions or coins. <span style="color:var(--guess,#b8336f);font-style:italic">Pink: our guess.</span></p><ol style="margin:4px 0 0;padding-left:20px;line-height:1.4"><li style="margin:0 0 6px"><b>The room</b><br>Stone footings of a 27 × 29 m building. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Mudbrick walls, posts and roof: the usual Greek way, not found here.</span></li><li style="margin:0 0 6px"><b>Making the blanks</b><br>Slices chopped off a forged bronze rod with a chisel, then hammered flat.</li><li style="margin:0 0 6px"><b>Checking the weight</b><br><span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Weighing each blank on a hand balance.</span></li><li style="margin:0 0 6px"><b>Warming the blanks</b><br>Clay basins scorched by fire, set in pits in the floor. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Heating blanks in them is our guess.</span></li><li style="margin:0 0 6px"><b>Striking</b><br>Blank on the lower die; one man holds the upper die and hits it with a hammer. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>A second man with tongs.</span></li><li style="margin:0 0 6px"><b>Water</b><br>Basins cut into the floor and lined with plaster. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>What the water was for isn't known.</span></li></ol><figcaption class="sub" style="margin-top:6px">A Greek city mint, after the Athens dig. Illustration made for this lesson.</figcaption></figure></div>
+        <p class="ltext">The blanks were made by forging a bronze rod, scoring it with a chisel, chopping off a slice and hammering it flat. The same chopped blanks turn up at Halieis and Olynthos in the 4th century BC. The first diggers took the pits for furnaces, but a lab test in 1997 found no trace of melting: the metal arrived ready. At Halieis the mint stood against the city wall, and its excavators thought coins were struck there 'only as required'. A Greek mint was a part-time workshop, not a factory.</p>
+        <div class="lfigs"><figure class="lf-wide"><a href="https://commons.wikimedia.org/wiki/File:The_Ancient_Agora_of_Athens_from_Polygnotou_Street_in_Plaka_on_May_31,_2020.jpg" rel="noopener" title="George E. Koronaios, via Wikimedia Commons · CC BY-SA 4.0"><img loading="lazy" src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-athens-mint-site.webp" alt="Athens today: the church of the Holy Apostles, about AD 1000, stands on one corner of the mint's footings." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Athens today: the church of the Holy Apostles, about AD 1000, stands on one corner of the mint's footings.<br><span>George E. Koronaios, via Wikimedia Commons · CC BY-SA 4.0</span></figcaption></figure><figure class="lf-wide"><a href="https://commons.wikimedia.org/wiki/File:Halieis_Akropolis.jpg" rel="noopener" title="Heinz Schmitz, via Wikimedia Commons · CC BY-SA 4.0"><img loading="lazy" src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-halieis.webp" alt="Halieis today, seen from its acropolis." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Halieis today, seen from its acropolis.<br><span>Heinz Schmitz, via Wikimedia Commons · CC BY-SA 4.0</span></figcaption></figure></div>
+        
+        <p class="sub cite">Source: <a href="https://www.ascsa.edu.gr/uploads/media/hesperia/2668480.pdf" rel="noopener">Camp and Kroll, The Agora Mint and Athenian Bronze Coinage (Hesperia, free) ↗</a> · <a href="https://www.ascsa.edu.gr/uploads/media/hesperia/147808.pdf" rel="noopener">Boyd and Rudolph, The Lower Town of Halieis (Hesperia, free), p. 339 ↗</a></p>
+        <div class="dispute"><b>Historians disagree:</b> The pits held clay basins scorched by fire. What was heated in them is not known.</div>
+        
+        <details class="lsrc"><summary>Sources</summary><ul class="srcs"><li>Camp and Kroll, Hesperia 70 (2001)</li><li>Boyd and Rudolph, 'The Lower Town of Halieis, 1970–1977', Hesperia 47 (1978)</li></ul></details>
+      </div></section><section class="lstep" id="lstep-silver-mint">
+      <div class="lnum">3</div>
+      <div class="lmain">
+        <div class="ldates">c. 407 – 375 BC</div>
+        <h3>Where was the silver struck?</h3>
+        <p class="llead">Not in that building: tests there found 'only the slightest traces of silver'. Ancient writers name a separate silver mint at Athens, the argyrokopeion. It has never been found.</p>
+        
+        <p class="ltext">When Athens ran short of silver near the end of its war with Sparta, it melted gold statues of Victory on the Acropolis and struck gold coins, and afterwards the dies were dedicated to the goddess there. A law of 375 BC set a public slave, the tester, among the bankers' tables in the market to check coins: fakes were cut through and given to the Mother of the Gods.</p>
+        <div class="lfigs"><figure class="lf-coin cut"><a href="https://gallica.bnf.fr/ark:/12148/btv1b11317170q" rel="noopener" title="Bibliothèque nationale de France, via Wikimedia Commons · Public domain"><img loading="lazy" src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/8f4c1ecb1435-cut.webp" alt="Athens, gold stater, 407–404 BC: the owl, struck from melted statues of Victory." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Athens, gold stater, 407–404 BC: the owl, struck from melted statues of Victory.<br><span>Bibliothèque nationale de France, via Wikimedia Commons · Public domain</span></figcaption></figure><figure class="lf-coin cut"><a href="https://gallica.bnf.fr/ark:/12148/btv1b11317170q" rel="noopener" title="Bibliothèque nationale de France, via Wikimedia Commons · Public domain"><img loading="lazy" src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/983ae66c62ea-cut.webp" alt="Its front: Athena." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Its front: Athena.<br><span>Bibliothèque nationale de France, via Wikimedia Commons · Public domain</span></figcaption></figure></div>
+        
+        <p class="sub cite">Source: <a href="https://www.ascsa.edu.gr/uploads/media/hesperia/2668480.pdf" rel="noopener">Camp and Kroll, The Agora Mint and Athenian Bronze Coinage (Hesperia, free) ↗</a></p>
+        
+        <div class="lgo"><a class="btn lnk" data-lcoin="athens-stater-athena-and-owl" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/athens-stater-athena-and-owl">Athena and the owl, the emergency gold stater ›</a></div>
+        <details class="lsrc"><summary>Sources</summary><ul class="srcs"><li>Camp and Kroll, Hesperia 70 (2001), p. 144 and note 14</li><li>Stroud, 'An Athenian Law on Silver Coinage', Hesperia 43 (1974)</li></ul></details>
+      </div></section><h3 class="lpart">Rome</h3><section class="lstep" id="lstep-rome-mint">
+      <div class="lnum">4</div>
+      <div class="lmain">
+        <div class="ldates">c. AD 80 – 270</div>
+        <h3>Rome's mint</h3>
+        <p class="llead">After a fire in AD 80, Rome's mint moved near the Colosseum, probably into a plain block of small vaulted rooms around a courtyard, now under the church of San Clemente. In AD 115 its staff set up statues naming about ninety of themselves.</p>
+        <div class="lhtml-box dg"><figure style="margin:0;width:100%"><div style="position:relative"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/mint-roman.webp" alt="A plain stone building around a courtyard. Along the back, four identical barrel-vaulted rooms with herringbone brick floors, each with the same two-man striking team at a stone block. In the courtyard an older foreman watches a large balance weighing a heap of coins against bronze weights while a clerk writes on a wax tablet; a worker sorts baskets of gold, silver and plain blanks on a table. Numbered markers on the picture match the numbered list below it." style="display:block;width:100%;height:auto;border-radius:10px;background:#f6f3ee" loading="lazy"><span aria-hidden="true" style="position:absolute;left:50%;top:9%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">1</span><span aria-hidden="true" style="position:absolute;left:83%;top:23%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">2</span><span aria-hidden="true" style="position:absolute;left:4%;top:72%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">3</span><span aria-hidden="true" style="position:absolute;left:49%;top:72%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">4</span></div><p class="sub" style="margin:8px 0 4px;font-size:.9em">Plain text: shown by digs, inscriptions or coins. <span style="color:var(--guess,#b8336f);font-style:italic">Pink: our guess.</span></p><ol style="margin:4px 0 0;padding-left:20px;line-height:1.4"><li style="margin:0 0 6px"><b>Workshops</b><br>Small vaulted rooms round a courtyard, under the church of San Clemente. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Whether this building was Rome's mint is disputed. One striking team per room is our guess.</span></li><li style="margin:0 0 6px"><b>The striking team</b><br>Suppostores set the blanks, malliatores swung the hammers (staff list of AD 115).</li><li style="margin:0 0 6px"><b>Foreman and clerk</b><br>The foreman Felix, a freedman of the emperor, checked the gold, silver and bronze. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>The clerk, and weighing coins in bulk on a balance.</span></li><li style="margin:0 0 6px"><b>Sorting the coins</b><br>Coins were struck so many to the pound. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Sorting gold, silver and blanks on a table.</span></li></ol><figcaption class="sub" style="margin-top:6px">Rome's mint, after the building under San Clemente and the staff list of AD 115. Illustration made for this lesson.</figcaption></figure></div>
+        <p class="ltext">Before that the mint stood beside the temple of Juno Moneta on the Capitol, 'where the temple and mint of Moneta now stand', wrote the Roman historian Livy. The AD 115 list names Felix, a freedman of the emperor, who checked the gold, silver and bronze; 16 workshop heads; and a striking crew of 17 signatores, 11 suppostores who set the blanks and 32 malliatores who swung the hammers. Half were slaves. Coins were counted so many to the pound. In AD 271 the mint workers rose against the emperor Aurelian.</p>
+        <div class="lfigs"><figure class="lf-wide"><a href="https://commons.wikimedia.org/wiki/File:San_Clemente_Roma_Foto_cella_horreum.jpg" rel="noopener" title="Valerio b. cosentino, via Wikimedia Commons · Public domain"><img loading="lazy" src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-san-clemente-room.webp" alt="A room of the building under San Clemente: some read it as the mint, others as a warehouse." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>A room of the building under San Clemente: some read it as the mint, others as a warehouse.<br><span>Valerio b. cosentino, via Wikimedia Commons · Public domain</span></figcaption></figure><figure class="lf-coin cut"><a href="https://ikmk.smb.museum/object?id=18202022" rel="noopener" title="Münzkabinett, Staatliche Museen zu Berlin · Public Domain Mark 1.0"><img loading="lazy" src="https://escargot-studio.github.io/history-through-coins/history-map-img/made/carisius-moneta.webp" alt="Denarius of T. Carisius, 46 BC: Juno Moneta, beside whose temple the Republic's mint stood." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Denarius of T. Carisius, 46 BC: Juno Moneta, beside whose temple the Republic's mint stood.<br><span>Münzkabinett, Staatliche Museen zu Berlin · Public Domain Mark 1.0</span></figcaption></figure><figure class="lf-coin cut"><a href="https://ikmk.smb.museum/object?id=18273036" rel="noopener" title="Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0"><img loading="lazy" src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/0683bc63b9bb-cut.webp" alt="Trajan, aureus, AD 112–117: struck by the staff of AD 115." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Trajan, aureus, AD 112–117: struck by the staff of AD 115.<br><span>Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</span></figcaption></figure><figure class="lf-coin cut"><a href="https://ikmk.smb.museum/object?id=18273036" rel="noopener" title="Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0"><img loading="lazy" src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/d0c344176bf9-cut.webp" alt="Its back: Trajan's Forum." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Its back: Trajan's Forum.<br><span>Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</span></figcaption></figure></div>
+        
+        <p class="sub cite">Source: <a href="http://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.02.0026:book=6:chapter=20" rel="noopener">Livy, History of Rome 6.20 (the Roman historian) ↗</a> · <a href="https://bnumis.com/wp-content/uploads/2023/07/SYSTEM-AND-PRODUCT-IN-ROMAN-MINTS-FROM-RBN-2012.pdf" rel="noopener">Woytek, System and product in Roman mints (free PDF) ↗</a> · <a href="https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Historia_Augusta/Aurelian/3*.html#38" rel="noopener">Historia Augusta, Life of Aurelian 38 (the mint workers' revolt) ↗</a></p>
+        <div class="dispute"><b>Historians disagree:</b> Whether the building under San Clemente was the mint is disputed. What a signator did is too.</div>
+        <div class="lgo"><a class="btn lnk" data-lcoin="trajan-aureus-forum-of-trajan" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/trajan-aureus-forum-of-trajan">Forum of Trajan ›</a></div>
+        <details class="lsrc"><summary>Sources</summary><ul class="srcs"><li>Livy, History of Rome 6.20.13</li><li>Corpus Inscriptionum Latinarum VI 42–44 (AD 115)</li><li>Woytek, 'System and product in Roman mints', Revue belge de numismatique 158 (2012)</li><li>Coarelli, 'Moneta', in Lexicon Topographicum Urbis Romae III (1996)</li><li>Historia Augusta, Aurelian 38</li></ul></details>
+      </div></section><h3 class="lpart">Late Rome</h3><section class="lstep" id="lstep-late-mint">
+      <div class="lnum">5</div>
+      <div class="lmain">
+        <div class="ldates">c. AD 300 – 450</div>
+        <h3>Blanks by the hundred</h3>
+        <p class="llead">Late Roman mints cast their bronze blanks in throwaway clay moulds, up to 192 at a pour. At Thessaloniki the mint sat in rooms at the end of the city forum, with four kilns.</p>
+        <div class="lhtml-box dg"><figure style="margin:0;width:100%"><div style="position:relative"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/mint-late-roman.webp" alt="Two rooms at the end of a city forum, its colonnade behind. Left, by a small domed kiln on a rubble base, a man breaks open thin clay mould panels with rows of round hollows; short strings of bronze blanks lie by the bench, and a second man chisels the blanks apart into a clay bowl. Right, through a doorway, two striking teams work at stone blocks and an official weighs coins on a balance. Numbered markers on the picture match the numbered list below it." style="display:block;width:100%;height:auto;border-radius:10px;background:#f6f3ee" loading="lazy"><span aria-hidden="true" style="position:absolute;left:5%;top:50%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">1</span><span aria-hidden="true" style="position:absolute;left:24%;top:46%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">2</span><span aria-hidden="true" style="position:absolute;left:55%;top:83%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">3</span><span aria-hidden="true" style="position:absolute;left:70%;top:28%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">4</span><span aria-hidden="true" style="position:absolute;left:96%;top:46%;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;background:#1f1b16;color:#f6f3ee;font:600 12px/22px Figtree,sans-serif;text-align:center;box-shadow:0 0 0 2px #f6f3ee">5</span></div><p class="sub" style="margin:8px 0 4px;font-size:.9em">Plain text: shown by digs, inscriptions or coins. <span style="color:var(--guess,#b8336f);font-style:italic">Pink: our guess.</span></p><ol style="margin:4px 0 0;padding-left:20px;line-height:1.4"><li style="margin:0 0 6px"><b>The kiln</b><br>Four metalworking kilns in Thessaloniki's forum. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Its dome: only the bases survive.</span></li><li style="margin:0 0 6px"><b>Breaking the moulds</b><br>Clay moulds cast up to 192 blanks at once, joined in short strings.</li><li style="margin:0 0 6px"><b>Cutting apart</b><br>Blanks keep a stub where they left the string. <span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>The chisel.</span></li><li style="margin:0 0 6px"><b>Two striking teams</b><br>Each team put its own number on the coins, so bad work could be traced.</li><li style="margin:0 0 6px"><b>The official</b><br><span style="color:var(--guess,#b8336f);font-style:italic"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Our guess: </span>Weighing and bagging the coins.</span></li></ol><figcaption class="sub" style="margin-top:6px">A late Roman city mint, after the Thessaloniki dig. Illustration made for this lesson.</figcaption></figure></div>
+        <p class="ltext">Each mould was six thin clay panels with two rows of eight hollows on each face, wrapped in raw clay and fired. Bronze poured in through a narrow channel filled every hollow, and the mould was broken to get the blanks out. One broken piece still holds four blanks. From about AD 294 some fifteen imperial mints each ran several teams, and each team put its own number on the coins, so bad work could be traced.</p>
+        <div class="lfigs"><figure class="lf-wide"><a href="https://commons.wikimedia.org/wiki/File:Thessaloniki_Roman_Forum.jpg" rel="noopener" title="Evilemperorzorg, via Wikimedia Commons · CC BY-SA 3.0"><img loading="lazy" src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-thessaloniki-forum.webp" alt="Thessaloniki's Roman forum today. The mint's rooms were at the north end of its east wing." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Thessaloniki's Roman forum today. The mint's rooms were at the north end of its east wing.<br><span>Evilemperorzorg, via Wikimedia Commons · CC BY-SA 3.0</span></figcaption></figure></div>
+        
+        <p class="sub cite">Source: <a href="https://www.amth.gr/en/exhibitions/exhibit-of-the-month/1904" rel="noopener">Archaeological Museum of Thessaloniki: a clay mould for bronze blanks ↗</a></p>
+        
+        
+        <details class="lsrc"><summary>Sources</summary><ul class="srcs"><li>Archaeological Museum of Thessaloniki, exhibit of the month, April 2019</li><li>Velenis, 'Νομισματοκοπείο στην αρχαία αγορά της Θεσσαλονίκης', in Χαρακτήρ (1996)</li></ul></details>
+      </div></section><section class="lstep" id="lstep-gold-court">
+      <div class="lnum">6</div>
+      <div class="lmain">
+        <div class="ldates">AD 367 – 450</div>
+        <h3>Gold followed the emperor</h3>
+        <p class="llead">Gold was different. From about AD 367 tax gold was melted into bars and sent to the emperor's treasury, and gold coins were struck where the court was.</p>
+        
+        <p class="ltext">A hoard of fifteen such bars was found in a Carpathian mountain pass. They were stamped at Sirmium about AD 379–380, signed by the assayers Lucianus and Flavius Flavianus, and are now in London and Vienna. Solidi marked COMOB under the design are usually read as 'refined gold of the court'. The court's own gold workshop has never been found.</p>
+        <div class="lfigs"><figure class="lf-wide"><a href="https://commons.wikimedia.org/wiki/File:Roman_Gold_Bars,_375_AD_-_Bank_of_England_Museum_-_Joy_of_Museums.jpg" rel="noopener" title="Joyofmuseums, via Wikimedia Commons · CC BY-SA 4.0"><img loading="lazy" src="https://escargot-studio.github.io/history-through-coins/history-map-img/mints/src-sirmium-gold-bars.webp" alt="Gold bars of about AD 375 from the hoard found in 1887, now in the Bank of England Museum, London." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Gold bars of about AD 375 from the hoard found in 1887, now in the Bank of England Museum, London.<br><span>Joyofmuseums, via Wikimedia Commons · CC BY-SA 4.0</span></figcaption></figure><figure class="lf-coin cut"><a href="https://ikmk.smb.museum/object?id=18202346" rel="noopener" title="Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0"><img loading="lazy" src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/bf0c3c47b7b2-cut.webp" alt="Gratian, solidus, Trier, AD 375–383." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Gratian, solidus, Trier, AD 375–383.<br><span>Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</span></figcaption></figure><figure class="lf-coin cut"><a href="https://ikmk.smb.museum/object?id=18202346" rel="noopener" title="Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0"><img loading="lazy" src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/00e2a325ecb4-cut.webp" alt="Its back: two emperors enthroned. Trier was then the western court's home." referrerpolicy="no-referrer" onerror="this.closest('figure').hidden=true"></a>
+      <figcaption>Its back: two emperors enthroned. Trier was then the western court's home.<br><span>Münzkabinett, Staatliche Museen zu Berlin · CC BY-SA 4.0</span></figcaption></figure></div>
+        
+        <p class="sub cite">Source: <a href="https://www.britishmuseum.org/collection/object/C_1894-1207-2" rel="noopener">British Museum: gold bar stamped by the assayer Lucianus ↗</a> · <a href="https://www.khm.at/en/artworks/goldbarren-sirmium-1035928-1" rel="noopener">Kunsthistorisches Museum Vienna: gold bar from Sirmium ↗</a></p>
+        <div class="dispute"><b>Historians disagree:</b> How literally the gold mint travelled with the emperor is debated.</div>
+        <div class="lgo"><a class="btn lnk" data-lcoin="gratian-solidus-two-emperors-seated-facing" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html#coin/gratian-solidus-two-emperors-seated-facing">Two emperors seated facing ›</a></div>
+        <details class="lsrc"><summary>Sources</summary><ul class="srcs"><li>Codex Theodosianus 12.6.13 (AD 367)</li><li>Hendy, Studies in the Byzantine Monetary Economy (1985)</li><li>British Museum C_1894-1207-2</li><li>Kunsthistorisches Museum, gold bar from Sirmium</li></ul></details>
+      </div></section>
+      <div class="chend"><a class="btn primary lnk" data-chap="is-it-real" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/is-it-real/">Next topic: Is it real? ›</a>
+        <a class="btn lnk" data-chap="" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/">All topics</a><a class="btn lnk" data-lclose="" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html">Back to the catalogue</a></div></div>
+  </div></div></div></div></div></div>
 </main>
-<footer><div class="wrap"><svg viewBox="9 11 89 46" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M39.33,39.52 C36,29 30,25.5 24,25.5 C17.5,25.5 14,33 14,40.5 C14,49 19,54 26,54 L88,54 C92.5,54 95,52.5 95,50.5 C95,48.3 92,47.6 75.5,47.6"/><path d="M39.3,39.5 C36,24 46,12.5 58.8,12.5 C70,12.5 77.4,21 77.4,31 C77.4,40.5 70,47.4 61.7,47.4 C53,47.4 46.7,41 46.7,33.8 C46.7,26 52.5,20.8 59.4,20.8 C65,20.8 69.2,25 69.2,30.3 C69.2,35.5 65.3,39.1 60.7,39.1 L56,39"/><path d="M19.2,36 Q22,38.6 24.8,36"/><path d="M20.5,27.5 L16.5,18.5 C15.2,15.5 11.5,16.2 12,19.5 M27.5,26 L29.5,16.5 C30.2,13.4 34,13.6 34,16.8"/></g></svg><br>made by Sên<br>
+<footer class="sitefoot"><svg viewBox="9 11 89 46" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M39.33,39.52 C36,29 30,25.5 24,25.5 C17.5,25.5 14,33 14,40.5 C14,49 19,54 26,54 L88,54 C92.5,54 95,52.5 95,50.5 C95,48.3 92,47.6 75.5,47.6"/><path d="M39.3,39.5 C36,24 46,12.5 58.8,12.5 C70,12.5 77.4,21 77.4,31 C77.4,40.5 70,47.4 61.7,47.4 C53,47.4 46.7,41 46.7,33.8 C46.7,26 52.5,20.8 59.4,20.8 C65,20.8 69.2,25 69.2,30.3 C69.2,35.5 65.3,39.1 60.7,39.1 L56,39"/><path d="M19.2,36 Q22,38.6 24.8,36"/><path d="M20.5,27.5 L16.5,18.5 C15.2,15.5 11.5,16.2 12,19.5 M27.5,26 L29.5,16.5 C30.2,13.4 34,13.6 34,16.8"/></g></svg><br>made by Sên<br>
 The catalogue sells nothing and isn't affiliated with any museum, mint, auction house or dealer.
-Photos belong to the collections credited under each one.</div></footer>
+Photos belong to the collections credited under each one.</footer>
+<script>
+document.addEventListener("click", e => {   // the rail's − / + folds the open lesson's chapter list, as on the map
+  const b = e.target.closest("[data-lrfold]"); if (!b) return;
+  const open = b.getAttribute("aria-expanded") !== "true", list = b.parentNode.nextElementSibling;
+  b.setAttribute("aria-expanded", open); b.textContent = open ? "\u2212" : "+"; if (list) list.hidden = !open;
+});
+</script>
 </body>
 </html>
