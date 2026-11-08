@@ -1273,7 +1273,7 @@ img:is([src$="-cut.webp"], [src$="-s.webp"], [src*="ancient-img/split-"]) { mix-
 
 <footer>
   <div class="wrap">
-    <!-- learn-footer --><p>New to ancient gold? Read <a href="https://escargot-studio.github.io/history-through-coins/learn/">Gold coins, explained</a>: short illustrated lessons on reading a coin, what one bought, and how coins were struck, faked and traced.</p><!-- /learn-footer -->
+    <!-- learn-footer --><p>New to ancient gold? Read <a href="learn/">Gold coins, explained</a>: short illustrated lessons on reading a coin, what one bought, and how coins were struck, faked and traced.</p><!-- /learn-footer -->
     <p>Each card is a coin <em>type</em> (one design). The photo shows one example of it, usually from a museum; individual coins vary in strike, centring and wear.</p>
     <p>Photos stay with their owners: cards show small credited copies and the full photos load from the owners' websites; credits and licences are on each coin's record. Type data from Nomisma.org and the American Numismatic Society's OCRE, CRRO, PELLA, SCO and PCO (Open Database License), IRIS, Corpus Nummorum and Iron Age Coins in Britain. Histories are written for this catalogue.</p>
     <p>This is a catalogue of designs, not an authentication; ancient gold is often forged. Prices are a rough guide from past auction results, buyer's fees included, not valuations. It doesn't sell anything and isn't affiliated with any museum, dealer or auction house.</p>
@@ -4115,90 +4115,18 @@ function applyDetail(detail) {
 </script>
 <!-- /map-links -->
 <!-- learn-share -->
-<style>
-/* Learn on the Ancient page. Since 6 Nov 2026 the catalogue shows the history map's own lesson viewer
-   (the map page with ?embed=learn, in a frame), so both sites share one viewer and can't drift apart.
-   The frame loads the first time Learn is opened and stays loaded, so "Back to the lesson" returns to the same place. */
-.lv-layer { position: fixed; inset: 0; z-index: 1000; background: var(--bg); }
-.lv-layer[hidden] { display: none; }
-.lv-layer iframe { display: block; width: 100%; height: 100%; border: 0; background: var(--bg); }
-.lv-layer .lv-msg { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; color: var(--muted); text-align: center; pointer-events: none; }
-.lv-layer .lv-msg a { color: var(--gold); pointer-events: auto; }
-.lv-backbtn { margin-right: auto; padding: 6px 12px; }
-html.lv-open { overflow: hidden; }
-</style>
 <script>
+/* Learn on the Ancient page. Since 8 Nov 2026 the lessons are ordinary pages on this site,
+   learn/ and learn/<lesson>/, written by learn_pages.py from the history map's lessons at every catalogue push.
+   The header "Learn" link opens them; old #learn and #learn/<lesson> addresses forward there; a coin card
+   opened from a lesson page gets "‹ Back to the lesson". (Before: the map's viewer in a frame, learn_block.html.bak-iframe.) */
 (() => {
-  const MAP = "https://escargot-studio.github.io/history-through-coins/";
-  const ORIGIN = new URL(MAP).origin;
-  const sheet = document.getElementById("sheet"), scrim = document.getElementById("scrim");
-  let layer = null, frame = null, at = null, back = false, ready = false;
-  const here = (h) => location.href.split("#")[0] + h;   // full address, so a <base> tag can't redirect it
-  const hasCoin = (id) => typeof allCoins !== "undefined" && allCoins.some((c) => c.id === id);
+  const LEARN = new URL("learn/", location.href.split("#")[0]).href;
 
-  function make(id) {
-    layer = document.createElement("div");
-    layer.className = "lv-layer"; layer.setAttribute("role", "dialog"); layer.setAttribute("aria-label", "Gold coins, explained");
-    const theme = document.documentElement.dataset.theme;
-    frame = document.createElement("iframe");
-    frame.title = "Gold coins, explained";
-    // 8 Nov: ask the map which build is live and put it in the address, so the frame never shows a cached old copy.
-    const src = (v) => `${MAP}?embed=learn${theme ? "&theme=" + theme : ""}${v ? "&v=" + v : ""}#learn${id ? "/" + id : ""}`;
-    let set = false; const go = (v) => { if (!set) { set = true; frame.src = src(v); } };
-    fetch(`${MAP}version.json?t=${Date.now()}`, { cache: "no-store" }).then(r => r.ok ? r.json() : null)
-      .then(j => go(j && j.v)).catch(() => go(""));
-    setTimeout(() => go(""), 1500);
-    const msg = document.createElement("p");
-    msg.className = "lv-msg"; msg.textContent = "Loading the lessons…";
-    frame.addEventListener("load", () => { ready = true; msg.remove(); });
-    setTimeout(() => { if (!ready) msg.innerHTML = `The lessons are slow to load. <a href="${MAP}#learn${id ? "/" + id : ""}">Read them on the history map ↗</a>`; }, 15000);
-    layer.append(frame, msg);
-    document.body.appendChild(layer);
-  }
-  function openLearn(id) {
-    if (!layer) make(id);
-    else if (id && id !== at && ready) frame.contentWindow.postMessage({ to: "history-map-learn", t: "go", id }, ORIGIN);
-    at = id || at;
-    layer.hidden = false;
-    document.documentElement.classList.add("lv-open");
-    if (!/^#learn/.test(location.hash)) history.pushState(null, "", here("#learn" + (at ? "/" + at : "")));
-    frame.focus();
-  }
-  function closeLearn(keepHash) {
-    if (!layer || layer.hidden) return;
-    layer.hidden = true;
-    document.documentElement.classList.remove("lv-open");
-    if (!keepHash && /^#learn/.test(location.hash)) history.replaceState(null, "", here(""));
-  }
-
-  addEventListener("message", (e) => {
-    if (e.origin !== ORIGIN || !e.data || e.data.from !== "history-map-learn") return;
-    const d = e.data;
-    if (d.t === "close") return closeLearn();
-    if (d.t === "at") { at = d.id || null; if (layer && !layer.hidden) history.replaceState(null, "", here("#learn" + (at ? "/" + at : ""))); return; }
-    if (d.t === "open") { window.open(MAP + d.hash, "_blank", "noopener"); return; }
-    if (d.t === "coin") {
-      if (hasCoin(d.id)) { closeLearn(true); back = true; location.hash = "#coin/" + d.id; }
-      else window.open(`${MAP}#map//coin/${d.id}`, "_blank", "noopener");
-    }
-  });
-  addEventListener("keydown", (e) => { if (e.key === "Escape" && layer && !layer.hidden) closeLearn(); });
-
-  // A coin card opened from a lesson gets "‹ Back to the lesson", until the card closes.
-  if (sheet && scrim) {
-    const obs = new MutationObserver(() => {
-      // Closing the coin card any way (×, scrim, Esc) goes back to the lesson it was opened from (6 Nov 22:17).
-      if (scrim.hidden) { if (back) { back = false; openLearn(at); } return; }
-      if (!back || sheet.querySelector(".lv-backbtn")) return;
-      const nav = sheet.querySelector(".sheet-nav");
-      if (!nav) return;
-      const b = document.createElement("button");
-      b.type = "button"; b.className = "lv-backbtn"; b.textContent = "‹ Back to the lesson";
-      b.addEventListener("click", () => { back = false; if (typeof closeSheet === "function") closeSheet(); openLearn(at); });
-      nav.prepend(b);
-    });
-    obs.observe(sheet, { childList: true });
-    obs.observe(scrim, { attributes: true, attributeFilter: ["hidden"] });
+  // Old shared links: #learn, #learn/<lesson>
+  function route() {
+    const m = location.hash.match(/^#learn(?:\/([a-z0-9-]+))?$/);
+    if (m) location.replace(LEARN + (m[1] ? m[1] + "/" : ""));
   }
 
   // Header: "Learn" next to the History map link, the same quiet style.
@@ -4206,15 +4134,27 @@ html.lv-open { overflow: hidden; }
     const worlds = document.querySelector(".brand-row .worlds");
     if (!worlds || document.querySelector(".lv-nav")) return;
     const a = document.createElement("a");
-    a.className = "map-nav lv-nav"; a.href = "#learn"; a.textContent = "Learn";
-    a.addEventListener("click", (e) => { e.preventDefault(); openLearn(); });
-    worlds.after(a);
+    a.className = "map-nav lv-nav"; a.href = LEARN; a.textContent = "Learn";
+    (document.querySelector(".brand-row .map-nav") || worlds).after(a);
   }
-  const route = () => {
-    const m = location.hash.match(/^#learn(?:\/([a-z0-9-]+))?$/);
-    if (m) openLearn(m[1]); else closeLearn(true);
-  };
+
+  // Came from a lesson page: the coin card offers the way back.
+  const from = (document.referrer || "").startsWith(LEARN) ? document.referrer : "";
+  const sheet = document.getElementById("sheet");
+  if (from && sheet) {
+    new MutationObserver(() => {
+      if (sheet.querySelector(".lv-backbtn")) return;
+      const nav = sheet.querySelector(".sheet-nav");
+      if (!nav) return;
+      const b = document.createElement("a");
+      b.className = "lv-backbtn"; b.href = from; b.textContent = "‹ Back to the lesson";
+      b.style.cssText = "margin-right:auto;padding:6px 12px;color:var(--gold);font-weight:600;text-decoration:none";
+      nav.prepend(b);
+    }).observe(sheet, { childList: true });
+  }
+
   addNav();
+  new MutationObserver(addNav).observe(document.body, { childList: true, subtree: true });
   addEventListener("hashchange", route);
   route();
 })();

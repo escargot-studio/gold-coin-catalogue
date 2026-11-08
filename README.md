@@ -15,7 +15,7 @@ Over 550 gold and electrum designs from the first coins of Lydia to the sack of 
 - One card per design, with museum photos and the story behind it.
 - Collections such as Popular coins, the Twelve Caesars, the Ides of March (EID MAR), Women on gold, Animals on gold and the most expensive ancient coins ever sold.
 - Estimated price ranges from recent public auction results.
-- **Learn**: [short illustrated lessons](https://escargot-studio.github.io/history-through-coins/learn/) on reading a coin, what one gold coin bought, coins as propaganda, how coins were struck, faked and traced, and why Syracuse made the most beautiful.
+- **Learn**: [short illustrated lessons](https://escargot-studio.github.io/gold-coin-catalogue/learn/) on reading a coin, what one gold coin bought, coins as propaganda, how coins were struck, faked and traced, and why Syracuse made the most beautiful.
 - Every coin links to the [history map](https://escargot-studio.github.io/history-through-coins/), which shows where and when it was struck.
 
 ## Modern gold
