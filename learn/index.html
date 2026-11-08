@@ -71,13 +71,17 @@ figcaption a { color: var(--muted); }
 .go:hover { text-decoration: underline; }
 nav.more { border-top: 1px solid var(--line); margin-top: 30px; padding: 20px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .groups section { margin: 30px 0; }
-.groups h2 { font-size: 26px; margin: 0 0 4px; }
-.groups .line { color: var(--muted); margin: 0 0 12px; }
-.tile { display: block; padding: 14px 16px; margin: 10px 0; border: 1px solid var(--line); border-radius: 14px;
+.groups h2 { font-size: 28px; margin: 0; display: inline; }
+.groups .line { color: var(--muted); margin: 0 0 0 10px; display: inline; font-size: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; margin-top: 16px; }
+.tile { display: flex; flex-direction: column; padding: 18px 20px 18px; border: 1px solid var(--line); border-radius: 16px;
         background: var(--surface); color: var(--fg); text-decoration: none; }
 .tile:hover { border-color: var(--gold); }
-.tile b { font-family: Marcellus, Georgia, serif; font-weight: 400; font-size: 21px; display: block; }
-.tile span { color: var(--muted); font-size: 15px; }
+.tile .coins { display: flex; gap: 6%; justify-content: center; margin: 4px 0 22px; }
+.tile .coins img { width: 30%; aspect-ratio: 1; object-fit: contain; }
+.tile b { font-family: Marcellus, Georgia, serif; font-weight: 400; font-size: 24px; display: block; line-height: 1.25; }
+.tile span { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.tile i { font-style: normal; color: var(--gold); font-weight: 600; font-size: 14px; margin-top: auto; padding-top: 12px; }
 footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 22px 0 40px; color: var(--muted); font-size: 13px; text-align: center; }
 footer svg { width: 44px; }
 </style>
@@ -94,29 +98,30 @@ footer svg { width: 44px; }
 <main class="wrap">
 <div class="crumbs"><a href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html">Ancient gold</a></div>
 
+<style>main.wrap { max-width: 1120px; }</style>
 <h1>Gold coins, explained</h1>
-<p class="teaser">Short illustrated lessons on ancient gold coins: what they were called, how to read them, what one bought, how they were struck, faked and traced, and why Syracuse made the most beautiful.</p>
+<p class="teaser">12 lessons in pictures. Each one stands alone, so start anywhere.</p>
 <div class="groups">
-<section><h2>Start here</h2><p class="line">The names, marks and gods on every coin</p>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/names/"><b>Coin names and sizes</b><span>What the coins were called, and how big they were.</span></a>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/read/"><b>Reading a coin</b><span>Who, where and when, from the letters and marks.</span></a>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/gods/"><b>Gods on coins</b><span>Who&#x27;s who, by helmet, lion skin, thunderbolt and wings.</span></a>
-</section>
-<section><h2>Gold in history</h2><p class="line">What it bought, whose face it carried, how we date it</p>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/buy/"><b>What one gold coin bought</b><span>Weeks or months of wages in one small piece.</span></a>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/power/"><b>Coins as propaganda</b><span>Whose face, which message, and who was meant to see it.</span></a>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/know/"><b>How we date ancient coins</b><span>Hoards, digs, old writers and the lab.</span></a>
-</section>
-<section><h2>Why coins are art</h2><p class="line">One city per episode</p>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/syracuse/"><b>Syracuse: why its coins are art</b><span>The richest Greek city in the west, and its engravers.</span></a>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/pantikapaion/"><b>Pantikapaion: the satyr at the edge of the world</b><span>A Crimean grain port and the costliest ancient coin ever sold.</span></a>
-</section>
-<section><h2>For collectors</h2><p class="line">How coins were struck, faked and traced</p>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/made/"><b>How coins were made</b><span>From the refinery to the hammer blow.</span></a>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/mints/"><b>Ancient mints through the ages</b><span>What the buildings that struck coins looked like, era by era.</span></a>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/is-it-real/"><b>Is it real?</b><span>How fakes are caught, and what to check before you bid.</span></a>
-<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/pedigree/"><b>Pedigree and provenance</b><span>Who owned it, where it was found, how it left its country.</span></a>
-</section>
+<section><h2>Start here</h2><p class="line">The names, marks and gods on every coin</p><div class="grid">
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/names/"><div class="coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/2c4a70f33948-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/d0bf1521d636-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/e7b2239547ad-cut.webp" alt="" loading="lazy"></div><b>Coin names and sizes</b><span>What the coins were called, and how big they were.</span><i>11 cards ›</i></a>
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/read/"><div class="coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-1bed191183f4-rev.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/d8010bbbd2ad-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/e4b59e26c24f-cut.webp" alt="" loading="lazy"></div><b>Reading a coin</b><span>Who, where and when, from the letters and marks.</span><i>13 cards ›</i></a>
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/gods/"><div class="coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/983ae66c62ea-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-rc-herakles-maximian-obv.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-gods-pius-victory.webp" alt="" loading="lazy"></div><b>Gods on coins</b><span>Who&#x27;s who, by helmet, lion skin, thunderbolt and wings.</span><i>7 cards ›</i></a>
+</div></section>
+<section><h2>Gold in history</h2><p class="line">What it bought, whose face it carried, how we date it</p><div class="grid">
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/buy/"><div class="coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/56dfa0211383-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/ac418c26e51c-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/buy/justinian-solidus-front.webp" alt="" loading="lazy"></div><b>What one gold coin bought</b><span>Weeks or months of wages in one small piece.</span><i>27 cards ›</i></a>
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/power/"><div class="coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/b6f69eb9b1d3-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/bdbaf9adbff5-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/be72ce49d226-cut.webp" alt="" loading="lazy"></div><b>Coins as propaganda</b><span>Whose face, which message, and who was meant to see it.</span><i>31 cards ›</i></a>
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/know/"><div class="coins"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/dating/alexander-323-athena.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/c48f14b59498-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/history-through-coins/history-map-img/dating/britain-stater-horse.webp" alt="" loading="lazy"></div><b>How we date ancient coins</b><span>Hoards, digs, old writers and the lab.</span><i>25 cards ›</i></a>
+</div></section>
+<section><h2>Why coins are art</h2><p class="line">One city per episode</p><div class="grid">
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/syracuse/"><div class="coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/14c0a38a90b4-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/78c3bf14c9a6-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/3945b15b8014-cut.webp" alt="" loading="lazy"></div><b>Syracuse: why its coins are art</b><span>The richest Greek city in the west, and its engravers.</span><i>13 cards ›</i></a>
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/pantikapaion/"><div class="coins"><img src="https://ikmk.smb.museum/image/18203032/vs_org.jpg" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/learn-pk-cng-4-85Z93W-rev.webp" alt="" loading="lazy"><img src="https://ikmk.smb.museum/image/18200500/vs_org.jpg" alt="" loading="lazy"></div><b>Pantikapaion: the satyr at the edge of the world</b><span>A Crimean grain port and the costliest ancient coin ever sold.</span><i>10 cards ›</i></a>
+</div></section>
+<section><h2>For collectors</h2><p class="line">How coins were struck, faked and traced</p><div class="grid">
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/made/"><div class="coins"><img src="https://ikmk.smb.museum/image/18202886/vs_org.jpg" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/06b89d5aae0e-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/d7ea7c4a0f57-cut.webp" alt="" loading="lazy"></div><b>How coins were made</b><span>From the refinery to the hammer blow.</span><i>24 cards ›</i></a>
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/mints/"><b>Ancient mints through the ages</b><span>What the buildings that struck coins looked like, era by era.</span><i>6 cards ›</i></a>
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/is-it-real/"><div class="coins"><img src="https://ikmk.smb.museum/image/18253001/vs_org.jpg" alt="" loading="lazy"><img src="https://ikmk.smb.museum/image/18268163/vs_org.jpg" alt="" loading="lazy"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Monnaie%20-%20FAUX%20moderne.%20Stat%C3%A8re%2C%20or%2C%20Gaule%2C%20Massalia%20%28Marseille%29%20-%20btv1b10334622s%20%282%20of%202%29.jpg?width=960" alt="" loading="lazy"></div><b>Is it real?</b><span>How fakes are caught, and what to check before you bid.</span><i>14 cards ›</i></a>
+<a class="tile" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/pedigree/"><div class="coins"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/c1a631a136bd-cut.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-1bed191183f4-rev-s.webp" alt="" loading="lazy"><img src="https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/6da1e400d33a-cut.webp" alt="" loading="lazy"></div><b>Pedigree and provenance</b><span>Who owned it, where it was found, how it left its country.</span><i>33 cards ›</i></a>
+</div></section>
 </div>
 </main>
 <footer><div class="wrap"><svg viewBox="9 11 89 46" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M39.33,39.52 C36,29 30,25.5 24,25.5 C17.5,25.5 14,33 14,40.5 C14,49 19,54 26,54 L88,54 C92.5,54 95,52.5 95,50.5 C95,48.3 92,47.6 75.5,47.6"/><path d="M39.3,39.5 C36,24 46,12.5 58.8,12.5 C70,12.5 77.4,21 77.4,31 C77.4,40.5 70,47.4 61.7,47.4 C53,47.4 46.7,41 46.7,33.8 C46.7,26 52.5,20.8 59.4,20.8 C65,20.8 69.2,25 69.2,30.3 C69.2,35.5 65.3,39.1 60.7,39.1 L56,39"/><path d="M19.2,36 Q22,38.6 24.8,36"/><path d="M20.5,27.5 L16.5,18.5 C15.2,15.5 11.5,16.2 12,19.5 M27.5,26 L29.5,16.5 C30.2,13.4 34,13.6 34,16.8"/></g></svg><br>made by Sên<br>

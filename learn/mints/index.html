@@ -69,13 +69,17 @@ figcaption a { color: var(--muted); }
 .go:hover { text-decoration: underline; }
 nav.more { border-top: 1px solid var(--line); margin-top: 30px; padding: 20px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .groups section { margin: 30px 0; }
-.groups h2 { font-size: 26px; margin: 0 0 4px; }
-.groups .line { color: var(--muted); margin: 0 0 12px; }
-.tile { display: block; padding: 14px 16px; margin: 10px 0; border: 1px solid var(--line); border-radius: 14px;
+.groups h2 { font-size: 28px; margin: 0; display: inline; }
+.groups .line { color: var(--muted); margin: 0 0 0 10px; display: inline; font-size: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; margin-top: 16px; }
+.tile { display: flex; flex-direction: column; padding: 18px 20px 18px; border: 1px solid var(--line); border-radius: 16px;
         background: var(--surface); color: var(--fg); text-decoration: none; }
 .tile:hover { border-color: var(--gold); }
-.tile b { font-family: Marcellus, Georgia, serif; font-weight: 400; font-size: 21px; display: block; }
-.tile span { color: var(--muted); font-size: 15px; }
+.tile .coins { display: flex; gap: 6%; justify-content: center; margin: 4px 0 22px; }
+.tile .coins img { width: 30%; aspect-ratio: 1; object-fit: contain; }
+.tile b { font-family: Marcellus, Georgia, serif; font-weight: 400; font-size: 24px; display: block; line-height: 1.25; }
+.tile span { color: var(--muted); font-size: 15px; margin-top: 6px; }
+.tile i { font-style: normal; color: var(--gold); font-weight: 600; font-size: 14px; margin-top: auto; padding-top: 12px; }
 footer { border-top: 1px solid var(--line); margin-top: 40px; padding: 22px 0 40px; color: var(--muted); font-size: 13px; text-align: center; }
 footer svg { width: 44px; }
 </style>
