@@ -547,6 +547,13 @@ details.src ul { margin: 6px 0 0; padding-left: 18px; }
 .lhead .back span { font-size: 1.5em; line-height: 0.8; margin-top: -2px; }
 .lhead .back:hover { text-decoration: underline; text-underline-offset: 4px; }
 .lhead .crumbs { border-left: 1px solid var(--line); padding-left: 12px; }
+/* Shortcuts to two favourite lessons (14 Nov): plain gold text links, right of the crumbs */
+.lhead .lquick { margin-left: auto; display: flex; gap: 18px; white-space: nowrap; }
+.lhead .lquick :is(button, a.lnk) { background: none; border: 0; padding: 4px 0; cursor: pointer; font: 600 calc(14px * var(--fs)) var(--font-body); color: var(--gold); }
+.lhead .lquick :is(button, a.lnk):hover { text-decoration: underline; text-underline-offset: 4px; }
+.lhead .lquick :is(button, a.lnk)[aria-current] { color: var(--muted); cursor: default; text-decoration: none; }
+.lhead .lquick + .x { margin-left: 6px; }
+@media (max-width: 560px) { .lhead .lquick { gap: 12px; } .lhead .lquick :is(button, a.lnk) { font-size: calc(12.5px * var(--fs)); } .lhead .home { display: none; } }
 .lhead .x { margin-left: auto; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: calc(17px * var(--fs)); }
 .lbody { padding: 18px 22px 40px; }
 .lintro { color: var(--muted); max-width: 64ch; margin: 0 0 18px; }
@@ -926,6 +933,7 @@ h1.chtitle { margin-top: 0; }
 </div></header>
 <main>
 <div class="learn" id="learn" aria-label="Gold coins, explained"><div class="lbox" id="lbox"><div class="lhead"><h1 class="home">Gold coins, explained</h1>
+    <nav class="lquick" aria-label="Shortcuts"><a data-chap="made" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/made/">How coins were made</a><a data-chap="is-it-real" class="lnk" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/is-it-real/">Is it real?</a></nav>
     <a class="x lnk" data-lclose="" aria-label="Back to the catalogue" href="https://escargot-studio.github.io/gold-coin-catalogue/ancient.html">×</a></div><div class="lbody"><p class="lintro">13 lessons in pictures. Each one stands alone, so start anywhere.</p><section class="lgroup"><div class="level"><h3>Start here</h3><span>The names, marks and gods on every coin</span></div>
       <div class="chaps"><a class="chap lnk" data-chap="names" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/names/"><div class="covers"><span class="contain" style="background-image:url('https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/2c4a70f33948-cut.webp')"></span><span class="contain" style="background-image:url('https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/d0bf1521d636-cut.webp')"></span><span class="contain" style="background-image:url('https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/e7b2239547ad-cut.webp')"></span></div>
     <div class="t"><b>Coin names and sizes</b><small>What the coins were called, and how big they were.</small><i>11 cards ›</i></div></a><a class="chap lnk" data-chap="read" href="https://escargot-studio.github.io/gold-coin-catalogue/learn/read/"><div class="covers"><span class="contain" style="background-image:url('https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/split-1bed191183f4-rev.webp')"></span><span class="contain" style="background-image:url('https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/d8010bbbd2ad-cut.webp')"></span><span class="contain" style="background-image:url('https://escargot-studio.github.io/gold-coin-catalogue/ancient-img/e4b59e26c24f-cut.webp')"></span></div>
