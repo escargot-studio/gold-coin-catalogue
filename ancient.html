@@ -4187,6 +4187,13 @@ function applyDetail(detail) {
     const a = document.createElement("a");
     a.className = "map-nav lv-nav"; a.href = LEARN; a.textContent = "Learn";
     (document.querySelector(".brand-row .map-nav") || worlds).after(a);
+    // Shortcuts to two favourite lessons, after Learn.
+    let prev = a;
+    for (const [id, label] of [["made", "How coins were made"], ["is-it-real", "Is it real?"]]) {
+      const s = document.createElement("a");
+      s.className = "map-nav lv-short"; s.href = LEARN + id + "/"; s.textContent = label;
+      prev.after(s); prev = s;
+    }
   }
 
   // Came from a lesson page: the coin card offers the way back.
