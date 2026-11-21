@@ -3742,10 +3742,26 @@ const SEARCH = (() => {
   function openCoin(key) {
     const c = CAB.coins.find((x) => x.key === key);
     if (!c) return;
-    listScroll = sheet().scrollTop;
+    if (sheet().querySelector(".cabinet:not(.cab-detail)")) listScroll = sheet().scrollTop;
     show(detailHtml(c));
+    const list = CAB.coins.filter((x) => kind(x) === kind(c)), i = list.indexOf(c);
+    const pos = sheet().querySelector(".pos"); if (pos && list.length > 1) pos.textContent = `${i + 1} of ${list.length}`;
+    sheet().dataset.cabKey = key;
     sheet().querySelector("[data-cab-back]").focus();
   }
+  // In a coin's detail: ← or ↑ for the previous favourite, → or ↓ for the next (within the open tab).
+  function step(d) {
+    const c = CAB.coins.find((x) => x.key === sheet().dataset.cabKey); if (!c) return;
+    const list = CAB.coins.filter((x) => kind(x) === kind(c));
+    openCoin(list[(list.indexOf(c) + d + list.length) % list.length].key);
+  }
+  document.addEventListener("keydown", (e) => {
+    if (scrim().hidden || !sheet().querySelector(".cab-detail") || e.altKey || e.metaKey || e.ctrlKey) return;
+    if (e.target.closest && e.target.closest("input, textarea, select, [contenteditable]")) return;
+    const d = { ArrowLeft: -1, ArrowUp: -1, ArrowRight: 1, ArrowDown: 1 }[e.key];
+    if (!d) return;
+    e.preventDefault(); e.stopImmediatePropagation(); step(d);
+  }, true);
   function backToList() {
     show(listHtml(), listScroll);
   }
