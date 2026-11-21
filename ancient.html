@@ -3612,12 +3612,12 @@ const SEARCH = (() => {
 .cab-card-link { border: 0; background: none; padding: 0; color: var(--gold); font: inherit; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .sheet-nav [data-cab-back] { margin-right: auto; }
 .peek[data-peek] .peek-snail { pointer-events: auto; cursor: pointer; }
-.maker .snail-mark { cursor: pointer; }
-.maker .snail-mark.cab-wiggle, .peek-snail .snail-mark.cab-wiggle { animation: cab-wiggle .45s ease-in-out; transform-origin: 30% 90%; }
+.maker .snail-mark, .made-by .snail-mark { cursor: pointer; }
+.maker .snail-mark.cab-wiggle, .made-by .snail-mark.cab-wiggle, .peek-snail .snail-mark.cab-wiggle { animation: cab-wiggle .45s ease-in-out; transform-origin: 30% 90%; }
 @keyframes cab-wiggle { 0%, 100% { transform: none; } 30% { transform: translateX(3px) scaleX(1.06); } 60% { transform: translateX(-2px) rotate(-4deg); } }
 @media (prefers-reduced-motion: reduce) { .peek[data-peek] .peek-snail { pointer-events: auto; cursor: pointer; }
-.maker .snail-mark { cursor: pointer; }
-.maker .snail-mark.cab-wiggle, .peek-snail .snail-mark.cab-wiggle { animation: none; } }
+.maker .snail-mark, .made-by .snail-mark { cursor: pointer; }
+.maker .snail-mark.cab-wiggle, .made-by .snail-mark.cab-wiggle, .peek-snail .snail-mark.cab-wiggle { animation: none; } }
 .cab-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 .cab-pair .photo { aspect-ratio: 1; min-height: 0; }
 .cab-pair .photo img { padding: 4%; }
@@ -3830,7 +3830,7 @@ const SEARCH = (() => {
   // Way in 1: any snail on the page (the one at the foot, and the one peeking from behind the logo).
   if (on.has("snail")) {
     document.addEventListener("click", (e) => {
-      const hit = e.target.closest && e.target.closest(".maker .snail-mark, .peek-snail");
+      const hit = e.target.closest && e.target.closest(".maker .snail-mark, .made-by .snail-mark, .peek-snail");
       if (!hit) return;
       e.preventDefault(); e.stopPropagation();   // the peeking snail sits inside the logo link
       const snail = hit.matches(".snail-mark") ? hit : hit.querySelector(".snail-mark");
