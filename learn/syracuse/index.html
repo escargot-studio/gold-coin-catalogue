@@ -136,6 +136,17 @@ header.top .peek .emark { position: relative; z-index: 1; display: block; }
 .terr.sel { stroke-width: 2.6; }
 .terr.dep { stroke-dasharray: 3 2.5; }
 .terr.fade { opacity: .35; }
+/* Gavel easter egg: a tiny gavel hidden at Zurich; a tap brings out a grumpy imagined auctioneer. */
+.gavel { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; padding: 0; border: 0; background: none; color: var(--gold-lo); opacity: .6; cursor: pointer; transition: opacity .2s, transform .2s; }
+.gavel:hover, .gavel:focus-visible { opacity: 1; transform: rotate(-18deg) scale(1.15); }
+.gavel svg { width: 100%; height: 100%; display: block; }
+#auc { position: fixed; z-index: 1000; width: min(210px, 52vw); pointer-events: auto; transform-origin: 50% 100%; animation: auc-in .45s cubic-bezier(.2,1.4,.4,1) both; cursor: pointer; }
+#auc[hidden] { display: none; }
+#auc img { width: 100%; height: auto; max-height: none; display: block; -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 48%, #000 66%, transparent 100%); mask-image: radial-gradient(ellipse 50% 50% at 50% 48%, #000 66%, transparent 100%); }
+#auc .say { position: absolute; left: 50%; top: -8px; transform: translate(-50%, -100%); background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 14px; padding: 6px 12px; font: italic 600 calc(14px * var(--fs)) var(--font-display); white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+#auc .say::after { content: ""; position: absolute; left: 50%; bottom: -6px; width: 10px; height: 10px; margin-left: -5px; background: var(--surface); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transform: rotate(45deg); }
+@keyframes auc-in { from { opacity: 0; transform: translateY(14px) scale(.6); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { #auc { animation: none; } }
 .battle.mini { transform: scale(.7); opacity: .8; } .battle.mini.feat { opacity: 1; transform: scale(.85); }
 .facts { margin: 4px 0 10px; padding-left: 18px; font-size: calc(14px * var(--fs)); } .facts li { margin: 2px 0; }
 .terr.war-a { fill: var(--side-a) !important; stroke: var(--side-a) !important; fill-opacity: .3; opacity: 1; }
